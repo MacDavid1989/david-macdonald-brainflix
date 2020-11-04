@@ -5,17 +5,17 @@ function Comments() {
         <section className="comments">
             <h2>3 Comments</h2>
             <form>
-                <img src={Mohan} width={48} height={48} />
+                <img src={Mohan} width={48} height={48} alt=""/>
                 <div>
                     <div>
                         <label>JOIN THE CONVERSATION</label>
-                        <textarea value="Write comment here"></textarea>
+                        <textarea value="Write comment here" readOnly></textarea>
                     </div>
                     <button>COMMENT</button>
                 </div>
             </form>
             <div>
-                <img />
+                <img alt=""/>
                 <div>
                     <div>
                         <h4>Micheal Lyons</h4>
@@ -31,7 +31,7 @@ function Comments() {
                 </div>
             </div>
             <div>
-                <img />
+                <img alt=""/>
                 <div>
                     <div>
                         <h4>Gary Wong</h4>
@@ -47,7 +47,7 @@ function Comments() {
                 </div>
             </div>
             <div>
-                <img />
+                <img alt=""/>
                 <div>
                     <div>
                         <h4>Theodore Duncan</h4>

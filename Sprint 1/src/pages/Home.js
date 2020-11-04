@@ -2,15 +2,15 @@ import Header from '../components/Header/Header';
 import Main from '../components/Main/Main';
 import Aside from '../components/Aside/Aside';
 
-function Home() {
+function Home(props) {
 
     return (
         <>
-            <Header/>
+            <Header mainVideo={props.mainVideo}/>
             <Main/>
             <Aside/>
         </>
     );
-}
+};
 
 export default Home;

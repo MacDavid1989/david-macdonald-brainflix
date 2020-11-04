@@ -5,8 +5,8 @@
         url("../assets/fonts/avenir-next-regular.woff") format("woff"), 
         url("../assets/fonts/avenir-next-regular.woff2") format("woff2");
         font-weight: normal;
-    }
-}
+    };
+};
 
 @mixin font-demi {
     @font-face {
@@ -15,8 +15,8 @@
         url("../assets/fonts/avenir-next-demi.woff") format("woff"), 
         url("../assets/fonts/avenir-next-demi.woff2") format("woff2");
         font-weight: 600;
-    }
-}
+    };
+};
 
 @mixin font-bold {
     @font-face {
@@ -25,5 +25,5 @@
         url("../assets/fonts/avenir-next-bold.woff") format("woff"), 
         url("../assets/fonts/avenir-next-bold.woff2") format("woff2");
         font-weight: bold;
-    }
-}
+    };
+};

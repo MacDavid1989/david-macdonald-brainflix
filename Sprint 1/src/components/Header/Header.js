@@ -1,11 +1,11 @@
 import SearchBar from "../SearchBar/SearchBar";
 import Hero from "../Hero/Hero";
 
-function Header() {
+function Header(props) {
     return (
         <header>
             <SearchBar/>
-            <Hero/>
+            <Hero mainVideo={props.mainVideo}/>
         </header>
     );
 }
