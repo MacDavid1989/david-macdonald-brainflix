@@ -1,0 +1,8 @@
+@use './typography' as *;
+@include font-regular;
+@include font-demi;
+@include font-bold;
+
+// Global Fonts
+$font-family: 'Avenir Next';
+$font-size-html: 10px;

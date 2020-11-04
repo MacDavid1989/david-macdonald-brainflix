@@ -1,0 +1,22 @@
+@use './variables' as *;
+
+@mixin boundary-reset {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@mixin font-stack($weight) {
+    font-family: $font-family;
+    font-size: $font-size-html;
+    font-weight: $weight;
+}
+
+@mixin flex-control($display, $direction, $wrap, $align, $self, $justify) {
+    display: $display;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+    align-items: $align;
+    align-self: $self;
+    justify-content: $justify;
+}
