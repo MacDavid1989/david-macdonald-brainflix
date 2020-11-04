@@ -8,7 +8,7 @@ function Article(props) {
             <div>
                 <div>
                     <h2>{props.mainVideo.channel}</h2>
-                    <h5>{props.mainVideo.timestamp}</h5>
+                    <h5>{props.convertTime(props.mainVideo.timestamp)}</h5>
                 </div>
                 <div>
                     <div>
