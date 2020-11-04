@@ -1,58 +1,68 @@
+import Image0 from '../../assets/images/video-list-0.jpg';
+import Image1 from '../../assets/images/video-list-1.jpg'; 
+import Image2 from '../../assets/images/video-list-2.jpg'; 
+import Image3 from '../../assets/images/video-list-3.jpg'; 
+import Image4 from '../../assets/images/video-list-4.jpg'; 
+import Image5 from '../../assets/images/video-list-5.jpg'; 
+import Image6 from '../../assets/images/video-list-6.jpg'; 
+import Image7 from '../../assets/images/video-list-7.jpg'; 
+import Image8 from '../../assets/images/video-list-8.jpg'; 
+
 
 const sideVideo = [
     {
         id: '1',
         title: 'type of <string>',
         channel: 'type of <string>',
-        image: '/static/media/video-list-0.52a50f82.jpg'
+        image: Image0
     },
     {
         id: '2',
         title: 'Become A Travel Pro In One Easy Lesson…',
         channel: 'Scotty Cranmer',
-        image: '/static/media/video-list-1.5a6080b6.jpg'
+        image: Image1
     },
     {
         id: '3',
         title: 'Les Houches The Hidden Gem Of The…',
         channel: 'Scotty Cranmer',
-        image: '/static/media/video-list-2.5d5f914a.jpg'
+        image: Image2
     },
     {
         id: '4',
         title: 'Travel Health Useful Medical Information…',
         channel: 'Scotty Cranmer',
-        image: '/static/media/video-list-3.bf017b79.jpg'
-    },
+        image: Image3
+        },
     {
         id: '5',
         title: 'Cheap Airline Tickets Great Ways To Save',
         channel: 'Emily Harper',
-        image: '/static/media/video-list-4.4a82fa9f.jpg'
-    },
+        image: Image4
+        },
     {
         id: '6',
         title: 'Take A Romantic Break In A Boutique Hotel',
         channel: 'Ethan Owen',
-        image: '/static/media/video-list-5.ad24c303.jpg'
-    },
+        image:  Image5
+       },
     {
         id: '7',
         title: 'Choose The Perfect Accommodations',
         channel: 'Lydia Perez',
-        image: '/static/media/video-list-6.5b74c9b4.jpg'
-    },
+        image:  Image6
+       },
     {
         id: '8',
         title: 'Cruising Destination Ideas',
         channel: 'Timothy Austin',
-        image: '/static/media/video-list-7.331c835b.jpg'
+        image: Image7    
     },
     {
         id: '9',
         title: 'Train Travel On Track For Safety',
         channel: 'Scotty Cranmer',
-        image: '/static/media/video-list-8.03f7feba.jpg'
+        image: Image8
     },
 ];
 
