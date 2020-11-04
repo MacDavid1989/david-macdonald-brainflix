@@ -1,10 +1,8 @@
-import {mainVideo, sideVideos} from '../../utils/Data'
-
-function Aside() {
+function Aside(props) {
     return (
         <aside>
             <h3>NEXT VIDEO</h3>
-            {sideVideos.filter(video => video.id!=='1').map((video) =>
+            {props.videoList.filter(video => video.id!=='1').map((video) =>
                 <div key={video.id}>
                     <img src={video.image} alt="" height={50} width={50}/>
                     <div>

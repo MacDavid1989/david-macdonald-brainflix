@@ -10,7 +10,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <Home mainVideo={this.state.mainVideo}/>
+      <Home mainVideo={this.state.mainVideo} videoList={this.state.sideVideos}/>
     );
   }
 }

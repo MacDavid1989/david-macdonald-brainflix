@@ -1,6 +1,7 @@
 import Mohan from '../../assets/images/mohan-muruge.jpg';
 
-function Comments() {
+function Comments(props) {
+    console.log(props)
     return (
         <section className="comments">
             <h2>3 Comments</h2>
@@ -14,56 +15,55 @@ function Comments() {
                     <button>COMMENT</button>
                 </div>
             </form>
-            <div>
+        {props.comments.map((comment) => 
+            <div key={comment.timestamp}>
                 <img alt=""/>
                 <div>
                     <div>
-                        <h4>Micheal Lyons</h4>
-                        <h5>12/18/2018</h5>
+                        <h4>{comment.name}</h4>
+                        <h5>{convertTime(comment.timestamp)}</h5>
                     </div>
-                    <p>
-                        They BLEW the ROOF off at their
-                        last show, once everyone started
-                        figuring out they were going. This is
-                        still simply the greatest opening of a
-                        concert I have EVER witnessed.
-                            </p>
+                    <p>{comment.comment}</p>
                 </div>
             </div>
-            <div>
-                <img alt=""/>
-                <div>
-                    <div>
-                        <h4>Gary Wong</h4>
-                        <h5>12/18/2018</h5>
-                    </div>
-                    <p>
-                        Every time I see him shred I feel so
-                        motivated to get off my couch and
-                        hop on my board. He’s so talented! I
-                        wish I can ride like him one day so I
-                        can really enjoy myself!
-                            </p>
-                </div>
-            </div>
-            <div>
-                <img alt=""/>
-                <div>
-                    <div>
-                        <h4>Theodore Duncan</h4>
-                        <h5>12/18/2018</h5>
-                    </div>
-                    <p>
-                        How can someone be so good!!!
-                        You can tell he lives for this and
-                        loves to do it every day. Everytime I
-                        see him I feel instantly happy! He’s
-                        definitely my favorite ever!
-                            </p>
-                </div>
-            </div>
+        )}
         </section>
     )
 }
+
+// returns a string stating how long since the comment was first submitted
+function convertTime(timestamp) {
+
+    // variable with the current time in milliseconds since the epoch
+    const currentTime = new Date().getTime();
+    
+    // variable with the difference
+    const time = Math.abs(currentTime - timestamp)/1000;
+  
+    // checks if total milliseconds are greater than the equivalent of at least 1 year
+    if ((time/31536000) > 1) {
+      return Math.floor(time/31536000) + " years ago";
+    
+      // checks if total milliseconds are greater than the equivalent of at least 1 month
+    } else if ((time/2592000) > 1) {
+      return Math.floor(time/2592000) + " months ago";
+    
+      // checks if total milliseconds are greater than the equivalent of at least 1 day
+    } else if ((time/86400) > 1) {
+      return Math.floor(time/86400) + " days ago";
+    
+      // checks if total milliseconds are greater than the equivalent of at least 1 hour
+    } else if ((time/3600) > 1) {
+      return Math.floor(time/3600) + " hours ago";
+    
+      // checks if total milliseconds are greater than the equivalent of at least 60 minutes
+    } else if ((time/60) > 1) {
+      return Math.floor(time/60) + " minutes ago";
+    
+    } else {
+      // returns string with time rounded to the nearest second
+    return Math.floor(time) + " seconds ago";
+    }
+};
 
 export default Comments;

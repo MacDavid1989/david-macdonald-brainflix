@@ -7,8 +7,8 @@ function Home(props) {
     return (
         <>
             <Header mainVideo={props.mainVideo}/>
-            <Main/>
-            <Aside/>
+            <Main mainVideo={props.mainVideo}/>
+            <Aside videoList={props.videoList}/>
         </>
     );
 };

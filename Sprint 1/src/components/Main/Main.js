@@ -1,11 +1,11 @@
 import Article from "../Article/Article";
 import Comments from "../Comments/Comments";
 
-function Main() {
+function Main(props) {
     return (
         <main>
-            <Article/>
-            <Comments/>
+            <Article mainVideo={props.mainVideo}/>
+            <Comments  comments={props.mainVideo.comments}/>
         </main>
     );
 }
