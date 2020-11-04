@@ -1,3 +1,6 @@
+import Likes from '../../assets/icons/svg/icon-likes.svg';
+import Views from '../../assets/icons/svg/icon-views.svg';
+
 function Article() {
     return (
         <article>
@@ -8,8 +11,14 @@ function Article() {
                     <h5>12/18/2018</h5>
                 </div>
                 <div>
-                    <span>1,001,023</span>
-                    <span>110,985</span>
+                    <div>
+                        <img src={Views}/>
+                        <span>1,001,023</span>
+                    </div>
+                    <div>
+                        <img src={Likes}/>
+                        <span>110,985</span>
+                    </div>
                 </div>
             </div>
             <p>

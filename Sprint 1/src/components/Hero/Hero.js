@@ -1,13 +1,19 @@
+import Image0 from '../../assets/images/video-list-0.jpg';
+import Play from '../../assets/icons/svg/icon-play.svg';
+import FullScreen from '../../assets/icons/svg/icon-fullscreen.svg';
+import Volume from '../../assets/icons/svg/icon-volume.svg';
+
+
 function Hero() {
     return (
         <section className="hero">
-            <video></video>
+            <video poster={Image0} width={50} height={50}></video>
             <div>
-                <svg></svg>
+                <img src={Play}/>
                 <progress></progress>
                 <div>
-                    <svg></svg>
-                    <svg></svg>
+                    <img src={FullScreen}/>
+                    <img src={Volume}/>
                 </div>
             </div>
         </section>

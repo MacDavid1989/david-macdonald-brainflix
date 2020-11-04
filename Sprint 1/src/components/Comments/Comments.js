@@ -1,9 +1,11 @@
+import Mohan from '../../assets/images/mohan-muruge.jpg';
+
 function Comments() {
     return (
         <section className="comments">
             <h2>3 Comments</h2>
             <form>
-                <img />
+                <img src={Mohan} width={48} height={48} />
                 <div>
                     <div>
                         <label>JOIN THE CONVERSATION</label>
