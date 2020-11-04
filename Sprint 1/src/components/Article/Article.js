@@ -1,6 +1,6 @@
 import Likes from '../../assets/icons/svg/icon-likes.svg';
 import Views from '../../assets/icons/svg/icon-views.svg';
-import mainVideo from '../../utils/mainVideo'
+import {mainVideo, sideVideos} from '../../utils/Data'
 import textEllipsis from 'text-ellipsis'
 
 function Article() {

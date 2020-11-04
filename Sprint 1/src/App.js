@@ -1,11 +1,18 @@
+import React from 'react';
 import './App.scss';
 import Home from './pages/Home';
-import mainVideo from './utils/mainVideo'
+import {mainVideo, sideVideos} from './utils/Data'
+class App extends React.Component {
+  state = {
+    mainVideo: mainVideo,
+    sideVideos: sideVideos
+  }
 
-function App() {
-  return (
-    <Home mainVideo={mainVideo}/>
-  );
+  render() {
+    return (
+      <Home mainVideo={this.state.mainVideo}/>
+    );
+  }
 }
 
 export default App;
