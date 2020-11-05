@@ -7,7 +7,7 @@ function Header(props) {
             <SearchBar/>
             <Hero mainVideo={props.mainVideo}/>
         </header>
-    );
-}
+    )
+};
 
 export default Header;

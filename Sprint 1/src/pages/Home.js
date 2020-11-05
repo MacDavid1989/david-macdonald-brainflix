@@ -7,7 +7,10 @@ function Home(props) {
     return (
         <>
             <Header mainVideo={props.mainVideo}/>
-            <Main mainVideo={props.mainVideo} convertTime={props.convertTime}/>
+            <Main 
+                mainVideo={props.mainVideo} 
+                convertTime={props.convertTime}
+            />
             <Aside videoList={props.videoList}/>
         </>
     );

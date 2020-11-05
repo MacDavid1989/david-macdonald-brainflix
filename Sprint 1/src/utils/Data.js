@@ -7,9 +7,9 @@ import Image5 from '../assets/images/video-list-5.jpg';
 import Image6 from '../assets/images/video-list-6.jpg'; 
 import Image7 from '../assets/images/video-list-7.jpg'; 
 import Image8 from '../assets/images/video-list-8.jpg';
-import SampleVideo from '../assets/video/brainstation-sample-video.mp4'
+import SampleVideo from '../assets/video/brainstation-sample-video.mp4';
 
-//Main Video Object
+// Main Video Object
 const mainVideo = {
     id: '1',
     title: "BMX Rampage: 2018 Highlights",
@@ -41,8 +41,8 @@ const mainVideo = {
     ]
 };
 
-// Side Video Object
-const sideVideos = [
+// Array of Videos
+const videoList = [
     {
         id: '1',
         title: 'BMX Rampage: 2018 Highlights',
@@ -99,4 +99,4 @@ const sideVideos = [
     },
 ];
 
-export {mainVideo, sideVideos};
+export {mainVideo, videoList};

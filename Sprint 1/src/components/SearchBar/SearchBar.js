@@ -7,14 +7,17 @@ function SearchBar() {
         <section className="search-bar">
             <img src={Logo} alt=""/>
             <form>
-                <input value="Search" readOnly></input>
+                <input value="Search" readOnly/>
                 <div>
-                    <button><img src={Upload} alt=""/>UPLOAD</button>
+                    <button>
+                        <img src={Upload} alt=""/>
+                        UPLOAD
+                    </button>
                     <img src={Mohan} height={48} width={48} alt=""/>
                 </div>
             </form>
         </section>
-    );
+    )
 };
 
 export default SearchBar;
