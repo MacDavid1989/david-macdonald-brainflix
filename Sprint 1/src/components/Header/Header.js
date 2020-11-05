@@ -1,11 +1,11 @@
 import SearchBar from "../SearchBar/SearchBar";
-import Hero from "../Hero/Hero";
+import Player from "../Player/Player";
 
 function Header(props) {
     return (
-        <header>
+        <header className="header">
             <SearchBar/>
-            <Hero mainVideo={props.mainVideo}/>
+            <Player mainVideo={props.mainVideo}/>
         </header>
     )
 };

@@ -13,7 +13,7 @@ function Home(props) {
             />
             <Aside videoList={props.videoList}/>
         </>
-    );
+    )
 };
 
 export default Home;

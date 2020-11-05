@@ -96,7 +96,7 @@ const videoList = [
         title: 'Train Travel On Track For Safety',
         channel: 'Scotty Cranmer',
         image: Image8
-    },
+    }
 ];
 
 export {mainVideo, videoList};
