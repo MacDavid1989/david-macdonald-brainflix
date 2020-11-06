@@ -10,6 +10,7 @@
     font-family: $font-family;
     font-size: $font-size-html;
     font-weight: $weight;
+    color: $color-font-global;
 };
 
 @mixin flex-control($display, $direction, $wrap, $align, $self, $justify) {
