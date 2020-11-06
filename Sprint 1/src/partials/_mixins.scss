@@ -20,3 +20,9 @@
     align-self: $self;
     justify-content: $justify;
 };
+
+@mixin breakpoint ($width) {
+    @media (min-width: $width) {
+        @content;
+    }    
+}

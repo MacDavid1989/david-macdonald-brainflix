@@ -12,9 +12,9 @@ function SearchBar() {
                 <div className="search-bar__wrapper">
                     <button className="button upload">
                         <img className="upload__icon" src={upload} alt=""/>
-                        UPLOAD
+                        <p className="upload__text">UPLOAD</p>
                     </button>
-                    <img className="search-bar__image" src={mohan} height={48} width={48} alt=""/>
+                    <img className="search-bar__image" src={mohan} alt=""/>
                 </div>
             </form>
         </section>
