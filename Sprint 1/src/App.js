@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import { mainVideo, videoList } from './utils/Data';
+import { mainVideo, videoList } from './utils/videoData';
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import Aside from './components/Aside/Aside';
@@ -14,10 +14,10 @@ class App extends React.Component {
 	render() {
 		return (
 			<>
-            <Header mainVideo={this.state.mainVideo}/>
-            <Main mainVideo={this.state.mainVideo}/>
-            <Aside videoList={this.state.videoList}/>
-        </>
+				<Header mainVideo={this.state.mainVideo}/>
+				<Main mainVideo={this.state.mainVideo}/>
+				<Aside videoList={this.state.videoList}/>
+			</>
 		)
 	};
 };
