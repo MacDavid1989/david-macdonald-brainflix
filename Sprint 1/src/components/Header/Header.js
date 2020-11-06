@@ -1,3 +1,4 @@
+import './Header.scss';
 import SearchBar from "../SearchBar/SearchBar";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 

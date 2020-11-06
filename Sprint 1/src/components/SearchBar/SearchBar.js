@@ -1,3 +1,4 @@
+import './SearchBar.scss';
 import logo from '../../assets/logo/logo-brainflix.svg';
 import upload from '../../assets/icons/svg/icon-upload.svg';
 import mohan from '../../assets/images/mohan-muruge.jpg';
