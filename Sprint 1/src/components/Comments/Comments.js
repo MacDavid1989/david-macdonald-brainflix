@@ -16,13 +16,13 @@ function Comments(props) {
             </div>
         {props.comments.map((comment) => 
             <div className="comments__cards" key={comment.timestamp}>
-                <img className="card__image" alt=""/>
-                <div className="card__info">
-                    <div className="card__header">
-                        <span className="card__name">{comment.name}</span>
-                        <span className="card__timestamp">{props.convertTime(comment.timestamp)}</span>
+                <img className="card__image-main" alt=""/>
+                <div className="card__info-main">
+                    <div className="card__header-main">
+                        <span className="card__name-main">{comment.name}</span>
+                        <span className="card__timestamp-main">{props.convertTime(comment.timestamp)}</span>
                     </div>
-                    <p className="card__comment">{comment.comment}</p>
+                    <p className="card__comment-main">{comment.comment}</p>
                 </div>
             </div>
         )}
