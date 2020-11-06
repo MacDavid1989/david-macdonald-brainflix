@@ -1,11 +1,11 @@
 import SearchBar from "../SearchBar/SearchBar";
-import Player from "../Player/Player";
+import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
 function Header(props) {
     return (
         <header className="header">
             <SearchBar/>
-            <Player mainVideo={props.mainVideo}/>
+            <VideoPlayer mainVideo={props.mainVideo}/>
         </header>
     )
 };
