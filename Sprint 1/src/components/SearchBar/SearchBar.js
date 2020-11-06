@@ -10,7 +10,7 @@ function SearchBar() {
                 <input name="search-bar__input" className="search-bar__input" placeholder="Search"></input>
                 <div className="search-bar__wrapper">
                     <button className="button upload">
-                        <img className="upload-icon" src={upload} alt=""/>
+                        <img className="upload__icon" src={upload} alt=""/>
                         UPLOAD
                     </button>
                     <img className="search-bar__image" src={mohan} height={48} width={48} alt=""/>
