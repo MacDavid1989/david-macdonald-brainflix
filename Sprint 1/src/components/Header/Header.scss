@@ -2,6 +2,6 @@
 @use '../../partials/mixins' as *;
 
 .header {
-    @include flex-control(flex, column, initial, initial, initial, initial);
+    @include flex-control(flex, column, initial, center, initial, initial);
     width: 100%;
 }
