@@ -27,3 +27,9 @@
         @content;
     }    
 }
+
+@mixin btn-font {
+    font-size: $font-size-btn;
+    font-weight: 600;
+    color: $color-font-white;
+}
