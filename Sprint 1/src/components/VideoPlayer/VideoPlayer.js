@@ -1,3 +1,4 @@
+import './VideoPlayer.scss';
 import play from '../../assets/icons/svg/icon-play.svg';
 // import pause from '../../assets/icons/svg/icon-pause.svg';
 // import scrubber from '../../assets/icons/svg/icon-scrubber-control.svg';
@@ -16,7 +17,7 @@ function VideoPlayer(props) {
                     <img className="play__icon" src={play} alt=""/>
                 </button>
                 <div className="progress">
-                    <progress className="progress__bar" value="0"></progress>
+                    <progress className="progress__bar" max="100" value="0"></progress>
                     <div className="time">
                         <time className="time__elapsed">0:00</time>
                         <span className="time__separation">/</span>
