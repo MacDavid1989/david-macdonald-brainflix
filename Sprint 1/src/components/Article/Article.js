@@ -1,3 +1,4 @@
+import './Article.scss';
 import likes from '../../assets/icons/svg/icon-likes.svg';
 import views from '../../assets/icons/svg/icon-views.svg';
 

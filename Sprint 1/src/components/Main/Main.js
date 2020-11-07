@@ -1,3 +1,4 @@
+import './Main.scss';
 import Article from "../Article/Article";
 import Comments from "../Comments/Comments";
 import convertTime from '../../utils/convertTime';

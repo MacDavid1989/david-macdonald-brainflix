@@ -1,3 +1,4 @@
+import './Comments.scss';
 import mohan from '../../assets/images/mohan-muruge.jpg';
 
 function Comments(props) {
