@@ -12,7 +12,11 @@ function Comments(props) {
                             <label className="comments__label">JOIN THE CONVERSATION</label>
                             <textarea className="comments__input" placeholder="Write comment here"></textarea>
                         </div>
-                        <button className="button comment">COMMENT</button>
+                        <button className="button comment">
+                            <p className="comment__text">
+                                COMMENT
+                            </p>
+                        </button>
                 </form>
             </div>
         {props.comments.map((comment) => 
