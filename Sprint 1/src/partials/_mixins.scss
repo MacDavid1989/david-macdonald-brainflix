@@ -46,7 +46,7 @@
 
 // Global Button Text Style
 @mixin btn-font {
-    font-size: $font-size-btn;
+    font-size: $fs-btn;
     font-weight: 600;
     color: $color-font-white;
 }
@@ -66,10 +66,10 @@
     border: solid $color-input-border 0.2rem;
     border-radius: 0.4rem;
     background-color: $color-input-background;
-    font-size: $font-size-input;  
+    font-size: $fs-input;  
 }
 
-// Video Player Mixins
+// Video Player Mixin
 @mixin player-control-style {
     @include flex-control(flex,initial,initial,center,initial,center);
     border-style: none;

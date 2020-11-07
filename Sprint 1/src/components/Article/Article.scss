@@ -23,13 +23,13 @@
             margin: 0 0 3.2rem;
 
             &__channel {
-                font-size: $font-size-channel-article;
+                font-size: $fs-channel-article;
                 font-weight: 600;
             }
 
             &__timestamp {
                 margin: 0 0 0 0.8rem;
-                font-size: $font-size-timestamp;
+                font-size: $fs-timestamp;
                 color: $color-timestamp;
             }
         }
@@ -47,7 +47,7 @@
 
             &__total {
                 margin: 0 0 0 0.8rem;
-                font-size: $font-size-stats;
+                font-size: $fs-stats;
             }
         }
 
@@ -61,7 +61,7 @@
 
             &__total {
                 margin: 0 0 0 0.8rem;
-                font-size: $font-size-stats;
+                font-size: $fs-stats;
             }
         }
     }

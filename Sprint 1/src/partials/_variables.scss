@@ -8,24 +8,25 @@ $font-family: 'Avenir Next';
 $font-size-html: 10px;
 
 // Font Sizes
-$font-size-input: 1.4rem;
-$font-size-btn: 1.4rem;
-$font-size-title-aside: 1.2rem;
-$fs-card-aside-mbl: 1.4rem;
-$fs-card-aside-tab: 1.6rem;
+$fs-input: 1.4rem;
+$fs-btn: 1.4rem;
+
 $fs-title-article-mbl: 2.4rem;
 $fs-title-article-tab: 3.6rem;
-
-$font-size-timestamp: 1.4rem;
-$font-size-channel-article: 1.6rem;
-$font-size-stats: 1.4rem;
+$fs-channel-article: 1.6rem;
+$fs-timestamp: 1.4rem;
+$fs-stats: 1.4rem;
 $fs-description-article-mbl: 1.2rem;
 $fs-description-article-tab: 1.4rem;
+
 $fs-title-comments: 1.6rem;
+$fs-input-label: 1.2rem;
 $fs-card-comment-mbl: 1.4rem;
 $fs-card-comment-tab: 1.6rem;
 
-$fs-input-label: 1.2rem;
+$fs-title-aside: 1.2rem;
+$fs-card-aside-mbl: 1.4rem;
+$fs-card-aside-tab: 1.6rem;
 
 // Line Height
 $line-height-fs12px: 2rem;
@@ -35,12 +36,12 @@ $line-height-fs14px: 2.2rem;
 $color-font-global: #323232;
 $color-font-white: #FFFFFF;
 
-$color-btn: #0095FF;
-
 $color-input-outline: #0095FF;
 $color-input-border: #E1E1E1;
 $color-input-background: #FAFAFA;
 $color-input-label: #AFAFAF;
+
+$color-btn: #0095FF;
 
 $color-player-background: #000000;
 
@@ -51,8 +52,8 @@ $color-progress-value: #0095FF;
 $color-progress-bar: #000000;
 $color-progress-time: #FFFFFF;
 
-$color-title-aside: #AFAFAF;
-
 $color-timestamp: #AFAFAF;
 
 $color-divider: #E1E1E1;
+
+$color-title-aside: #AFAFAF;
