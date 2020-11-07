@@ -7,7 +7,7 @@
     width: 100%;
     height: calc(18.3rem + (217 / 448) * (100vw - 32rem));
     position: relative;
-    background-color: #000000;
+    background-color: $color-player-background;
 
     .video {
         width: 100%;
@@ -25,19 +25,13 @@
         bottom: calc(1rem + (6 / 448) * (100vw - 32rem));
 
         .play {
-            @include flex-control(flex,initial,initial,center,initial,center);
+            @include player-control-style;
             margin: 0 0 0 calc(0rem + (8 / 448) * (100vw - 32rem));
-            border-style: none;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 0.4rem;
             width: 5rem;
         }
 
         .progress {
-            @include flex-control(flex,initial,initial,center,initial,center);
-            border-style: none;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 0.4rem;
+            @include player-control-style;
             margin: 0 calc(0.8rem + (8 / 448) * (100vw - 32rem));
             width: calc(14rem + (380 / 448) * (100vw - 32rem));
 
@@ -64,26 +58,20 @@
         }
 
         &__right {
-            @include flex-control(flex,initial,initial,initial,initial,initial);
+            @include player-control-style;
             margin: 0 calc(0rem + (8 / 448) * (100vw - 32rem)) 0 0;
-            width: 8.2rem;
-            background-color:rgba(0, 0, 0, 0.5);
-            border-radius: 0.4rem;
             padding: 0 0.8rem;
+            width: 8.2rem;
 
             .fullscreen {
-                @include flex-control(flex,initial,initial,center,initial,center);
-                border-style: none;
-                background-color: rgba(0, 0, 0, 0);
-                border-radius: 0.4rem;
+                @include player-control-style;
+                background-color: $color-player-btn;
                 width: 50%;
             }
 
             .volume {
-                @include flex-control(flex,initial,initial,center,initial,center);
-                border-style: none;
-                background-color: rgba(0, 0, 0, 0);
-                border-radius: 0.4rem;
+                @include player-control-style;
+                background-color: $color-player-btn;
                 width: 50%;
             }
         }
@@ -110,16 +98,16 @@
                     margin: 0 1.6rem 0 0;
 
                     &__elapsed {
-                        color: #FFFFFF;
+                        color: $color-progress-time;
                     }
 
                     &__separation {
-                        color: #FFFFFF; 
+                        color: $color-progress-time; 
                         margin: 0 0.25rem;
                     }
 
                     &__total {
-                        color: #FFFFFF;
+                        color: $color-progress-time;
                     }
                 }
             }

@@ -1,11 +1,13 @@
 @use './variables' as *;
 
+// Global Boundary Reset
 @mixin boundary-reset {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 };
 
+// Global Font Base
 @mixin font-stack($weight) {
     font-family: $font-family;
     font-size: $font-size-html;
@@ -13,6 +15,7 @@
     color: $color-font-global;
 };
 
+// Global Flexbox 
 @mixin flex-control($display, $direction, $wrap, $align, $self, $justify) {
     display: $display;
     flex-direction: $direction;
@@ -22,14 +25,24 @@
     justify-content: $justify;
 };
 
+// Global Media Query
 @mixin breakpoint ($width) {
     @media (min-width: $width) {
         @content;
     }    
 }
 
+// Global Button Text Style
 @mixin btn-font {
     font-size: $font-size-btn;
     font-weight: 600;
     color: $color-font-white;
+}
+
+// Video Player Mixins
+@mixin player-control-style {
+    @include flex-control(flex,initial,initial,center,initial,center);
+    border-style: none;
+    background-color: $color-player-controls;
+    border-radius: 0.4rem;
 }
