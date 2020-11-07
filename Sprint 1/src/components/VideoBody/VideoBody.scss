@@ -4,4 +4,9 @@
 .video__body {
     @include flex-control(flex, column, initial, center, initial, initial);
     width: 100%;
+
+    @include breakpoint(1128px) {
+    @include flex-control(flex, initial, initial, initial, initial, center);
+        
+    }
 }
