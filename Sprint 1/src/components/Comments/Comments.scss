@@ -9,7 +9,7 @@
     &__title {
         margin: 0 0 3.2rem;
         width: 100%;
-        font-size: 1.6rem;
+        font-size: $fs-title-comments;
         font-weight: 600;
     }
 
@@ -48,37 +48,33 @@
 
     &__label {
         width: 100%;
-        font-size: 1.2rem;
+        font-size: $fs-input-label;
         font-weight: 600;
-        line-height: 2rem;
-        color: #AFAFAF;
+        line-height: $line-height-fs12px;
+        color: $color-input-label;
     }
 
     &__input {
+        @include input-style;  
         margin: 0 0 1.6rem;
-        border: solid $color-input-border 0.2rem;
-        border-radius: 0.4rem;
-        outline-color: $color-input-outline;
         padding: calc(1.6rem - (2 / 448) * (100vw - 32rem)) 1.2rem;
         width: 100%;
         height: calc(9.6rem - (48 / 448) * (100vw - 32rem));
-        background-color: $color-input-background;
-        font-size: $font-size-input;   
         resize: none;
         overflow: hidden;
     }
 
     &__cards {
         @include flex-control(flex,initial,initial,initial,initial,initial);
+        border-bottom: solid 0.1rem $color-divider;
         padding: 2.4rem 0;
-        border-bottom: solid 0.1rem #E1E1E1;
         width: 100%;
 
         .card {
             
             &__image-main {
                 border-radius: 100%;
-                background-color: #E1E1E1;
+                background-color: $color-divider;
                 width: 4.2rem;
                 height: 4.2rem;
             }
@@ -94,18 +90,18 @@
             }
 
             &__name-main {
-                font-size: 1.4rem;
+                font-size: $fs-card-comment-mbl;
                 font-weight: 600;
             }
 
             &__timestamp-main {
-                font-size: 1.4rem;
-                color: #AFAFAF;
+                font-size: $fs-card-comment-mbl;
+                color: $color-timestamp;
             }
 
             &__comment-main {
-                font-size: 1.4rem;
-                line-height: 2.2rem;
+                font-size: $fs-card-comment-mbl;
+                line-height: $line-height-fs14px;
             }
         }
     }
@@ -147,7 +143,7 @@
                 }
     
                 &__name-main {
-                    font-size: 1.6rem;
+                    font-size: $fs-card-comment-tab;
                     margin: 0 1.2rem 0 0;
                 }
             }
@@ -178,6 +174,5 @@
         &__cards {
             padding: 1.95rem 0;
         }
-
     }
 }

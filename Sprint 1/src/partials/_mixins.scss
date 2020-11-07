@@ -60,6 +60,15 @@
     object-position: left;
 }
 
+// Global Input Stlye
+@mixin input-style {
+    outline-color: $color-input-outline;
+    border: solid $color-input-border 0.2rem;
+    border-radius: 0.4rem;
+    background-color: $color-input-background;
+    font-size: $font-size-input;  
+}
+
 // Video Player Mixins
 @mixin player-control-style {
     @include flex-control(flex,initial,initial,center,initial,center);

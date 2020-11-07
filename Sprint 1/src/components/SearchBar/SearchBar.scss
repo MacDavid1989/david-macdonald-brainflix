@@ -17,18 +17,14 @@
     }
 
     &__input {
+        @include input-style;
         margin: 0.8rem 0;
-        outline-color: $color-input-outline;
-        border: solid $color-input-border 0.2rem;
-        border-radius: 0.4rem;
         padding: 0 3.4rem;
         width: 28.8rem;
         height: 4.8rem;
         background-image: url(../../assets/icons/svg/icon-search.svg);
         background-repeat: no-repeat;
         background-position: 1.2rem 50%;
-        background-color: $color-input-background;
-        font-size: $font-size-input;   
     }
 
     &__wrapper {
