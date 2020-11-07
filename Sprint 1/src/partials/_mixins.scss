@@ -32,6 +32,18 @@
     }    
 }
 
+// Global Button Styling
+@mixin btn-styling {
+    @include flex-control(flex,initial,initial,center,initial,center);
+        margin: 0 1.6rem 0 0;
+        border-radius: 0.4rem;
+        border: none;
+        width: 22.4rem;
+        height: 4.8rem;
+        background-color: $color-btn;
+        outline-color: $color-input-outline;
+}
+
 // Global Button Text Style
 @mixin btn-font {
     font-size: $font-size-btn;
