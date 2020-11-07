@@ -116,4 +116,60 @@
             }
         }
     }
+
+    @include breakpoint(768px){
+        padding: 0 2.4rem;
+
+        &__form {
+            @include flex-control(flex,initial,initial,flex-end,initial,initial);
+            margin: 0 0 0 2rem;
+            width: calc(100% - 6.8rem);
+    
+            .comment {
+                margin: 0 4rem 0 1.6rem;
+                width: 16rem;
+            }
+        }
+    
+        &__entry {
+            width: calc(44rem + (384 / 360) * (100vw - 76.8rem));
+        }
+
+        &__input {
+            margin: 0;
+            padding: 1.4rem 1.2rem;
+            height: 4.8rem;
+        }
+    
+        &__cards {
+    
+            .card {
+    
+                &__info-main {
+                    margin: 0 0 0 2rem;
+                    width: 62.4rem;
+                }
+    
+                &__header-main {
+                    @include flex-control(flex,initial,initial,initial,initial,initial);
+                }
+    
+                &__name-main {
+                    font-size: 1.6rem;
+                    margin: 0 1.6rem 0 0;
+                }
+            }
+        }
+    }
+
+    @include breakpoint(1128px) {
+        margin: 0;
+        padding: 0 0 4rem;
+        width: 71.2rem;
+
+        &__entry {
+            width: 43.6rem;
+        }
+
+    }
 }
