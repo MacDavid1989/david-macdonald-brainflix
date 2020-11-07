@@ -21,7 +21,7 @@ function Comments(props) {
             </div>
         {props.comments.map((comment) => 
             <div className="comments__cards" key={comment.timestamp}>
-                <img className="card__image-main" alt=""/>
+                <div className="card__image-main"></div>
                 <div className="card__info-main">
                     <div className="card__header-main">
                         <span className="card__name-main">{comment.name}</span>
