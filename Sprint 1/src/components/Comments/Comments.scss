@@ -38,6 +38,10 @@
             &__text {
                 @include btn-font;
             }
+
+            &:hover {
+                background-color: $color-btn-hover;
+            }
         }
     }
 
