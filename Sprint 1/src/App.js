@@ -2,8 +2,7 @@ import React from 'react';
 import './App.scss';
 import { mainVideo, videoList } from './utils/videoData';
 import Header from './components/Header/Header';
-import Main from './components/Main/Main';
-import Aside from './components/Aside/Aside';
+import VideoBody from './components/VideoBody/VideoBody';
 
 class App extends React.Component {
 	state = {
@@ -15,8 +14,10 @@ class App extends React.Component {
 		return (
 			<>
 				<Header mainVideo={this.state.mainVideo}/>
-				<Main mainVideo={this.state.mainVideo}/>
-				<Aside videoList={this.state.videoList}/>
+				<VideoBody 
+					mainVideo={this.state.mainVideo} 
+					videoList={this.state.videoList}
+				/>
 			</>
 		)
 	};
