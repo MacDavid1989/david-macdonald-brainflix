@@ -1,0 +1,12 @@
+@use '../../partials/variables' as *;
+@use '../../partials/mixins' as *;
+
+.next-video {
+    // @include flex-control(flex, column, initial, center, initial, initial);
+    width: 100%;
+
+    @include breakpoint(1128px) {
+    padding: 0 0 0 1.6rem;
+    width: 36rem;
+    }
+}

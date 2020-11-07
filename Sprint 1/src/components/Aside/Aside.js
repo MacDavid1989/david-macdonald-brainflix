@@ -1,3 +1,5 @@
+import './Aside.scss'
+
 function Aside(props) {
     return (
         <aside className="next-video">
