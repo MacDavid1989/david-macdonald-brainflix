@@ -18,9 +18,9 @@
 
     &__input {
         margin: 0.8rem 0;
+        outline-color: $color-input-outline;
         border: solid $color-input-border 0.2rem;
         border-radius: 0.4rem;
-        outline-color: $color-input-outline;
         padding: 0 3.4rem;
         width: 28.8rem;
         height: 4.8rem;
@@ -60,8 +60,8 @@
         }
 
         &__input {
-            width: 23.2rem;
             margin: 0;
+            width: 23.2rem;
         }
 
         .upload {
