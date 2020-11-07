@@ -9,13 +9,13 @@
     &__title {
         margin: 0 0 1.6rem;
         width: 100%;
-        font-size: 2.4rem;
+        font-size: $fs-title-article-mbl;
         font-weight: bold;
     }
 
     &__info {
         @include flex-control(flex,column,initial,initial,initial,initial);
-        border-bottom: solid 0.1rem #E1E1E1;
+        border-bottom: solid 0.1rem $color-input-border;
         padding: 0 0 2.4rem;
         width: 100%;
 
@@ -23,14 +23,14 @@
             margin: 0 0 3.2rem;
 
             &__channel {
-                font-size: 1.6rem;
+                font-size: $font-size-channel-article;
                 font-weight: 600;
             }
 
             &__timestamp {
                 margin: 0 0 0 0.8rem;
-                font-size: 1.4rem;
-                color: #AFAFAF;
+                font-size: $font-size-timestamp;
+                color: $color-timestamp;
             }
         }
     }
@@ -47,7 +47,7 @@
 
             &__total {
                 margin: 0 0 0 0.8rem;
-                font-size: 1.4rem;
+                font-size: $font-size-stats;
             }
         }
 
@@ -61,7 +61,7 @@
 
             &__total {
                 margin: 0 0 0 0.8rem;
-                font-size: 1.4rem;
+                font-size: $font-size-stats;
             }
         }
     }
@@ -70,8 +70,8 @@
         margin: 0 auto 0 0;
         padding: 2.4rem 0 0;
         width: calc(28.7rem + (231 / 448) * (100vw - 32rem));
-        font-size: 1.2rem;
-        line-height: 2rem;
+        font-size: $fs-description-article-mbl;
+        line-height: $line-height-fs12px;
     }
 
     @include breakpoint(464px) {
@@ -91,14 +91,14 @@
 
         &__title {
             margin: 0 0 1.7rem;
-            font-size: 3.6rem;
+            font-size: $fs-title-article-tab;
         }
 
         &__description {
             padding: 4rem 0 0;
             width: calc(51.8rem + (242 / 360) * (100vw - 76.8rem));
-            font-size: 1.4rem;
-            line-height: 2.2rem;
+            font-size: $fs-description-article-tab;
+            line-height: $line-height-fs14px;
         }
     }
 
