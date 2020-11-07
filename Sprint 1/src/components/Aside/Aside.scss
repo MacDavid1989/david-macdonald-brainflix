@@ -31,13 +31,17 @@
 
             &__info-next {
                 @include flex-control(flex, column, initial, initial, initial, center);
-
             }
 
             &__title-next {
                 margin: 0 0 1.6rem;
+                height: 3.4rem;
                 font-size: 1.4rem;
                 font-weight: 600;
+                display: -webkit-box;
+                overflow: hidden;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
             }
 
             &__channel-next {
@@ -56,6 +60,11 @@
 
                 &__info-next {
                     width: 17.7rem;
+                }
+
+                &__title-next {
+                    font-size: 1.6rem;
+                    display: initial;
                 }
             }
         }
