@@ -31,7 +31,7 @@
 
     &__form {
         @include flex-control(flex,column,initial,initial,initial,initial);
-        margin: 0 0 0 1.8rem;
+        margin: 0 0 0 1.6rem;
         width: calc(100% - 6.6rem);
 
         .comment {
@@ -124,8 +124,7 @@
 
         &__form {
             @include flex-control(flex,initial,initial,flex-end,initial,initial);
-            margin: 0 0 0 2rem;
-            width: calc(100% - 6.8rem);
+            width: calc(100% - 6.4rem);
     
             .comment {
                 margin: 0 4rem 0 1.6rem;
@@ -174,6 +173,7 @@
         }
 
         &__form {
+            margin: 0 0 0 2rem;
 
             .comment {
                 margin: 0 3.2rem 0 1.6rem;
