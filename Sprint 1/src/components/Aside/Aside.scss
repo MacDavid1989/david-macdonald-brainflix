@@ -4,10 +4,65 @@
 .next-video {
     @include flex-control(flex, column, initial, center, initial, initial);
     width: 100%;
+    padding: 4rem 1.6rem;
+
+    &__title {
+        margin: 0 0 1.6rem;
+        width: 100%;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #AFAFAF;
+    }
+
+    &__cards {
+        @include flex-control(flex, initial, initial, initial, flex-start, initial);
+        margin: 2.4rem 0 0;
+        width: 28.8rem;
+
+        .card {
+
+            &__image-next {
+                margin: 0 1.6rem 0 0;
+                width: 12rem;
+                height: 7rem;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            &__info-next {
+                @include flex-control(flex, column, initial, initial, initial, center);
+
+            }
+
+            &__title-next {
+                margin: 0 0 1.6rem;
+                font-size: 1.4rem;
+                font-weight: 600;
+            }
+
+            &__channel-next {
+                font-size: 1.4rem;
+            }
+        }
+    }
+
+    @include breakpoint(768px) {
+        padding: 4rem 0 4rem 2.4rem;
+    }
 
     @include breakpoint(1128px) {
-    @include flex-control(flex, column, initial, initial, initial, initial);
-    padding: 0 0 0 2.4rem;
-    width: 36.8rem;
+        @include flex-control(flex, column, initial, initial, initial, initial);
+        width: 36.8rem;
+
+        &__cards {
+            width: 34.4rem;
+
+            .card {
+
+                &__info-next {
+                    width: 17.7rem;
+                }
+            }
+        }
     }
 }

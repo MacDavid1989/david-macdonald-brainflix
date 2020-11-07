@@ -50,19 +50,19 @@ const videoList = [
     },
     {
         id: '2',
-        title: 'Become A Travel Pro In One Easy Lesson…',
+        title: 'Become A Travel Pro In One Easy Lesson',
         channel: 'Scotty Cranmer',
         image: image1
     },
     {
         id: '3',
-        title: 'Les Houches The Hidden Gem Of The…',
+        title: 'Les Houches The Hidden Gem Of The Chamonix',
         channel: 'Scotty Cranmer',
         image: image2
     },
     {
         id: '4',
-        title: 'Travel Health Useful Medical Information…',
+        title: 'Travel Health Useful Medical Information For',
         channel: 'Scotty Cranmer',
         image: image3
         },
