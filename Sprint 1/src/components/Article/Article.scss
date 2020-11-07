@@ -1,7 +1,148 @@
 @use '../../partials/variables' as *;
 @use '../../partials/mixins' as *;
 
-.video__article {
+.video-article {
     @include flex-control(flex,column,initial,center,initial,initial);
+    padding: 3.2rem 1.6rem 4rem;
+    width: 100%;
 
+    &__title {
+        margin: 0 0 1.6rem;
+        width: 100%;
+        font-size: 2.4rem;
+        font-weight: bold;
+    }
+
+    &__info {
+        @include flex-control(flex,column,initial,initial,initial,initial);
+        width: 100%;
+
+        .owner {
+            margin: 0 0 3.2rem;
+
+            &__channel {
+                font-size: 1.6rem;
+                font-weight: 600;
+            }
+
+            &__timestamp {
+                margin: 0 0 0 0.8rem;
+                font-size: 1.4rem;
+            }
+        }
+    }
+
+    &__stats {
+        @include flex-control(flex,initial,initial,center,initial,initial);
+        margin: 0 0 2.4rem;
+
+        .views {
+            @include flex-control(flex,initial,initial,center,initial,initial);
+
+            &__icon {
+                margin: 0 0 0.3rem;
+            }
+
+            &__total {
+                margin: 0 0 0 0.8rem;
+                font-size: 1.4rem;
+            }
+        }
+
+        .likes {
+            @include flex-control(flex,initial,initial,center,initial,initial);
+            margin: 0 0 0 2.4rem;
+
+            &__icon {
+                margin: 0 0 0.3rem;
+            }
+
+            &__total {
+                margin: 0 0 0 0.8rem;
+                font-size: 1.4rem;
+            }
+        }
+    }
+
+    &__description {
+        width: 99.7%;
+        border-top: solid 0.1rem #E1E1E1;
+        padding: 2.4rem 0 0;
+        font-size: 1.2rem;
+        line-height: 2rem;
+    }
+
+    @include breakpoint(768px) {
+    padding: 4.8rem 2.4rem 6.4rem;
+
+        &__title {
+            margin: 0 0 1.6rem;
+            width: 100%;
+            font-size: 2.4rem;
+            font-weight: bold;
+        }
+
+        &__info {
+            @include flex-control(flex,column,initial,initial,initial,initial);
+            width: 100%;
+
+            .owner {
+                margin: 0 0 3.2rem;
+
+                &__channel {
+                    font-size: 1.6rem;
+                    font-weight: 600;
+                }
+
+                &__timestamp {
+                    margin: 0 0 0 0.8rem;
+                    font-size: 1.4rem;
+                }
+            }
+        }
+
+        &__stats {
+            @include flex-control(flex,initial,initial,center,initial,initial);
+            margin: 0 0 2.4rem;
+
+            .views {
+                @include flex-control(flex,initial,initial,center,initial,initial);
+
+                &__icon {
+                    margin: 0 0 0.3rem;
+                }
+
+                &__total {
+                    margin: 0 0 0 0.8rem;
+                    font-size: 1.4rem;
+                }
+            }
+
+            .likes {
+                @include flex-control(flex,initial,initial,center,initial,initial);
+                margin: 0 0 0 2.4rem;
+
+                &__icon {
+                    margin: 0 0 0.3rem;
+                }
+
+                &__total {
+                    margin: 0 0 0 0.8rem;
+                    font-size: 1.4rem;
+                }
+            }
+        }
+
+        &__description {
+            width: 99.7%;
+            border-top: solid 0.1rem #E1E1E1;
+            padding: 2.4rem 0 0;
+            font-size: 1.2rem;
+            line-height: 2rem;
+        }
+    }
+
+    @include breakpoint(1128px) {
+        width: 108rem;
+    }
 }

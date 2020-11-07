@@ -4,14 +4,14 @@ import views from '../../assets/icons/svg/icon-views.svg';
 
 function Article(props) {
     return (
-        <article className="video__article">
-            <h1 className="video__title">{props.mainVideo.title}</h1>
-            <div className="video__info">
+        <article className="video-article">
+            <h1 className="video-article__title">{props.mainVideo.title}</h1>
+            <div className="video-article__info">
                 <div className="owner">
                     <span className="owner__channel">{props.mainVideo.channel}</span>
                     <span className="owner__timestamp">{props.convertTime(props.mainVideo.timestamp)}</span>
                 </div>
-                <div className="video__stats">
+                <div className="video-article__stats">
                     <div className="views">
                         <img className="views__icon" src={views} alt=""/>
                         <span className="views__total">{props.mainVideo.views}</span>
@@ -22,7 +22,7 @@ function Article(props) {
                     </div>
                 </div>
             </div>
-            <p className="video__description">{props.mainVideo.description}</p>
+            <p className="video-article__description">{props.mainVideo.description}</p>
         </article>
     )
 };
