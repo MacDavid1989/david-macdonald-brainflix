@@ -10,7 +10,7 @@ function Comments({comments, convertTime, onCommentClick}) {
                 <form className="comments__form" onSubmit={(e)=> onCommentClick(e, e.target)}>
                         <div className="comments__entry">
                             <label className="comments__label">JOIN THE CONVERSATION</label>
-                            <textarea className="comments__input" placeholder="Write comment here" required></textarea>
+                            <textarea className="commentsInput" placeholder="Write comment here" required></textarea>
                         </div>
                         <button className="button comment">
                             <p className="comment__text">
