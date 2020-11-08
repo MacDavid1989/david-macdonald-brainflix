@@ -10,7 +10,7 @@ function Comments({comments, convertTime}) {
                 <form className="comments__form">
                         <div className="comments__entry">
                             <label className="comments__label">JOIN THE CONVERSATION</label>
-                            <textarea className="comments__input" placeholder="Write comment here"></textarea>
+                            <textarea className="comments__input" placeholder="Write comment here" required></textarea>
                         </div>
                         <button className="button comment">
                             <p className="comment__text">

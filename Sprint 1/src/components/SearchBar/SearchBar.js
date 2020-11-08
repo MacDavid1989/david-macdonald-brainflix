@@ -8,7 +8,7 @@ function SearchBar() {
         <section className="search-bar">
             <img className="search-bar__logo" src={logo} alt=""/>
             <form className="search-bar__form">
-                <input name="search-bar__input" className="search-bar__input" placeholder="Search"></input>
+                <input name="search-bar__input" className="search-bar__input" placeholder="Search" required></input>
                 <div className="search-bar__wrapper">
                     <button className="button upload">
                         <img className="upload__icon" src={upload} alt=""/>
