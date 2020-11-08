@@ -1,8 +1,8 @@
-import './Comments.scss';
+import './VideoComments.scss';
 import Comment from '../Comment/Comment';
 import mohan from '../../assets/images/mohan-muruge.jpg';
 
-function Comments({comments, convertTime, onCommentClick}) {
+function VideoComments({comments, convertTime, onCommentClick}) {
     return (
         <section className="comments">
             <h2 className="comments__title">3 Comments</h2>
@@ -28,4 +28,4 @@ function Comments({comments, convertTime, onCommentClick}) {
     )
 };
 
-export default Comments;
+export default VideoComments;

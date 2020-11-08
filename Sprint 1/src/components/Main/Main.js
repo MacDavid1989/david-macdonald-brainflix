@@ -1,6 +1,6 @@
 import './Main.scss';
 import Article from "../Article/Article";
-import Comments from "../Comments/Comments";
+import VideoComments from "../VideoComments/VideoComments";
 import convertTime from '../../utils/convertTime';
 
 function Main({mainVideo, onCommentClick}) {
@@ -10,7 +10,7 @@ function Main({mainVideo, onCommentClick}) {
                 mainVideo={mainVideo} 
                 convertTime={convertTime}
             />
-            <Comments 
+            <VideoComments 
                 comments={mainVideo.comments} 
                 convertTime={convertTime}
                 onCommentClick={onCommentClick}
