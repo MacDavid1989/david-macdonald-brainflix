@@ -1,4 +1,5 @@
 import './Comments.scss';
+import Comment from '../Comment/Comment';
 import mohan from '../../assets/images/mohan-muruge.jpg';
 
 function Comments({comments, convertTime, onCommentClick}) {
@@ -19,18 +20,10 @@ function Comments({comments, convertTime, onCommentClick}) {
                         </button>
                 </form>
             </div>
-        {comments.map((comment) => 
-            <div className="comments__cards" key={comment.timestamp}>
-                <div className="card__image-main"></div>
-                <div className="card__info-main">
-                    <div className="card__header-main">
-                        <span className="card__name-main">{comment.name}</span>
-                        <span className="card__timestamp-main">{convertTime(comment.timestamp)}</span>
-                    </div>
-                    <p className="card__comment-main">{comment.comment}</p>
-                </div>
-            </div>
-        )}
+            <Comment 
+                comments={comments} 
+                convertTime={convertTime}
+            />
         </section>
     )
 };

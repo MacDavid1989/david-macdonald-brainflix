@@ -68,48 +68,6 @@
         overflow: hidden;
     }
 
-    &__cards {
-        @include flex-control(flex,initial,initial,initial,initial,initial);
-        border-bottom: solid 0.1rem $color-divider;
-        padding: 2.4rem 0;
-        width: 100%;
-
-        .card {
-            
-            &__image-main {
-                border-radius: 100%;
-                background-color: $color-divider;
-                width: 4.2rem;
-                height: 4.2rem;
-            }
-
-            &__info-main {
-                margin: 0 0 0 1.2rem;
-                width: calc(23.4rem + (390 / 448) * (100vw - 32rem));
-            }
-
-            &__header-main {
-                @include flex-control(flex,initial,initial,initial,initial,space-between);
-                margin: 0 0 0.8rem;
-            }
-
-            &__name-main {
-                font-size: $fs-card-comment-mbl;
-                font-weight: 600;
-            }
-
-            &__timestamp-main {
-                font-size: $fs-card-comment-mbl;
-                color: $color-timestamp;
-            }
-
-            &__comment-main {
-                font-size: $fs-card-comment-mbl;
-                line-height: $line-height-fs14px;
-            }
-        }
-    }
-
     @include breakpoint(768px){
         padding: 0 2.4rem;
 
@@ -132,26 +90,6 @@
             padding: 1.4rem 1.2rem;
             height: 4.8rem;
         }
-    
-        &__cards {
-    
-            .card {
-    
-                &__info-main {
-                    margin: 0 0 0 2rem;
-                    width: 62.4rem;
-                }
-    
-                &__header-main {
-                    @include flex-control(flex,initial,initial,initial,initial,initial);
-                }
-    
-                &__name-main {
-                    font-size: $fs-card-comment-tab;
-                    margin: 0 1.2rem 0 0;
-                }
-            }
-        }
     }
 
     @include breakpoint(1128px) {
@@ -173,10 +111,6 @@
 
         &__entry {
             width: 43.6rem;
-        }
-
-        &__cards {
-            padding: 1.95rem 0;
         }
     }
 }
