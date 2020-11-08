@@ -1,6 +1,6 @@
 import './VideoComments.scss';
-import Comment from '../Comment/Comment';
 import mohan from '../../assets/images/mohan-muruge.jpg';
+import Comment from '../Comment/Comment';
 
 function VideoComments({comments, convertTime, onCommentClick}) {
     return (

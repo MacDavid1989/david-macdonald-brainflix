@@ -1,5 +1,5 @@
-import NextVideo from '../NextVideo/NextVideo'
 import './Aside.scss'
+import NextVideo from '../NextVideo/NextVideo'
 
 function Aside({videoList}) {
     return (

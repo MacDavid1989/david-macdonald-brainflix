@@ -1,7 +1,7 @@
 import './Main.scss';
+import convertTime from '../../utils/convertTime';
 import Article from "../Article/Article";
 import VideoComments from "../VideoComments/VideoComments";
-import convertTime from '../../utils/convertTime';
 
 function Main({mainVideo, onCommentClick}) {
     return (
