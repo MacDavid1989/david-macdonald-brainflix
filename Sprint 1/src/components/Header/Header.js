@@ -2,10 +2,10 @@ import './Header.scss';
 import SearchBar from "../SearchBar/SearchBar";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
-function Header({mainVideo}) {
+function Header({mainVideo, onSearchClick}) {
     return (
         <header className="header">
-            <SearchBar/>
+            <SearchBar onSearchClick={onSearchClick}/>
             <VideoPlayer mainVideo={mainVideo}/>
         </header>
     )
