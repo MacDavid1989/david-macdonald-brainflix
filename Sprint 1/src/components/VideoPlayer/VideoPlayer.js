@@ -8,7 +8,7 @@ import volume from '../../assets/icons/svg/icon-volume.svg';
 function VideoPlayer({mainVideo}) {
     return (
         <section className="player">
-            <video className="video" poster={mainVideo.image} width={50} height={50}>
+            <video className="video" poster={mainVideo.image}>
                 <source className="video__source" src={mainVideo.video} type="video/mp4"/>
                 <p className="video__text">Your browser doesn't support HTML5 video.</p> 
             </video>

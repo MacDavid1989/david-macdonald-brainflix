@@ -11,14 +11,11 @@ class App extends React.Component {
 	};
 
 	handleSearchSubmit = (e, form) => {
-		console.log(form.searchBarInput.value)
-
 		e.preventDefault();
 		form.reset();
 	}
 
 	handleCommentSubmit = (e, form) => {
-
 		e.preventDefault();
 		form.reset();
 	}
