@@ -10,13 +10,27 @@ class App extends React.Component {
 		videoList: videoList
 	};
 
+	handleSearchSubmit = (e, form) => {
+		e.preventDefault();
+		form.reset();
+	}
+
+	handleCommentSubmit = (e, form) => {
+		e.preventDefault();
+		form.reset();
+	}
+
 	render() {
 		return (
 			<>
-				<Header mainVideo={this.state.mainVideo}/>
+				<Header 
+					mainVideo={this.state.mainVideo}
+					onSearchClick={this.handleSearchSubmit}
+				/>
 				<VideoBody 
 					mainVideo={this.state.mainVideo} 
 					videoList={this.state.videoList}
+					onCommentClick={this.handleCommentSubmit}
 				/>
 			</>
 		)
