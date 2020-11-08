@@ -1,7 +1,7 @@
 import './Comments.scss';
 import mohan from '../../assets/images/mohan-muruge.jpg';
 
-function Comments(props) {
+function Comments({comments, convertTime}) {
     return (
         <section className="comments">
             <h2 className="comments__title">3 Comments</h2>
@@ -19,13 +19,13 @@ function Comments(props) {
                         </button>
                 </form>
             </div>
-        {props.comments.map((comment) => 
+        {comments.map((comment) => 
             <div className="comments__cards" key={comment.timestamp}>
                 <div className="card__image-main"></div>
                 <div className="card__info-main">
                     <div className="card__header-main">
                         <span className="card__name-main">{comment.name}</span>
-                        <span className="card__timestamp-main">{props.convertTime(comment.timestamp)}</span>
+                        <span className="card__timestamp-main">{convertTime(comment.timestamp)}</span>
                     </div>
                     <p className="card__comment-main">{comment.comment}</p>
                 </div>

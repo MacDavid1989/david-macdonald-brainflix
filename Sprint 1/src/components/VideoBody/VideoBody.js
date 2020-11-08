@@ -3,11 +3,11 @@ import Main from '../Main/Main';
 import Aside from '../Aside/Aside';
 
 
-function VideoBody(props) {
+function VideoBody({mainVideo, videoList}) {
     return (
         <div className="video__body">
-            <Main mainVideo={props.mainVideo}/>
-			<Aside videoList={props.videoList}/>
+            <Main mainVideo={mainVideo}/>
+			<Aside videoList={videoList}/>
         </div>
     )
 };

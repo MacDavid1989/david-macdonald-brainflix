@@ -5,11 +5,11 @@ import play from '../../assets/icons/svg/icon-play.svg';
 import fullScreen from '../../assets/icons/svg/icon-fullscreen.svg';
 import volume from '../../assets/icons/svg/icon-volume.svg';
 
-function VideoPlayer(props) {
+function VideoPlayer({mainVideo}) {
     return (
         <section className="player">
-            <video className="video" poster={props.mainVideo.image} width={50} height={50}>
-                <source className="video__source" src={props.mainVideo.video} type="video/mp4"/>
+            <video className="video" poster={mainVideo.image} width={50} height={50}>
+                <source className="video__source" src={mainVideo.video} type="video/mp4"/>
                 <p className="video__text">Your browser doesn't support HTML5 video.</p> 
             </video>
             <div className="controls">

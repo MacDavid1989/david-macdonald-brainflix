@@ -2,11 +2,11 @@ import './Header.scss';
 import SearchBar from "../SearchBar/SearchBar";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
-function Header(props) {
+function Header({mainVideo}) {
     return (
         <header className="header">
             <SearchBar/>
-            <VideoPlayer mainVideo={props.mainVideo}/>
+            <VideoPlayer mainVideo={mainVideo}/>
         </header>
     )
 };
