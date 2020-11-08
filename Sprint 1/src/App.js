@@ -13,12 +13,12 @@ class App extends React.Component {
 	handleSearchSubmit = (e, form) => {
 		e.preventDefault();
 		form.reset();
-	}
+	};
 
 	handleCommentSubmit = (e, form) => {
 		e.preventDefault();
 		form.reset();
-	}
+	};
 
 	render() {
 		return (
