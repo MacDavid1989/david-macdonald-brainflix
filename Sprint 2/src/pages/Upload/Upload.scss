@@ -12,25 +12,21 @@
 
         &__title {
             width: 100%;
-            font-size: 2.4rem;
+            font-size: $fs-title-upload-mbl;
             font-weight: bold;
         }
 
         &__form {
+            @include flex-control(flex, column, initial, center, initial, initial);
             margin: 3.2rem 0;  
             width: 100%;   
 
             .thumbnail {
-        @include flex-control(flex, column, initial, center, initial, initial);
-
+                @include flex-control(flex, column, initial, initial, flex-start, initial);
                 margin: 0 0 3.2rem;
 
                 &__label {
-                    margin: 0 0 0.8rem;
-                    width: 100%;
-                    font-size: 1.2rem;
-                    font-weight: 600;
-                    color: $color-input-label;
+                    @include input--label-style;
                 }
 
                 &__image {
@@ -40,11 +36,10 @@
                     height: calc(15.3rem + (30 / 448) * (100vw - 32rem));
                 }
             }
-
         }
 
         &__info {
-            @include flex-control(flex, column, initial, center, initial, initial);
+            @include flex-control(flex, column, initial, initial, flex-start, initial);
             width: 100%;
 
             .title {
@@ -52,11 +47,8 @@
                 width: 100%;
 
                 &__label {
-                    margin: 0 0 0.8rem;
-                    width: 100%;
-                    font-size: 1.2rem;
-                    font-weight: 600;
-                    color: $color-input-label;
+                    @include input--label-style;
+
                 }
 
                 &__input {
@@ -74,11 +66,7 @@
                 width: 100%;
 
                 &__label {
-                    margin: 0 0 0.8rem;
-                    width: 100%;
-                    font-size: 1.2rem;
-                    font-weight: 600;
-                    color: $color-input-label;
+                    @include input--label-style;
                 }
 
                 &__input {

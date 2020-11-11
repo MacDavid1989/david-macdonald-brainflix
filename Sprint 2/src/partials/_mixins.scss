@@ -69,6 +69,15 @@
     font-size: $fs-input;  
 }
 
+// Global Input Label Style
+@mixin input--label-style {
+    width: 100%;
+    font-size: $fs-input-label;
+    font-weight: 600;
+    line-height: $line-height-fs12px;
+    color: $color-input-label;
+}
+
 // Video Player Mixin
 @mixin player-control-style {
     @include flex-control(flex,initial,initial,center,initial,center);

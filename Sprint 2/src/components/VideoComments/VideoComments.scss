@@ -51,11 +51,7 @@
     }
 
     &__label {
-        width: 100%;
-        font-size: $fs-input-label;
-        font-weight: 600;
-        line-height: $line-height-fs12px;
-        color: $color-input-label;
+       @include input--label-style;
     }
 
     &__input {
