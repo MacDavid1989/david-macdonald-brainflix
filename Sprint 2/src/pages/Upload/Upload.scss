@@ -6,31 +6,29 @@
     width: 100%;
 
     .uploads {
-        @include flex-control(flex, column, initial, center, initial, initial);
+        @include flex-control(flex, column, initial, initial, initial, initial);
         padding: 2.4rem 1.6rem;
         width: 100%;
 
         &__title {
-            width: 100%;
             font-size: $fs-title-upload-mbl;
             font-weight: bold;
         }
 
         &__form {
-            @include flex-control(flex, column, initial, center, initial, initial);
+            @include flex-control(flex, column, initial, initial, initial, initial);
             margin: 3.2rem 0;  
             width: 100%;   
 
             .thumbnail {
-                @include flex-control(flex, column, initial, initial, flex-start, initial);
+                @include flex-control(flex, column, initial, initial, initial, initial);
                 margin: 0 0 3.2rem;
 
                 &__label {
-                    @include input--label-style;
+                    @include input-label-style;
                 }
 
                 &__image {
-                    margin: 0 auto 0 0;
                     border-radius: 0.4rem;
                     width: calc(28.8rem + (56 / 448) * (100vw - 32rem));
                     height: calc(15.3rem + (30 / 448) * (100vw - 32rem));
@@ -39,16 +37,15 @@
         }
 
         &__info {
-            @include flex-control(flex, column, initial, initial, flex-start, initial);
+            @include flex-control(flex, column, initial, initial, initial, initial);
             width: 100%;
 
             .title {
-                @include flex-control(flex, column, initial, center, initial, initial);
+                @include flex-control(flex, column, initial, initial, initial, initial);
                 width: 100%;
 
                 &__label {
-                    @include input--label-style;
-
+                    @include input-label-style;
                 }
 
                 &__input {
@@ -58,15 +55,14 @@
                     width: 100%;
                     height: 4.8rem;
                 }
-
             }
 
             .description {
-                @include flex-control(flex, column, initial, center, initial, initial);
+                @include flex-control(flex, column, initial, initial, initial, initial);
                 width: 100%;
 
                 &__label {
-                    @include input--label-style;
+                    @include input-label-style;
                 }
 
                 &__input {
@@ -77,7 +73,6 @@
                     resize: none;
                     overflow: hidden;
                 }
-
             }
         }
 
@@ -87,8 +82,8 @@
 
             .button {
                 @include btn-styling;
-                width: 28.8rem;
                 margin: 0;
+                width: 28.8rem;
             }
 
             .publish {
@@ -101,7 +96,6 @@
 
             .cancel {
                 @include btn-font;
-                align-self: center;
                 margin: 0;
                 width: 15.183rem;
                 height: 6.2rem;
@@ -140,25 +134,23 @@
             padding: 4.8rem 2.4rem 4rem;
 
             &__title {
-                font-size: 3.6rem;
+                font-size: $fs-title-upload-tab;
             }
 
             &__form {
                 margin: 3.2rem 0 4rem;
-                padding: 4rem 0;
                 border-top: solid 0.1rem $color-divider;
                 border-bottom: solid 0.1rem $color-divider;
+                padding: 4rem 0;
 
                 .thumbnail {
                     margin: 0 0 4rem;
 
                     &__image {
-                        margin: 0 auto 0 0;
                         width: 34.4rem;
                         height: 18.3rem;
                     }
                 }
-
             }
 
             &__info {
@@ -169,13 +161,11 @@
                     &__input {
                         padding: 1.4rem;
                     }
-
                 }
 
                 .description {
 
                     &__input {
-                        margin: 0;
                         padding: 1.4rem;
                         height: calc(14.3rem - (49 / 360) * (100vw - 76.8rem));
                     }
@@ -197,7 +187,6 @@
                 .thumbnail {
                     margin: 0 2.4rem 0 0;
                 }
-
             }
 
             &__info {
@@ -207,7 +196,6 @@
                     &__input {
                         height: 4.5rem;
                     }
-
                 }
 
                 .description {
@@ -215,19 +203,6 @@
                     &__input {
                         height: 9.4rem;
                     }
-
-                }
-            }
-
-            &__buttons {
-                @include flex-control(flex, row, initial, center, initial, flex-end);
-
-                .button {
-                    width: 16rem;
-                }
-
-                .cancel {
-                    width: 15.183rem;
                 }
             }
         }

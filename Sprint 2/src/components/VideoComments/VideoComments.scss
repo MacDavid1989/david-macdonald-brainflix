@@ -51,7 +51,7 @@
     }
 
     &__label {
-       @include input--label-style;
+       @include input-label-style;
     }
 
     &__input {
