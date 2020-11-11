@@ -34,9 +34,10 @@
                 }
 
                 &__image {
+                    margin: 0 auto 0 0;
                     border-radius: 0.4rem;
-                    width: 28.8rem;
-                    height: 15.3rem;
+                    width: calc(28.8rem + (56 / 448) * (100vw - 32rem));
+                    height: calc(15.3rem + (30 / 448) * (100vw - 32rem));
                 }
             }
 
@@ -99,7 +100,7 @@
 
             .button {
                 @include btn-styling;
-                width: 100%;
+                width: 28.8rem;
                 margin: 0;
             }
 
@@ -113,6 +114,7 @@
 
             .cancel {
                 @include btn-font;
+                align-self: center;
                 margin: 0;
                 width: 15.183rem;
                 height: 6.2rem;
@@ -123,6 +125,24 @@
                     color: $color-btn-hover;
                 }
             } 
+        }
+    }
+
+    @include breakpoint(464px) {
+
+        .uploads {
+
+            &__buttons {
+                @include flex-control(flex, row, initial, center, flex-end, flex-end);
+
+                .button {
+                    width: 16rem;
+                }
+
+                .cancel {
+                    width: 15.183rem;
+                }
+            }
         }
     }
     
@@ -154,6 +174,7 @@
             }
 
             &__info {
+                width: calc(72rem - (8 / 360) * (100vw - 76.8rem));
 
                 .title {
 
@@ -168,20 +189,9 @@
                     &__input {
                         margin: 0;
                         padding: 1.4rem;
+                        height: calc(14.3rem - (49 / 360) * (100vw - 76.8rem));
                     }
 
-                }
-            }
-
-            &__buttons {
-                @include flex-control(flex, row, initial, center, initial, flex-end);
-
-                .button {
-                    width: 16rem;
-                }
-
-                .cancel {
-                    width: 15.183rem;
                 }
             }
         }
@@ -190,6 +200,7 @@
     @include breakpoint(1128px){
 
         .uploads {
+            padding: 4.8rem 0 4rem;
             width: 108rem;
 
             &__form {
