@@ -114,7 +114,7 @@
             .cancel {
                 @include btn-font;
                 margin: 0;
-                width: 10.383rem;
+                width: 15.183rem;
                 height: 6.2rem;
                 background-color: $color-btn-white;
                 color: $color-btn;
@@ -166,6 +166,7 @@
                 .description {
 
                     &__input {
+                        margin: 0;
                         padding: 1.4rem;
                     }
 
@@ -179,6 +180,56 @@
                     width: 16rem;
                 }
 
+                .cancel {
+                    width: 15.183rem;
+                }
+            }
+        }
+    }
+
+    @include breakpoint(1128px){
+
+        .uploads {
+            width: 108rem;
+
+            &__form {
+                @include flex-control(flex, row, initial, center, initial, initial);
+
+                .thumbnail {
+                    margin: 0 2.4rem 0 0;
+                }
+
+            }
+
+            &__info {
+
+                .title {
+
+                    &__input {
+                        height: 4.5rem;
+                    }
+
+                }
+
+                .description {
+
+                    &__input {
+                        height: 9.4rem;
+                    }
+
+                }
+            }
+
+            &__buttons {
+                @include flex-control(flex, row, initial, center, initial, flex-end);
+
+                .button {
+                    width: 16rem;
+                }
+
+                .cancel {
+                    width: 15.183rem;
+                }
             }
         }
     }
