@@ -1,0 +1,11 @@
+@use '../../partials/variables' as *;
+@use '../../partials/mixins' as *;
+
+.main {
+    @include flex-control(flex, column, initial, center, initial, initial);
+    width: 100%;
+
+    @include breakpoint(1128px) {
+    width: 71.2rem;
+    }
+}

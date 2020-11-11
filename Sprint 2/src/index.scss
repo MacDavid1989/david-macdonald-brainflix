@@ -1,0 +1,7 @@
+@use './partials/mixins' as *;
+@use './partials/variables' as *;
+
+*, *::before, *::after {
+    @include boundary-reset;
+    @include font-stack(normal);
+}

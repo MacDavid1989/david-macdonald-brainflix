@@ -1,0 +1,60 @@
+@use './typography' as *;
+@include font-regular;
+@include font-demi;
+@include font-bold;
+
+// Global Font
+$font-family: 'Avenir Next';
+$font-size-html: 10px;
+
+// Font Sizes
+$fs-input: 1.4rem;
+$fs-btn: 1.4rem;
+
+$fs-title-article-mbl: 2.4rem;
+$fs-title-article-tab: 3.6rem;
+$fs-channel-article: 1.6rem;
+$fs-timestamp: 1.4rem;
+$fs-stats: 1.4rem;
+$fs-description-article-mbl: 1.2rem;
+$fs-description-article-tab: 1.4rem;
+
+$fs-title-comments: 1.6rem;
+$fs-input-label: 1.2rem;
+$fs-card-comment-mbl: 1.4rem;
+$fs-card-comment-tab: 1.6rem;
+
+$fs-title-aside: 1.2rem;
+$fs-card-aside-mbl: 1.4rem;
+$fs-card-aside-tab: 1.6rem;
+
+// Line Height
+$line-height-fs12px: 2rem;
+$line-height-fs14px: 2.2rem;
+
+// Colors
+$color-font-global: #323232;
+$color-font-white: #FFFFFF;
+
+$color-input-outline: #0095FF;
+$color-input-border: #E1E1E1;
+$color-input-background: #FAFAFA;
+$color-input-label: #AFAFAF;
+
+$color-btn: #0095FF;
+$color-btn-hover: #0065AD;
+
+$color-player-background: #000000;
+
+$color-player-controls: rgba(0, 0, 0, 0.5);
+$color-player-btn: rgba(0, 0, 0, 0);
+
+$color-progress-value: #0095FF;
+$color-progress-bar: #000000;
+$color-progress-time: #FFFFFF;
+
+$color-timestamp: #AFAFAF;
+
+$color-divider: #E1E1E1;
+
+$color-title-aside: #AFAFAF;
