@@ -32,7 +32,7 @@ class App extends React.Component {
 			<>
 				<Router>
 					<Switch>
-						<Route path="/" exact component={() => 
+						<Route path="/" exact render={() => 
 							<Home 
 								mainVideo={this.state.mainVideo} 
 								videoList={this.state.videoList} 
@@ -40,20 +40,20 @@ class App extends React.Component {
 								onSearchClick={this.handleSearchSubmit}
 							/>
 						}/>
-						<Route path="/upload" >
+						<Route path="/upload" render={() => 
 							<Upload 
 								onSearchClick={this.handleSearchSubmit}
 								onPublishClick={this.handleUploadSubmit}
 							/>		
-						</Route>
-						{/* <Route path="/:videoID" render={() => {
+						}/>
+						<Route path="/:videoID" render={() => 
 							<Home 
 								mainVideo={this.state.mainVideo} 
 								videoList={this.state.videoList} 
 								onCommentClick={this.handleCommentSubmit} 
 								onSearchClick={this.handleSearchSubmit}
 							/>
-						}}/> */}
+						}/>
 					</Switch>
 				</Router>
 			</>

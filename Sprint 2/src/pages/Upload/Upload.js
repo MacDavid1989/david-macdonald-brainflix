@@ -4,6 +4,7 @@ import SearchBar from '../../components/SearchBar/SearchBar'
 import uploadImage from '../../assets/images/upload-video-preview.jpg'
 
 function Upload({onSearchClick, onPublishClick}) {
+    
     return (
         <div className="uploads-page">
             <SearchBar onSearchClick={onSearchClick}/>
