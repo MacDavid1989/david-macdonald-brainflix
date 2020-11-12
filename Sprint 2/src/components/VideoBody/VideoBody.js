@@ -4,7 +4,7 @@ import Aside from '../Aside/Aside';
 
 
 function VideoBody({mainVideo, videoList, onCommentClick}) {
-
+    
     return (
         <div className="video__body">
             <Main 

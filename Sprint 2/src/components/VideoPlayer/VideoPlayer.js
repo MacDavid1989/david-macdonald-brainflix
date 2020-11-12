@@ -7,7 +7,6 @@ import volume from '../../assets/icons/svg/icon-volume.svg';
 import {API_KEY} from '../../utils/apiKey'
 
 function VideoPlayer({mainVideo}) {
-    console.log(mainVideo.video)
     return (
         <section className="player">
             <video className="video" poster={mainVideo.image}>

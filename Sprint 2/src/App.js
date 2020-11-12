@@ -18,18 +18,15 @@ class App extends React.Component {
 
 		if(!this.state.mainVideo){
 			axios.get(`https://project-2-api.herokuapp.com/videos/1af0jruup5gu?api_key=${API_KEY}`)
-			.then(response => {
-				console.log(response.data)
-				this.setState({mainVideo: response.data})
+			.then(mainVideo => {
+				axios.get(`https://project-2-api.herokuapp.com/videos?api_key=${API_KEY}`)
+				.then(videoList => {
+					this.setState({mainVideo: mainVideo.data, videoList: videoList.data})
+				})
+				.catch(console.error)
 			})
-			.catch(console.error)
+			.catch(console.error)	
 		}
-
-		axios.get(`https://project-2-api.herokuapp.com/videos?api_key=${API_KEY}`)
-		.then(response => {
-			this.setState({videoList: response.data})
-		})
-		.catch(console.error)
 	}
 
 	handleSearchSubmit = (e, form) => {
@@ -48,13 +45,15 @@ class App extends React.Component {
 	};
 
 	render() {
+
 		return (
 			<>
 				<Router>
 					<Switch>
 						{this.state.mainVideo && 
-							<Route path="/" exact render={() => 
+							<Route path="/" exact render={(props) => 
 								<Home 
+									{...props}
 									mainVideo={this.state.mainVideo} 
 									videoList={this.state.videoList} 
 									onCommentClick={this.handleCommentSubmit} 
@@ -63,23 +62,25 @@ class App extends React.Component {
 							}
 							/>
 						}
-						<Route path="/upload" render={() => 
+						<Route path="/upload" render={(props) => 
 							<Upload 
+								{...props}
 								onSearchClick={this.handleSearchSubmit}
 								onPublishClick={this.handleUploadSubmit}
 							/>		
 						}/>
-						{/* <Route path="/" exact render={() => {
-							this.state.mainVideo 
-							&& 
-							<Home 
-								mainVideo={this.state.mainVideo} 
-								videoList={this.state.videoList} 
-								onCommentClick={this.handleCommentSubmit} 
-								onSearchClick={this.handleSearchSubmit}
+						{this.state.mainVideo && 
+							<Route path={`/${this.state.mainVideo.id}`} render={(props) => 
+								<Home 
+									{...props}
+									mainVideo={this.state.mainVideo} 
+									videoList={this.state.videoList} 
+									onCommentClick={this.handleCommentSubmit} 
+									onSearchClick={this.handleSearchSubmit}
+								/>
+							}
 							/>
 						}
-						}/> */}
 					</Switch>
 				</Router>
 			</>
