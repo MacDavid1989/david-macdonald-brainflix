@@ -29,6 +29,10 @@
 
     &__wrapper {
         @include flex-control(flex,initial,initial,center,initial,initial);
+
+        .link-upload {
+            text-decoration: none;
+        }
     }
 
     .upload {
@@ -40,6 +44,7 @@
 
         &__text {
             @include btn-font;
+            text-decoration: none;
         }
 
         &:hover {

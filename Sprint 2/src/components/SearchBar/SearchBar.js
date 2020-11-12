@@ -10,16 +10,18 @@ function SearchBar({onSearchClick}) {
             <Link to="/">
                 <img className="search-bar__logo" src={logo} alt=""/>
             </Link>
-            <form className="search-bar__form" onSubmit={(e) => onSearchClick(e, e.target)}>
+            <div className="search-bar__form" onSubmit={(e) => onSearchClick(e, e.target)}>
                 <input name="searchBarInput" className="search-bar__input" placeholder="Search" required></input>
                 <div className="search-bar__wrapper">
-                    <button className="button upload">
-                        <img className="upload__icon" src={upload} alt=""/>
-                        <p className="upload__text">UPLOAD</p>
-                    </button>
+                    <Link to="/upload" className="link-upload">
+                        <button className="button upload">
+                            <img className="upload__icon" src={upload} alt=""/>
+                            <p className="upload__text">UPLOAD</p>
+                        </button>
+                    </Link>
                     <img className="search-bar__image" src={mohan} alt=""/>
                 </div>
-            </form>
+            </div>
         </section>
     )
 };
