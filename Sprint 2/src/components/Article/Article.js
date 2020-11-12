@@ -3,6 +3,7 @@ import likes from '../../assets/icons/svg/icon-likes.svg';
 import views from '../../assets/icons/svg/icon-views.svg';
 
 function Article({mainVideo, convertTime}) {
+
     return (
         <article className="video-article">
             <h1 className="video-article__title">{mainVideo.title}</h1>

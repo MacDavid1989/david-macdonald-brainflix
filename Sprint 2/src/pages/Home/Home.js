@@ -6,7 +6,7 @@ import VideoBody from '../../components/VideoBody/VideoBody';
 class Home extends React.Component {
 
 	render({mainVideo, videoList, onCommentClick, onSearchClick} = this.props) {
-
+		console.log('here')
 		return (
 			<>
 				<Header 

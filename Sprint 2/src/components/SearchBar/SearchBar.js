@@ -11,7 +11,7 @@ function SearchBar({onSearchClick}) {
                 <img className="search-bar__logo" src={logo} alt=""/>
             </Link>
             <div className="search-bar__form" onSubmit={(e) => onSearchClick(e, e.target)}>
-                <input name="searchBarInput" className="search-bar__input" placeholder="Search" required></input>
+                <input type="search" name="searchBarInput" className="search-bar__input" placeholder="Search"></input>
                 <div className="search-bar__wrapper">
                     <Link to="/upload" className="link-upload">
                         <button className="button upload">

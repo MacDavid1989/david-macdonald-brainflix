@@ -4,6 +4,7 @@ import Article from "../Article/Article";
 import VideoComments from "../VideoComments/VideoComments";
 
 function Main({mainVideo, onCommentClick}) {
+
     return (
         <main className="main">
             <Article 

@@ -4,12 +4,14 @@ import play from '../../assets/icons/svg/icon-play.svg';
 // import scrubber from '../../assets/icons/svg/icon-scrubber-control.svg';
 import fullScreen from '../../assets/icons/svg/icon-fullscreen.svg';
 import volume from '../../assets/icons/svg/icon-volume.svg';
+import {API_KEY} from '../../utils/apiKey'
 
 function VideoPlayer({mainVideo}) {
+    console.log(mainVideo.video)
     return (
         <section className="player">
             <video className="video" poster={mainVideo.image}>
-                <source className="video__source" src={mainVideo.video} type="video/mp4"/>
+                <source className="video__source" src={mainVideo.video + `?api_key=${API_KEY}`} type="video/mp4"/>
                 <p className="video__text">Your browser doesn't support HTML5 video.</p> 
             </video>
             <div className="controls">
