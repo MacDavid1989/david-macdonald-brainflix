@@ -23,11 +23,10 @@
 
         &__title-next {
             display: -webkit-box;
-            margin: 0 0 1.6rem;
-            height: 3.4rem;
-            overflow: hidden;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
+            margin: 0 0 1.6rem;
+            overflow: hidden;
             font-size: $fs-card-aside-mbl;
             font-weight: 600;
         }
