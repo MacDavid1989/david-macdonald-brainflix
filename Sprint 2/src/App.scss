@@ -1,0 +1,7 @@
+@use './partials/variables' as *;
+@use './partials/mixins' as *;
+
+.app {
+    @include flex-control(flex, column, initial, center, initial, initial);
+    width: 100%;
+}

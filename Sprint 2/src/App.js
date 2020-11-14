@@ -7,7 +7,7 @@ import SearchBar from './components/SearchBar/SearchBar';
 
 function App(props) {
 	return (
-		<>
+		<div className="app">
 			<Router>
 				<SearchBar />
 				<Switch>
@@ -16,7 +16,7 @@ function App(props) {
 					<Route path="/:id" component={Home}/>
 				</Switch>
 			</Router>
-		</>
+		</div>
 	);
 
 };
