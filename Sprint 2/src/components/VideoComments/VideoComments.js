@@ -3,7 +3,7 @@ import mohan from '../../assets/images/mohan-muruge.jpg';
 import Comment from '../Comment/Comment';
 
 
-function VideoComments({ match, comments, convertTime, onComment}) {
+function VideoComments({comments, convertTime, onComment, onDelete}) {
 
     const handleCommentSubmit = (e, form, onComment) => {
         e.preventDefault()
@@ -33,6 +33,7 @@ function VideoComments({ match, comments, convertTime, onComment}) {
             <Comment 
                 comments={comments} 
                 convertTime={convertTime}
+                onDelete={onDelete}
             />
         </section>
     )

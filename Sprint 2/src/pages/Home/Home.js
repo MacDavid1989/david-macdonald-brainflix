@@ -97,12 +97,42 @@ class Home extends Component {
         }
 	}
 
+	handleCommentDelete = (id) => {
+		console.log(id)
+		console.log(this.props.match.params.id)
+		if(this.props.match.url === '/'){
+            axios.delete(`https://project-2-api.herokuapp.com/videos/1af0jruup5gu/comments/${id + API_KEY}`)
+            .then( response => {
+                axios.get(`https://project-2-api.herokuapp.com/videos/1af0jruup5gu${API_KEY}`)
+				.then(mainVideo => {
+					this.setState({
+						mainVideo: mainVideo.data
+					})
+				})
+				.catch(console.error)	
+            })
+            .catch(error => console.error(error));
+        } else {
+            axios.delete(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id}/comments/${id + API_KEY}`)
+            .then( response => {
+                axios.get(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id  + API_KEY}`)
+				.then(mainVideo => {
+					this.setState({
+						mainVideo: mainVideo.data
+					})
+				})
+				.catch(console.error)
+            })
+            .catch(error => console.error(error));
+        }
+	}
+
 	render() {
 
 		return (
 			<>
 				{this.state.mainVideo && <VideoPlayer mainVideo={this.state.mainVideo} />}
-				{this.state.mainVideo && <VideoBody history={this.props.history} match={this.props.match} mainVideo={this.state.mainVideo} videoList={this.state.videoList} onComment={this.handleCommentSubmit}/>}
+				{this.state.mainVideo && <VideoBody history={this.props.history} match={this.props.match} mainVideo={this.state.mainVideo} videoList={this.state.videoList} onComment={this.handleCommentSubmit} onDelete={this.handleCommentDelete}/>}
 			</>
 		)
 	};

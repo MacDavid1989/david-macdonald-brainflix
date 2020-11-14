@@ -1,10 +1,14 @@
 import './Comment.scss';
 
-function Comment({comments, convertTime}) {
+function Comment({comments, convertTime, onDelete}) {
+
+    const handleCommentDelete = (id, onComment) => {
+        onComment(id)
+    };
+
     return (
-        <>
-        {comments.sort((a, b) => (a.timestamp > b.timestamp) ? -1 : 1).map((comment) => 
-            <div className="comment__card" key={comment.timestamp}>
+        comments.sort((a, b) => (a.timestamp > b.timestamp) ? -1 : 1).map((comment) =>  
+            <div className="comment__card" key={comment.id}>
                 <div className="card__image-main"></div>
                 <div className="card__info-main">
                     <div className="card__header-main">
@@ -13,9 +17,11 @@ function Comment({comments, convertTime}) {
                     </div>
                     <p className="card__comment-main">{comment.comment}</p>
                 </div>
+                <div className='delete' onClick={(e)=> handleCommentDelete(comment.id, onDelete)}>
+                    DELETE
+                </div>
             </div>
-        )}
-        </>
+            )
     )
 };
 

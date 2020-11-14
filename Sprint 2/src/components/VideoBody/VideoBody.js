@@ -3,7 +3,7 @@ import Main from '../Main/Main';
 import Aside from '../Aside/Aside';
 
 
-function VideoBody({history, match, mainVideo, videoList, onComment}) {
+function VideoBody({history, match, mainVideo, videoList, onComment, onDelete}) {
     
     return (
         <div className="video__body">
@@ -12,6 +12,7 @@ function VideoBody({history, match, mainVideo, videoList, onComment}) {
                 match={match} 
                 mainVideo={mainVideo}
                 onComment={onComment}
+                onDelete={onDelete}
             />
 			<Aside videoList={videoList}/>
         </div>
