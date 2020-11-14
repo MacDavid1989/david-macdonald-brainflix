@@ -1,6 +1,6 @@
 import './Comment.scss';
 
-function Comment({comment, convertTime, onDelete, counter}) {
+function Comment({comment, convertTime, onDelete}) {
 
     const handleCommentDelete = (id, onComment) => {
         onComment(id)
