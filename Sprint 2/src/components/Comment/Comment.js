@@ -9,7 +9,7 @@ function Comment({comments, convertTime, onDelete}) {
     return (
         comments.sort((a, b) => (a.timestamp > b.timestamp) ? -1 : 1).map((comment) =>  
             <div className="comment__card" key={comment.id}>
-                <div className="card__image-main"></div>
+                <img className="card__image-main" src={comment.url} alt=""/>
                 <div className="card__info-main">
                     <div className="card__header-main">
                         <span className="card__name-main">{comment.name}</span>

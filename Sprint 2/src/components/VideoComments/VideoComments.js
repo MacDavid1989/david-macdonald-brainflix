@@ -3,7 +3,7 @@ import mohan from '../../assets/images/mohan-muruge.jpg';
 import Comment from '../Comment/Comment';
 
 
-function VideoComments({comments, convertTime, onComment, onDelete}) {
+function VideoComments({comments, convertTime, onComment, onDelete, counter}) {
 
     const handleCommentSubmit = (e, form, onComment) => {
         e.preventDefault()
@@ -15,7 +15,7 @@ function VideoComments({comments, convertTime, onComment, onDelete}) {
 
     return (
         <section className="comments">
-            <h2 className="comments__title">3 Comments</h2>
+            <h2 className="comments__title">{counter} Comments</h2>
             <div className="comments__new">
                 <img className="comments__image" src={mohan} alt=""/>
                 <form className="comments__form" onSubmit={(e)=> handleCommentSubmit(e, e.target, onComment)}>

@@ -8,7 +8,7 @@ function Upload(props) {
         e.preventDefault();
         form.reset();
         alert('Video Upload Successful')
-        props.history.push('/1af0jruup5gu')
+        props.history.push('/')
 	};
 
     

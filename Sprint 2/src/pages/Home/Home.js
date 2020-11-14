@@ -9,7 +9,8 @@ class Home extends Component {
 
 	state = {
 		mainVideo: null,
-		videoList: []
+		videoList: [],
+		counter: 3
 	};
 
 	componentDidMount() {
@@ -50,7 +51,6 @@ class Home extends Component {
 	}
 
 	componentDidUpdate(prevProps) {
-		console.log(this.props.match.params.id)
 
 		if(this.props.match.params.id !== prevProps.match.params.id && this.props.match.params.id !== undefined){
 			axios.get(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id  + API_KEY}`)
@@ -95,7 +95,7 @@ class Home extends Component {
                 axios.get(`https://project-2-api.herokuapp.com/videos/1af0jruup5gu${API_KEY}`)
 				.then(mainVideo => {
 					this.setState({
-						mainVideo: mainVideo.data
+						mainVideo: mainVideo.data, counter: this.state.counter + 1
 					})
 				})
 				.catch(console.error)	
@@ -107,7 +107,7 @@ class Home extends Component {
                 axios.get(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id  + API_KEY}`)
 				.then(mainVideo => {
 					this.setState({
-						mainVideo: mainVideo.data
+						mainVideo: mainVideo.data, counter: this.state.counter + 1
 					})
 				})
 				.catch(console.error)
@@ -117,15 +117,13 @@ class Home extends Component {
 	}
 
 	handleCommentDelete = (id) => {
-		console.log(id)
-		console.log(this.props.match.params.id)
 		if(this.props.match.url === '/'){
             axios.delete(`https://project-2-api.herokuapp.com/videos/1af0jruup5gu/comments/${id + API_KEY}`)
             .then( response => {
                 axios.get(`https://project-2-api.herokuapp.com/videos/1af0jruup5gu${API_KEY}`)
 				.then(mainVideo => {
 					this.setState({
-						mainVideo: mainVideo.data
+						mainVideo: mainVideo.data, counter: this.state.counter - 1
 					})
 				})
 				.catch(console.error)	
@@ -137,7 +135,7 @@ class Home extends Component {
                 axios.get(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id  + API_KEY}`)
 				.then(mainVideo => {
 					this.setState({
-						mainVideo: mainVideo.data
+						mainVideo: mainVideo.data, counter: this.state.counter - 1
 					})
 				})
 				.catch(console.error)
@@ -151,7 +149,7 @@ class Home extends Component {
 		return (
 			<>
 				{this.state.mainVideo && <VideoPlayer mainVideo={this.state.mainVideo} />}
-				{this.state.mainVideo && <VideoBody history={this.props.history} match={this.props.match} mainVideo={this.state.mainVideo} videoList={this.state.videoList} onComment={this.handleCommentSubmit} onDelete={this.handleCommentDelete}/>}
+				{this.state.mainVideo && <VideoBody history={this.props.history} match={this.props.match} mainVideo={this.state.mainVideo} videoList={this.state.videoList} onComment={this.handleCommentSubmit} onDelete={this.handleCommentDelete} counter={this.state.counter}/>}
 			</>
 		)
 	};
