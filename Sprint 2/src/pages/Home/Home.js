@@ -9,8 +9,7 @@ class Home extends Component {
 
 	state = {
 		mainVideo: null,
-		videoList: [],
-		counter: 3
+		videoList: []
 	};
 
 	componentDidMount() {
@@ -95,7 +94,7 @@ class Home extends Component {
                 axios.get(`https://project-2-api.herokuapp.com/videos/1af0jruup5gu${API_KEY}`)
 				.then(mainVideo => {
 					this.setState({
-						mainVideo: mainVideo.data, counter: this.state.counter + 1
+						mainVideo: mainVideo.data
 					})
 				})
 				.catch(console.error)	
@@ -107,7 +106,7 @@ class Home extends Component {
                 axios.get(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id  + API_KEY}`)
 				.then(mainVideo => {
 					this.setState({
-						mainVideo: mainVideo.data, counter: this.state.counter + 1
+						mainVideo: mainVideo.data
 					})
 				})
 				.catch(console.error)
@@ -123,7 +122,7 @@ class Home extends Component {
                 axios.get(`https://project-2-api.herokuapp.com/videos/1af0jruup5gu${API_KEY}`)
 				.then(mainVideo => {
 					this.setState({
-						mainVideo: mainVideo.data, counter: this.state.counter - 1
+						mainVideo: mainVideo.data
 					})
 				})
 				.catch(console.error)	
@@ -135,7 +134,7 @@ class Home extends Component {
                 axios.get(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id  + API_KEY}`)
 				.then(mainVideo => {
 					this.setState({
-						mainVideo: mainVideo.data, counter: this.state.counter - 1
+						mainVideo: mainVideo.data
 					})
 				})
 				.catch(console.error)
@@ -149,7 +148,7 @@ class Home extends Component {
 		return (
 			<>
 				{this.state.mainVideo && <VideoPlayer mainVideo={this.state.mainVideo} />}
-				{this.state.mainVideo && <VideoBody history={this.props.history} match={this.props.match} mainVideo={this.state.mainVideo} videoList={this.state.videoList} onComment={this.handleCommentSubmit} onDelete={this.handleCommentDelete} counter={this.state.counter}/>}
+				{this.state.mainVideo && <VideoBody history={this.props.history} match={this.props.match} mainVideo={this.state.mainVideo} videoList={this.state.videoList} onComment={this.handleCommentSubmit} onDelete={this.handleCommentDelete}/>}
 			</>
 		)
 	};

@@ -3,7 +3,7 @@ import mohan from '../../assets/images/mohan-muruge.jpg';
 import Comment from '../Comment/Comment';
 
 
-function VideoComments({comments, convertTime, onComment, onDelete, counter}) {
+function VideoComments({comments, convertTime, onComment, onDelete}) {
 
     const handleCommentSubmit = (e, form, onComment) => {
         e.preventDefault()
@@ -15,7 +15,7 @@ function VideoComments({comments, convertTime, onComment, onDelete, counter}) {
 
     return (
         <section className="comments">
-            <h2 className="comments__title">{counter} Comments</h2>
+            <h2 className="comments__title">{comments.length} Comments</h2>
             <div className="comments__new">
                 <img className="comments__image" src={mohan} alt=""/>
                 <form className="comments__form" onSubmit={(e)=> handleCommentSubmit(e, e.target, onComment)}>
@@ -30,11 +30,13 @@ function VideoComments({comments, convertTime, onComment, onDelete, counter}) {
                         </button>
                 </form>
             </div>
-            <Comment 
-                comments={comments} 
-                convertTime={convertTime}
-                onDelete={onDelete}
-            />
+            {comments.sort((a, b) => (a.timestamp > b.timestamp) ? -1 : 1).map((comment) => {
+                return <Comment 
+                    comment={comment} 
+                    convertTime={convertTime}
+                    onDelete={onDelete}
+                />
+            })}
         </section>
     )
 };

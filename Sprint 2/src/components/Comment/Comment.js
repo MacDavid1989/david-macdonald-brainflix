@@ -1,13 +1,12 @@
 import './Comment.scss';
 
-function Comment({comments, convertTime, onDelete}) {
+function Comment({comment, convertTime, onDelete, counter}) {
 
     const handleCommentDelete = (id, onComment) => {
         onComment(id)
     };
 
     return (
-        comments.sort((a, b) => (a.timestamp > b.timestamp) ? -1 : 1).map((comment) =>  
             <div className="comment__card" key={comment.id}>
                 <img className="card__image-main" src={comment.url} alt=""/>
                 <div className="card__info-main">
@@ -21,7 +20,6 @@ function Comment({comments, convertTime, onDelete}) {
                     DELETE
                 </div>
             </div>
-            )
     )
 };
 
