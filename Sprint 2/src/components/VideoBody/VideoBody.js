@@ -3,11 +3,13 @@ import Main from '../Main/Main';
 import Aside from '../Aside/Aside';
 
 
-function VideoBody({mainVideo, videoList, onCommentClick}) {
+function VideoBody({history, match, mainVideo, videoList}) {
     
     return (
         <div className="video__body">
-            <Main 
+            <Main
+                history={history}
+                match={match} 
                 mainVideo={mainVideo}
             />
 			<Aside videoList={videoList}/>

@@ -2,11 +2,13 @@ import './Upload.scss';
 import React from 'react';
 import uploadImage from '../../assets/images/upload-video-preview.jpg'
 
-function Upload({onSearchClick, onPublishClick}) {
+function Upload(props) {
 
 	const handleUploadSubmit = (e, form) => {
-		e.preventDefault();
-		form.reset();
+        e.preventDefault();
+        form.reset();
+        alert('Video Upload Successful')
+        props.history.push('/1af0jruup5gu')
 	};
 
     

@@ -1,13 +1,29 @@
 import './VideoComments.scss';
 import mohan from '../../assets/images/mohan-muruge.jpg';
 import Comment from '../Comment/Comment';
+import axios from 'axios'
+import {API_KEY} from '../../utils/apiKey'
 
-function VideoComments({comments, convertTime, onCommentClick}) {
+
+function VideoComments({history, match, comments, convertTime}) {
 
     const handleCommentSubmit = (e, form) => {
-		e.preventDefault();
-		form.reset();
-	};
+        const header = {'Content-Type': 'application/json'};
+        const newComment = {name: 'This Guy', comment: form.commentsInput.value}
+        if(match.url === '/'){
+            axios.post(`https://project-2-api.herokuapp.com/videos/1af0jruup5gu/comments${API_KEY}`, newComment, header)
+            .then( response => {
+                console.log(response)
+            })
+            .catch(error => console.error(error));
+        } else {
+            axios.post(`https://project-2-api.herokuapp.com/videos/${match.params.id}/comments${API_KEY}`, newComment, header)
+            .then( response => {
+                console.log(response)
+            })
+            .catch(error => console.error(error));
+        }
+    };
 
     return (
         <section className="comments">

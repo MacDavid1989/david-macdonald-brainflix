@@ -3,7 +3,7 @@ import convertTime from '../../utils/convertTime';
 import Article from "../Article/Article";
 import VideoComments from "../VideoComments/VideoComments";
 
-function Main({mainVideo, onCommentClick}) {
+function Main({history, match, mainVideo, onCommentClick}) {
 
     return (
         <main className="main">
@@ -12,6 +12,8 @@ function Main({mainVideo, onCommentClick}) {
                 convertTime={convertTime}
             />
             <VideoComments 
+                history={history}
+                match={match} 
                 comments={mainVideo.comments} 
                 convertTime={convertTime}
             />

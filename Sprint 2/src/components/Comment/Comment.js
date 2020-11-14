@@ -3,7 +3,7 @@ import './Comment.scss';
 function Comment({comments, convertTime}) {
     return (
         <>
-        {comments.map((comment) => 
+        {comments.sort((a, b) => (a.timestamp > b.timestamp) ? -1 : 1).map((comment) => 
             <div className="comment__card" key={comment.timestamp}>
                 <div className="card__image-main"></div>
                 <div className="card__info-main">

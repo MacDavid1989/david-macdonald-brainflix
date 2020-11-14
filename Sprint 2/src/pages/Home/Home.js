@@ -13,7 +13,6 @@ class Home extends Component {
 	};
 
 	componentDidMount() {
-
 		if(this.props.match.url === '/'){
 			axios.get(`https://project-2-api.herokuapp.com/videos/1af0jruup5gu${API_KEY}`)
 			.then(mainVideo => {
@@ -75,7 +74,7 @@ class Home extends Component {
 		return (
 			<>
 				{this.state.mainVideo && <VideoPlayer mainVideo={this.state.mainVideo} />}
-				{this.state.mainVideo && <VideoBody mainVideo={this.state.mainVideo} videoList={this.state.videoList}/>}
+				{this.state.mainVideo && <VideoBody history={this.props.history} match={this.props.match} mainVideo={this.state.mainVideo} videoList={this.state.videoList}/>}
 			</>
 		)
 	};

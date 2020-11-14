@@ -12,7 +12,7 @@ function App(props) {
 				<SearchBar />
 				<Switch>
 					<Route path="/" exact component={Home}/>
-					<Route path="/upload" exact component={Upload}/>
+					<Route path="/upload" component={Upload}/>
 					<Route path="/:id" component={Home}/>
 				</Switch>
 			</Router>
