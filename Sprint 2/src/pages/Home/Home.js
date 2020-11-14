@@ -30,6 +30,7 @@ class Home extends Component {
 			})
 			.catch(console.error)
 		} else {
+
 			axios.get(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id  + API_KEY}`)
 			.then(mainVideo => {
 				this.setState({
@@ -49,8 +50,9 @@ class Home extends Component {
 	}
 
 	componentDidUpdate(prevProps) {
+		console.log(this.props.match.params.id)
 
-		if(this.props.match.params.id !== prevProps.match.params.id){
+		if(this.props.match.params.id !== prevProps.match.params.id && this.props.match.params.id !== undefined){
 			axios.get(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id  + API_KEY}`)
 			.then(mainVideo => {
 				this.setState({
@@ -66,8 +68,25 @@ class Home extends Component {
 					})
 			})
 			.catch(console.error)	
+		} else if(this.props.match.params.id !== prevProps.match.params.id && this.props.match.params.id === undefined) {
+			axios.get(`https://project-2-api.herokuapp.com/videos/1af0jruup5gu${API_KEY}`)
+			.then(mainVideo => {
+				this.setState({
+					mainVideo: mainVideo.data
+				})
+			})
+			.catch(console.error)	
+			axios.get(`https://project-2-api.herokuapp.com/videos${API_KEY}`)
+			.then(videoList => {
+				this.setState(
+					{
+						videoList: videoList.data.filter(video => video.id !== '1af0jruup5gu')
+					})
+			})
+			.catch(console.error)
 		}
 	}
+
 
 	handleCommentSubmit=(header, newComment)=>{
 		if(this.props.match.url === '/'){

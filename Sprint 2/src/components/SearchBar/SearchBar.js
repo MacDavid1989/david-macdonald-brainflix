@@ -7,7 +7,7 @@ import mohan from '../../assets/images/mohan-muruge.jpg';
 function SearchBar(props) {
     return (
         <section className="search-bar">
-            <Link to="/1af0jruup5gu">
+            <Link to="/">
                 <img className="search-bar__logo" src={logo} alt=""/>
             </Link>
             <div className="search-bar__form">
