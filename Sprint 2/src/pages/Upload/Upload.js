@@ -1,13 +1,11 @@
 import './Upload.scss';
 import React from 'react';
-import SearchBar from '../../components/SearchBar/SearchBar'
 import uploadImage from '../../assets/images/upload-video-preview.jpg'
 
 function Upload({onSearchClick, onPublishClick}) {
     
     return (
         <div className="uploads-page">
-            <SearchBar onSearchClick={onSearchClick}/>
             <form className="uploads" onSubmit={(e) => onPublishClick(e, e.target)}>
                 <h1 className="uploads__title">Upload Video</h1>
                 <div className="uploads__form">
