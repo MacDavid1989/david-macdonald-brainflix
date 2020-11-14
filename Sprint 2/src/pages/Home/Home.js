@@ -69,12 +69,40 @@ class Home extends Component {
 		}
 	}
 
+	handleCommentSubmit=(header, newComment)=>{
+		if(this.props.match.url === '/'){
+            axios.post(`https://project-2-api.herokuapp.com/videos/1af0jruup5gu/comments${API_KEY}`, newComment, header)
+            .then( response => {
+                axios.get(`https://project-2-api.herokuapp.com/videos/1af0jruup5gu${API_KEY}`)
+				.then(mainVideo => {
+					this.setState({
+						mainVideo: mainVideo.data
+					})
+				})
+				.catch(console.error)	
+            })
+            .catch(error => console.error(error));
+        } else {
+            axios.post(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id}/comments${API_KEY}`, newComment, header)
+            .then( response => {
+                axios.get(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id  + API_KEY}`)
+				.then(mainVideo => {
+					this.setState({
+						mainVideo: mainVideo.data
+					})
+				})
+				.catch(console.error)
+            })
+            .catch(error => console.error(error));
+        }
+	}
+
 	render() {
 
 		return (
 			<>
 				{this.state.mainVideo && <VideoPlayer mainVideo={this.state.mainVideo} />}
-				{this.state.mainVideo && <VideoBody history={this.props.history} match={this.props.match} mainVideo={this.state.mainVideo} videoList={this.state.videoList}/>}
+				{this.state.mainVideo && <VideoBody history={this.props.history} match={this.props.match} mainVideo={this.state.mainVideo} videoList={this.state.videoList} onComment={this.handleCommentSubmit}/>}
 			</>
 		)
 	};
