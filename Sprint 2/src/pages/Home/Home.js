@@ -14,11 +14,16 @@ class Home extends Component {
 	componentDidMount() {
 
 		if(!this.state.mainVideo){
+			console.log('hey')
 			axios.get(`https://project-2-api.herokuapp.com/videos/1af0jruup5gu${API_KEY}`)
 			.then(mainVideo => {
 				axios.get(`https://project-2-api.herokuapp.com/videos${API_KEY}`)
 				.then(videoList => {
-					this.setState({mainVideo: mainVideo.data, videoList: videoList.data})
+					this.setState(
+						{
+							mainVideo: mainVideo.data, 
+							videoList: videoList.data.filter(video => video.id !== '1af0jruup5gu')
+						})
 				})
 				.catch(console.error)
 			})
@@ -26,36 +31,13 @@ class Home extends Component {
 		}
 	}
 
-	handleSearchSubmit = (e, form) => {
-		e.preventDefault();
-		form.reset();
-	};
-
-	handleCommentSubmit = (e, form) => {
-		e.preventDefault();
-		form.reset();
-	};
-
-	handleUploadSubmit = (e, form) => {
-		e.preventDefault();
-		form.reset();
-	};
-
 	render() {
-		console.log(this.props.match)
+		// console.log(this.props.match)
 
-		const {mainVideo, videoList, onCommentClick, onSearchClick} = this.props;
 		return (
 			<>
-				<Header 
-					mainVideo={mainVideo}
-					onSearchClick={onSearchClick}
-				/>
-				<VideoBody 
-					mainVideo={mainVideo} 
-					videoList={videoList}
-					onCommentClick={onCommentClick}
-				/>
+				{this.state.mainVideo && <Header mainVideo={this.state.mainVideo} />}
+				{this.state.mainVideo && <VideoBody mainVideo={this.state.mainVideo} videoList={this.state.videoList}/>}
 			</>
 		)
 	};

@@ -14,7 +14,6 @@ function Main({mainVideo, onCommentClick}) {
             <VideoComments 
                 comments={mainVideo.comments} 
                 convertTime={convertTime}
-                onCommentClick={onCommentClick}
             />
         </main>
     )

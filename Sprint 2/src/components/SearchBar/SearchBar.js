@@ -4,13 +4,13 @@ import logo from '../../assets/logo/logo-brainflix.svg';
 import upload from '../../assets/icons/svg/icon-upload.svg';
 import mohan from '../../assets/images/mohan-muruge.jpg';
 
-function SearchBar({onSearchClick}) {
+function SearchBar(props) {
     return (
         <section className="search-bar">
             <Link to="/">
                 <img className="search-bar__logo" src={logo} alt=""/>
             </Link>
-            <div className="search-bar__form" onSubmit={(e) => onSearchClick(e, e.target)}>
+            <div className="search-bar__form">
                 <input type="search" name="searchBarInput" className="search-bar__input" placeholder="Search"></input>
                 <div className="search-bar__wrapper">
                     <Link to="/upload" className="link-upload">

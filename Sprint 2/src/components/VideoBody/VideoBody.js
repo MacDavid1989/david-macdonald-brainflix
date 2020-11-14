@@ -9,7 +9,6 @@ function VideoBody({mainVideo, videoList, onCommentClick}) {
         <div className="video__body">
             <Main 
                 mainVideo={mainVideo}
-                onCommentClick={onCommentClick}
             />
 			<Aside videoList={videoList}/>
         </div>

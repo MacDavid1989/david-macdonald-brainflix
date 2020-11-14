@@ -3,10 +3,16 @@ import React from 'react';
 import uploadImage from '../../assets/images/upload-video-preview.jpg'
 
 function Upload({onSearchClick, onPublishClick}) {
+
+	const handleUploadSubmit = (e, form) => {
+		e.preventDefault();
+		form.reset();
+	};
+
     
     return (
         <div className="uploads-page">
-            <form className="uploads" onSubmit={(e) => onPublishClick(e, e.target)}>
+            <form className="uploads" onSubmit={(e) => handleUploadSubmit(e, e.target)}>
                 <h1 className="uploads__title">Upload Video</h1>
                 <div className="uploads__form">
                     <div className="thumbnail">
