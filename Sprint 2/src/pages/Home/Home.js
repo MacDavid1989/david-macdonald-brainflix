@@ -15,7 +15,6 @@ class Home extends Component {
 	componentDidMount() {
 
 		if(!this.state.mainVideo){
-			console.log('hey')
 			axios.get(`https://project-2-api.herokuapp.com/videos/1af0jruup5gu${API_KEY}`)
 			.then(mainVideo => {
 				axios.get(`https://project-2-api.herokuapp.com/videos${API_KEY}`)
@@ -24,6 +23,27 @@ class Home extends Component {
 						{
 							mainVideo: mainVideo.data, 
 							videoList: videoList.data.filter(video => video.id !== '1af0jruup5gu')
+						})
+				})
+				.catch(console.error)
+			})
+			.catch(console.error)	
+		}
+
+		console.log(this.props.match)
+	}
+
+	componentDidUpdate() {
+
+		if(this.props.match.url !== '/'){
+			axios.get(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id + API_KEY}`)
+			.then(mainVideo => {
+				axios.get(`https://project-2-api.herokuapp.com/videos${API_KEY}`)
+				.then(videoList => {
+					this.setState(
+						{
+							mainVideo: mainVideo.data, 
+							videoList: videoList.data.filter(video => video.id !== this.props.match.params.id)
 						})
 				})
 				.catch(console.error)
