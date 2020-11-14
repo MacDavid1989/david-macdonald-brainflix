@@ -33,11 +33,12 @@ class Home extends Component {
 		console.log(this.props.match)
 	}
 
-	componentDidUpdate() {
+	componentDidUpdate(prevProps) {
 
-		if(this.props.match.url !== '/'){
+		if(this.props.match.url !== prevProps.match.url){
 			axios.get(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id + API_KEY}`)
 			.then(mainVideo => {
+				console.log(mainVideo)
 				axios.get(`https://project-2-api.herokuapp.com/videos${API_KEY}`)
 				.then(videoList => {
 					this.setState(
