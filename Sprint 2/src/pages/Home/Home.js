@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import {API_KEY} from '../../utils/apiKey'
 import axios from 'axios';
 import './Home.scss';
-import Header from '../../components/Header/Header';
 import VideoBody from '../../components/VideoBody/VideoBody';
+import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
+
 class Home extends Component {
 
 	state = {
@@ -32,11 +33,10 @@ class Home extends Component {
 	}
 
 	render() {
-		// console.log(this.props.match)
 
 		return (
 			<>
-				{this.state.mainVideo && <Header mainVideo={this.state.mainVideo} />}
+				{this.state.mainVideo && <VideoPlayer mainVideo={this.state.mainVideo} />}
 				{this.state.mainVideo && <VideoBody mainVideo={this.state.mainVideo} videoList={this.state.videoList}/>}
 			</>
 		)

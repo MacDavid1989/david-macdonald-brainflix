@@ -1,6 +1,11 @@
 @use '../../partials/variables' as *;
 @use '../../partials/mixins' as *;
 
+.header {
+    @include flex-control(flex, column, initial, center, initial, initial);
+    width: 100%;
+}
+
 .player {
     @include flex-control(flex,column,initial,center,initial,initial);
     position: relative;

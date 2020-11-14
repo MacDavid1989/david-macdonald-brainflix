@@ -8,33 +8,35 @@ import {API_KEY} from '../../utils/apiKey'
 
 function VideoPlayer({mainVideo}) {
     return (
-        <section className="player">
-            <video className="video" poster={mainVideo.image}>
-                <source className="video__source" src={mainVideo.video + `?api_key=${API_KEY}`} type="video/mp4"/>
-                <p className="video__text">Your browser doesn't support HTML5 video.</p> 
-            </video>
-            <div className="controls">
-                <button className="button play">
-                    <img className="play__icon" src={play} alt=""/>
-                </button>
-                <div className="progress">
-                    <progress className="progress__bar" max="100" value="0"></progress>
-                    <div className="time">
-                        <time className="time__elapsed">0:00</time>
-                        <span className="time__separation">/</span>
-                        <time className="time__total">0:42</time>
+        <header className="header">
+            <section className="player">
+                <video className="video" poster={mainVideo.image}>
+                    <source className="video__source" src={mainVideo.video + `${API_KEY}`} type="video/mp4"/>
+                    <p className="video__text">Your browser doesn't support HTML5 video.</p> 
+                </video>
+                <div className="controls">
+                    <button className="button play">
+                        <img className="play__icon" src={play} alt=""/>
+                    </button>
+                    <div className="progress">
+                        <progress className="progress__bar" max="100" value="0"></progress>
+                        <div className="time">
+                            <time className="time__elapsed">0:00</time>
+                            <span className="time__separation">/</span>
+                            <time className="time__total">0:42</time>
+                        </div>
+                    </div>
+                    <div className="controls__right">
+                        <button className="button fullscreen">
+                            <img className="fullscreen__icon" src={fullScreen} alt=""/>
+                        </button>
+                        <button className="button volume">
+                            <img className="volume__icon" src={volume} alt=""/>
+                        </button>
                     </div>
                 </div>
-                <div className="controls__right">
-                    <button className="button fullscreen">
-                        <img className="fullscreen__icon" src={fullScreen} alt=""/>
-                    </button>
-                    <button className="button volume">
-                        <img className="volume__icon" src={volume} alt=""/>
-                    </button>
-                </div>
-            </div>
-        </section>
+            </section>
+        </header>
     )
 };
 
