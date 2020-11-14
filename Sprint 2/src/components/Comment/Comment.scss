@@ -10,7 +10,7 @@
     .card {
         
         &__image-main {
-            border-radius: 100%;
+            @include image-user;
             background-color: $color-divider;
             width: 4.2rem;
             height: 4.2rem;

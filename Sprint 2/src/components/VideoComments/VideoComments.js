@@ -31,7 +31,8 @@ function VideoComments({comments, convertTime, onComment, onDelete}) {
                 </form>
             </div>
             {comments.sort((a, b) => (a.timestamp > b.timestamp) ? -1 : 1).map((comment) => {
-                return <Comment 
+                return <Comment
+                    key={comment.id} 
                     comment={comment} 
                     convertTime={convertTime}
                     onDelete={onDelete}
