@@ -23,7 +23,7 @@ function VideoPlayer({mainVideo}) {
                         <div className="time">
                             <time className="time__elapsed">0:00</time>
                             <span className="time__separation">/</span>
-                            <time className="time__total">0:42</time>
+                            <time className="time__total">{mainVideo.duration}</time>
                         </div>
                     </div>
                     <div className="controls__right">

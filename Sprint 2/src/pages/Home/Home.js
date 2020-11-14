@@ -14,40 +14,57 @@ class Home extends Component {
 
 	componentDidMount() {
 
-		if(!this.state.mainVideo){
+		if(this.props.match.url === '/'){
 			axios.get(`https://project-2-api.herokuapp.com/videos/1af0jruup5gu${API_KEY}`)
 			.then(mainVideo => {
-				axios.get(`https://project-2-api.herokuapp.com/videos${API_KEY}`)
-				.then(videoList => {
-					this.setState(
-						{
-							mainVideo: mainVideo.data, 
-							videoList: videoList.data.filter(video => video.id !== '1af0jruup5gu')
-						})
+				this.setState({
+					mainVideo: mainVideo.data
 				})
-				.catch(console.error)
 			})
 			.catch(console.error)	
+			axios.get(`https://project-2-api.herokuapp.com/videos${API_KEY}`)
+			.then(videoList => {
+				this.setState(
+					{
+						videoList: videoList.data.filter(video => video.id !== '1af0jruup5gu')
+					})
+			})
+			.catch(console.error)
+		} else {
+			axios.get(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id  + API_KEY}`)
+			.then(mainVideo => {
+				this.setState({
+					mainVideo: mainVideo.data
+				})
+			})
+			.catch(console.error)	
+			axios.get(`https://project-2-api.herokuapp.com/videos${API_KEY}`)
+			.then(videoList => {
+				this.setState(
+					{
+						videoList: videoList.data.filter(video => video.id !== this.props.match.params.id)
+					})
+			})
+			.catch(console.error)
 		}
-
-		console.log(this.props.match)
 	}
 
 	componentDidUpdate(prevProps) {
 
-		if(this.props.match.url !== prevProps.match.url){
-			axios.get(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id + API_KEY}`)
+		if(this.props.match.params.id !== prevProps.match.params.id){
+			axios.get(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id  + API_KEY}`)
 			.then(mainVideo => {
-				console.log(mainVideo)
-				axios.get(`https://project-2-api.herokuapp.com/videos${API_KEY}`)
-				.then(videoList => {
-					this.setState(
-						{
-							mainVideo: mainVideo.data, 
-							videoList: videoList.data.filter(video => video.id !== this.props.match.params.id)
-						})
+				this.setState({
+					mainVideo: mainVideo.data
 				})
-				.catch(console.error)
+			})
+			.catch(console.error)	
+			axios.get(`https://project-2-api.herokuapp.com/videos${API_KEY}`)
+			.then(videoList => {
+				this.setState(
+					{
+						videoList: videoList.data.filter(video => video.id !== this.props.match.params.id)
+					})
 			})
 			.catch(console.error)	
 		}
