@@ -151,7 +151,6 @@ class Home extends Component {
 
 				{/* check if mainVideo has been updated from base state before rendering the component */}
 				{this.state.mainVideo && <VideoBody 
-											match={this.props.match} 
 											mainVideo={this.state.mainVideo} 
 											videoList={this.state.videoList} 
 											onComment={this.handleCommentSubmit} 

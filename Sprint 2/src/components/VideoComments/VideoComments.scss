@@ -1,6 +1,7 @@
 @use '../../partials/variables' as *;
 @use '../../partials/mixins' as *;
 
+// wrapper layout rule-sets for comment form and comments
 .comments {
     @include flex-control(flex,column,initial,center,initial,initial);
     padding: 0 1.6rem;
@@ -13,6 +14,7 @@
         font-weight: 600;
     }
 
+    // new comment form wrapper
     &__new {
         @include flex-control(flex,initial,initial,initial,initial,initial);
         border-bottom: solid 0.1rem #E1E1E1;
@@ -45,6 +47,7 @@
         }
     }
 
+    // individual comment wrapper
     &__entry {
         @include flex-control(flex,column,initial,initial,initial,initial);
         width: 100%;
@@ -64,6 +67,7 @@
         overflow: hidden;
     }
 
+    // tablet breakpoint
     @include breakpoint(768px){
         padding: 0 2.4rem;
 
@@ -88,6 +92,7 @@
         }
     }
 
+    // breakpoint at which all content reaches maximum size for desktop view
     @include breakpoint(1128px) {
         margin: 0;
         padding: 0 0 4rem;

@@ -4,7 +4,7 @@ import VideoComments from "../VideoComments/VideoComments";
 import convertTime from '../../utils/convertTime';
 
 // component wrapper for components that require flex control layout to position next to aside component
-function Main({match, mainVideo, onComment, onDelete}) {
+function Main({mainVideo, onComment, onDelete}) {
 
     return (
         <main className="main">
@@ -13,7 +13,6 @@ function Main({match, mainVideo, onComment, onDelete}) {
                 convertTime={convertTime}
             />
             <VideoComments 
-                match={match} 
                 comments={mainVideo.comments}
                 onComment={onComment}
                 onDelete={onDelete}
