@@ -1,3 +1,4 @@
+// Typography import for the required font at normal weight
 @mixin font-regular {
     @font-face {
         font-family: 'Avenir Next';
@@ -8,6 +9,7 @@
     };
 };
 
+// Typography import for the required font at demi-bold weight
 @mixin font-demi {
     @font-face {
         font-family: 'Avenir Next';
@@ -18,6 +20,7 @@
     };
 };
 
+// Typography import for the required font at bold weight
 @mixin font-bold {
     @font-face {
         font-family: 'Avenir Next';
