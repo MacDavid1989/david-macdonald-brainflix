@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {defaultVideoId} from '../../utils/defaultVideoId'
 import {API_KEY} from '../../utils/apiKey'
 import axios from 'axios';
-import './Home.scss';
 import VideoBody from '../../components/VideoBody/VideoBody';
 import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
 
