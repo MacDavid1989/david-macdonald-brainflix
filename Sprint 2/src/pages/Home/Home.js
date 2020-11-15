@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {API_KEY} from '../../utils/apiKey'
+import {defaultVideoId} from '../../utils/defaultVideoId'
 import axios from 'axios';
 import './Home.scss';
 import VideoBody from '../../components/VideoBody/VideoBody';
@@ -7,6 +8,7 @@ import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
 
 class Home extends Component {
 
+	// Default state which will be updated to hold the main video and an array of all videos
 	state = {
 		mainVideo: null,
 		videoList: []
@@ -14,28 +16,21 @@ class Home extends Component {
 
 	componentDidMount() {
 		if(this.props.match.url === '/'){
-			axios.get(`https://project-2-api.herokuapp.com/videos/1af0jruup5gu${API_KEY}`)
+			axios.get(`https://project-2-api.herokuapp.com/videos/${defaultVideoId + API_KEY}`)
 			.then(mainVideo => {
-				this.setState({
-					mainVideo: mainVideo.data
-				})
+				this.setState({mainVideo: mainVideo.data})
 			})
 			.catch(console.error)	
 			axios.get(`https://project-2-api.herokuapp.com/videos${API_KEY}`)
 			.then(videoList => {
 				this.setState(
-					{
-						videoList: videoList.data.filter(video => video.id !== '1af0jruup5gu')
-					})
+					{videoList: videoList.data.filter(video => video.id !== defaultVideoId)})
 			})
 			.catch(console.error)
 		} else {
-
 			axios.get(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id  + API_KEY}`)
 			.then(mainVideo => {
-				this.setState({
-					mainVideo: mainVideo.data
-				})
+				this.setState({mainVideo: mainVideo.data})
 			})
 			.catch(console.error)	
 			axios.get(`https://project-2-api.herokuapp.com/videos${API_KEY}`)

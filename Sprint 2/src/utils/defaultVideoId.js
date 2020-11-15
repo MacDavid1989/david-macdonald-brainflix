@@ -1,0 +1,1 @@
+export const defaultVideoId = '1af0jruup5gu'
