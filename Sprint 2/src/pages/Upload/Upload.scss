@@ -1,20 +1,24 @@
 @use '../../partials/variables' as *;
 @use '../../partials/mixins' as *;
 
+// upload page wrapper 
 .uploads-page {
     @include flex-control(flex, column, initial, center, initial, initial);
     width: 100%;
 
+    // uploads page content wrapper
     .uploads {
         @include flex-control(flex, column, initial, initial, initial, initial);
         padding: 2.4rem 1.6rem;
         width: 100%;
 
+        // main heading
         &__title {
             font-size: $fs-title-upload-mbl;
             font-weight: bold;
         }
 
+        // form wrapper which includes all elements on the page
         &__form {
             @include flex-control(flex, column, initial, initial, initial, initial);
             margin: 3.2rem 0;  
@@ -36,6 +40,7 @@
             }
         }
 
+        // input fields wrapper
         &__info {
             @include flex-control(flex, column, initial, initial, initial, initial);
             width: 100%;
@@ -76,6 +81,7 @@
             }
         }
 
+        // form buttons wrapper
         &__buttons {
             @include flex-control(flex, column-reverse, initial, center, initial, initial);
             width: 100%;
@@ -109,6 +115,7 @@
         }
     }
 
+    // breakpoint to set button inline when page allows space
     @include breakpoint(464px) {
 
         .uploads {
@@ -128,6 +135,7 @@
         }
     }
     
+    // tablet breakpoint
     @include breakpoint(768px){
 
         .uploads {
@@ -175,6 +183,7 @@
         }
     }
 
+    // breakpoint at which all content reaches maximum size for desktop view
     @include breakpoint(1128px){
 
         .uploads {
