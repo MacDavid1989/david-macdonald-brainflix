@@ -10,7 +10,7 @@ function SearchBar(props) {
         <section className="search-bar">
             {/* Router link to act as anchor tag and link logo to Home component via the specified path */}
             <Link to="/">
-                <img className="search-bar__logo" src={logo} alt=""/>
+                <img className="search-bar__logo" src={logo} alt="BrainFlix play log and name"/>
             </Link>
             {/* search bar form */}
             <div className="search-bar__form">
@@ -20,11 +20,11 @@ function SearchBar(props) {
                     {/* Router link to anchor upload button to upload component via the /upload route path */}
                     <Link to="/upload" className="link-upload">
                         <button className="button upload">
-                            <img className="upload__icon" src={upload} alt=""/>
+                            <img className="upload__icon" src={upload} alt="plus sign"/>
                             <p className="upload__text">UPLOAD</p>
                         </button>
                     </Link>
-                    <img className="search-bar__image" src={mohan} alt=""/>
+                    <img className="search-bar__image" src={mohan} alt="user profile pic"/>
                 </div>
             </div>
         </section>
