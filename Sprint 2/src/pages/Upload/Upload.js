@@ -10,7 +10,6 @@ function Upload(props) {
         alert('Video Upload Successful')
         props.history.push('/')
 	};
-
     
     return (
         <div className="uploads-page">
@@ -33,8 +32,8 @@ function Upload(props) {
                     </div>
                 </div>
                 <div className="uploads__buttons">
-                    <button className="button cancel">CANCEL</button>
-                    <button className="button publish">PUBLISH</button>
+                    <button type="reset" className="button cancel">CANCEL</button>
+                    <button type="submit" className="button publish">PUBLISH</button>
                 </div>
             </form>
         </div>
