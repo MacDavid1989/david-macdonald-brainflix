@@ -1,9 +1,9 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import './App.scss';
-import Home from './pages/Home/Home';
-import Upload from './pages/Upload/Upload'
 import SearchBar from './components/SearchBar/SearchBar';
+import Home from './pages/Home/Home';
+import Upload from './pages/Upload/Upload';
 
 function App(props) {
 	return (
