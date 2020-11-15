@@ -58,6 +58,10 @@
                 }
             }
 
+            .like:hover{
+                font-weight: bold;
+            }
+
             .delete {
                 @extend .like;
 
