@@ -6,7 +6,11 @@ function Aside({videoList}) {
     return (
         <aside className="next-video">
             <h3 className="next-video__title">NEXT VIDEO</h3>
-            <NextVideo videoList={videoList}/>
+            {/* maps the video list array 
+            and renders a next video component for each object in the array */}
+        {videoList.map((video) =>
+            <NextVideo video={video}/>
+        )}
         </aside>
     )
 };
