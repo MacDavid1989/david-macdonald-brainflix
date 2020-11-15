@@ -3,7 +3,7 @@ import mohan from '../../assets/images/mohan-muruge.jpg';
 import Comment from '../Comment/Comment';
 
 // component wrapper for new comment form and comments associated with current main video found in state
-function VideoComments({comments, onComment, onDelete, convertTime}) {
+function VideoComments({comments, onComment, onDelete, onLike, convertTime}) {
 
     // form handler called when form new comment is submitted
     const handleCommentSubmit = (e, form, onComment) => {
@@ -47,6 +47,7 @@ function VideoComments({comments, onComment, onDelete, convertTime}) {
                     key={comment.id} 
                     comment={comment} 
                     onDelete={onDelete}
+                    onLike={onLike}
                     convertTime={convertTime}
                 />
             )}

@@ -4,11 +4,16 @@ import like from '../../assets/icons/svg/heart.svg';
 import pacman from '../../assets/icons/svg/pacman.svg'
 import {defaultCommentIds} from '../../utils/defaultCommentIds'
 
-function Comment({comment, onDelete, convertTime}) {
+function Comment({comment, onDelete, onLike, convertTime}) {
 
     // delete handler which calls the handler passed from Home component and passes it the comment id as an argument
-    const handleCommentDelete = (id, onComment) => {
-        onComment(id)
+    const handleCommentDelete = (id, onDelete) => {
+        onDelete(id)
+    };
+
+     // like handler which calls the handler passed from Home component and passes it the comment id as an argument
+     const handleCommentLike = (id, onLike) => {
+        onLike(id)
     };
 
     return (
@@ -24,7 +29,7 @@ function Comment({comment, onDelete, convertTime}) {
                     </div>
                     <p className="card__comment-main">{comment.comment}</p>
                     <div className="card__buttons">
-                        <div className='like' >
+                        <div className='like' onClick={(e)=> handleCommentLike(comment.id, onLike)}>
                             <img className='like-image' src={like} alt="heart for like button"/>
                             	{comment.likes}
                         </div>
