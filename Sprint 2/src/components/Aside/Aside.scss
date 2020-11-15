@@ -23,6 +23,7 @@
     // breakpoint at which all content reaches maximum size for desktop view
     @include breakpoint(1128px) {
         @include flex-control(flex, column, initial, initial, initial, initial);
+        border-left: solid 0.1rem $color-divider;
         width: 36.8rem;
     }
 }

@@ -9,7 +9,7 @@ function Aside({videoList}) {
             {/* maps the video list array 
             and renders a next video component for each object in the array */}
         {videoList.map((video) =>
-            <NextVideo video={video}/>
+            <NextVideo key={video.id} video={video}/>
         )}
         </aside>
     )
