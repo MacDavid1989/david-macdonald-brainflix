@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import {API_KEY} from '../../utils/apiKey'
 import {defaultVideoId} from '../../utils/defaultVideoId'
+import {API_KEY} from '../../utils/apiKey'
 import axios from 'axios';
 import './Home.scss';
 import VideoBody from '../../components/VideoBody/VideoBody';
 import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
 
+// Home class component which holds state for the project and utilizes lifecycle methods
 class Home extends Component {
 
 	// Default state which will be updated to hold the main video and an array of all videos
@@ -77,29 +78,29 @@ class Home extends Component {
 		}
 	}
 
-
+	// called when the comment form is submitted 
 	handleCommentSubmit=(header, newComment)=>{
+
+		// check if the current route is the home page 
 		if(this.props.match.url === '/'){
-            axios.post(`https://project-2-api.herokuapp.com/videos/1af0jruup5gu/comments${API_KEY}`, newComment, header)
-            .then( response => {
-                axios.get(`https://project-2-api.herokuapp.com/videos/1af0jruup5gu${API_KEY}`)
-				.then(mainVideo => {
-					this.setState({
-						mainVideo: mainVideo.data
-					})
-				})
+
+			// post request to add a newComment object to the default video comments array
+            axios.post(`https://project-2-api.herokuapp.com/videos/${defaultVideoId}/comments${API_KEY}`, newComment, header)
+            .then( () => {
+				// after a successful post a get request is made for the default video and state is changed  
+                axios.get(`https://project-2-api.herokuapp.com/videos/${defaultVideoId + API_KEY}`)
+				.then(mainVideo => this.setState({mainVideo: mainVideo.data}))
 				.catch(console.error)	
             })
             .catch(error => console.error(error));
         } else {
+
+			// post request to add a newComment object to the comments array of the video with id matching the id key of the params object
             axios.post(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id}/comments${API_KEY}`, newComment, header)
-            .then( response => {
+            .then( () => {
+				// after a successful post a get request is made for the video with that same id and state is changed  
                 axios.get(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id  + API_KEY}`)
-				.then(mainVideo => {
-					this.setState({
-						mainVideo: mainVideo.data
-					})
-				})
+				.then(mainVideo => this.setState({mainVideo: mainVideo.data}))
 				.catch(console.error)
             })
             .catch(error => console.error(error));
