@@ -40,6 +40,32 @@
             font-size: $fs-card-comment-mbl;
             line-height: $line-height-fs14px;
         }
+
+        &__button-wrapper {
+            @include flex-control(flex, initial, initial, flex-start, initial, space-between);
+            margin: 0.8rem 0 0;  
+
+            .like {
+                @include flex-control(flex, initial, initial, initial, initial, initial);
+                font-size: $fs-btn;
+                line-height: $line-height-fs14px;
+                cursor: pointer;
+
+                &-image {
+                    height: 2rem;
+                    width: 2rem;
+                    margin-right: 1rem;
+                }
+            }
+
+            .delete {
+                @extend .like;
+
+                &-image {
+                    @extend .like-image;
+                }
+            }
+        }
     }
 
     @include breakpoint(768px){

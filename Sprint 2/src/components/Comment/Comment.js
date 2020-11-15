@@ -1,5 +1,7 @@
 import './Comment.scss';
 import mohan from '../../assets/images/mohan-muruge.jpg';
+import like from '../../assets/icons/svg/heart.svg';
+import pacman from '../../assets/icons/svg/pacman.svg'
 
 function Comment({comment, convertTime, onDelete}) {
 
@@ -18,9 +20,16 @@ function Comment({comment, convertTime, onDelete}) {
                         <span className="card__timestamp-main">{convertTime(comment.timestamp)}</span>
                     </div>
                     <p className="card__comment-main">{comment.comment}</p>
-                </div>
-                <div className='delete' onClick={(e)=> handleCommentDelete(comment.id, onDelete)}>
-                    DELETE
+                    <div className="card__button-wrapper">
+                        <div className='like' >
+                            <img className='like-image' src={like}/>
+                            	{comment.likes}
+                        </div>
+                        <div className='delete' onClick={(e)=> handleCommentDelete(comment.id, onDelete)}>
+                            <img className='delete-image' src={pacman}/>
+                                DELETE
+                        </div>
+                    </div>
                 </div>
             </div>
     )
