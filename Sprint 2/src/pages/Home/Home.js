@@ -8,7 +8,7 @@ import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
 // Home class component which holds state for the project and utilizes lifecycle methods
 class Home extends Component {
 
-	// Default state which will be updated to hold the main video and an array of all videos
+	// Default state which will be updated to hold the main video and an array of all remaining videos
 	state = {
 		mainVideo: null,
 		videoList: []
