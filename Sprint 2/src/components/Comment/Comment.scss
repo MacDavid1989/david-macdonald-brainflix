@@ -41,7 +41,7 @@
             line-height: $line-height-fs14px;
         }
 
-        &__button-wrapper {
+        &__buttons {
             @include flex-control(flex, initial, initial, flex-start, initial, space-between);
             margin: 0.8rem 0 0;  
 

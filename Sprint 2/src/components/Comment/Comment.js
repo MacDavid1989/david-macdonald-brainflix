@@ -2,14 +2,13 @@ import './Comment.scss';
 import mohan from '../../assets/images/mohan-muruge.jpg';
 import like from '../../assets/icons/svg/heart.svg';
 import pacman from '../../assets/icons/svg/pacman.svg'
+import {defaultCommentIds} from '../../utils/defaultCommentIds'
 
 function Comment({comment, convertTime, onDelete}) {
 
     const handleCommentDelete = (id, onComment) => {
         onComment(id)
     };
-
-    const defaultCommentIds = ["1ab6d9f6-da38-456e-9b09-ab0acd9ce818","cc6f173d-9e9d-4501-918d-bc11f15a8e14","993f950f-df99-48e7-bd1e-d95003cc98f1"]
 
     return (
             <div className="comment__card" key={comment.id}>
@@ -20,13 +19,13 @@ function Comment({comment, convertTime, onDelete}) {
                         <span className="card__timestamp-main">{convertTime(comment.timestamp)}</span>
                     </div>
                     <p className="card__comment-main">{comment.comment}</p>
-                    <div className="card__button-wrapper">
+                    <div className="card__buttons">
                         <div className='like' >
-                            <img className='like-image' src={like}/>
+                            <img className='like-image' src={like} alt=""/>
                             	{comment.likes}
                         </div>
                         <div className='delete' onClick={(e)=> handleCommentDelete(comment.id, onDelete)}>
-                            <img className='delete-image' src={pacman}/>
+                            <img className='delete-image' src={pacman} alt=""/>
                                 DELETE
                         </div>
                     </div>
