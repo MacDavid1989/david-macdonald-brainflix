@@ -1,6 +1,7 @@
 @use '../../partials/variables' as *;
 @use '../../partials/mixins' as *;
 
+// aside wrapper rule-sets
 .next-video {
     @include flex-control(flex, column, initial, center, initial, initial);
     padding: 4rem 1.6rem;
@@ -14,11 +15,12 @@
         color: $color-title-aside;
     }
     
-
+    // tablet breakpoint
     @include breakpoint(768px) {
         padding: 4rem 0 4rem 2.4rem;
     }
 
+    // breakpoint at which all content reaches maximum size for desktop view
     @include breakpoint(1128px) {
         @include flex-control(flex, column, initial, initial, initial, initial);
         width: 36.8rem;
