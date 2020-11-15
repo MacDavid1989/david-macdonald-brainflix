@@ -90,16 +90,12 @@
         }
 
         &__input {
-            width: calc(23.2rem + (2 / 36) * (100vw - 76.8rem));
+            width: 25.2rem;
         }
     }
 
     @include breakpoint(1128px) {
         padding: 1.6rem 0;
         width: 108rem;
-
-        &__input {
-            width: 25.2rem;
-        }
     }
 }
