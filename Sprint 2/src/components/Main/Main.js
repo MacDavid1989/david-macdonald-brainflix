@@ -1,8 +1,9 @@
 import './Main.scss';
-import convertTime from '../../utils/convertTime';
 import Article from "../Article/Article";
 import VideoComments from "../VideoComments/VideoComments";
+import convertTime from '../../utils/convertTime';
 
+// component wrapper for components that require flex control layout to position next to aside component
 function Main({match, mainVideo, onComment, onDelete}) {
 
     return (
