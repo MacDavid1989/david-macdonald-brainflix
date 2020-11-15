@@ -4,15 +4,19 @@ import like from '../../assets/icons/svg/heart.svg';
 import pacman from '../../assets/icons/svg/pacman.svg'
 import {defaultCommentIds} from '../../utils/defaultCommentIds'
 
-function Comment({comment, convertTime, onDelete}) {
+function Comment({comment, onDelete, convertTime}) {
 
+    // delete handler which calls the handler passed from Home component and passes it the comment id as an argument
     const handleCommentDelete = (id, onComment) => {
         onComment(id)
     };
 
     return (
+            // individual comment wrapper
             <div className="comment__card" key={comment.id}>
-                {defaultCommentIds.find(id => id === comment.id) ? <div className="card__image-main"></div> : <img className="card__image-main" src={mohan} alt=""/>}
+                {/* conditonal element creation based on whether the comment is a default or new user submission,
+                creates a div for default comments and an image with the user profile pic for new comments */}
+                {defaultCommentIds.find(id => id === comment.id) ? <div className="card__image-main"></div> : <img className="card__image-main" src={mohan} alt="user profile pic"/>}
                 <div className="card__info-main">
                     <div className="card__header-main">
                         <span className="card__name-main">{comment.name}</span>
@@ -21,11 +25,13 @@ function Comment({comment, convertTime, onDelete}) {
                     <p className="card__comment-main">{comment.comment}</p>
                     <div className="card__buttons">
                         <div className='like' >
-                            <img className='like-image' src={like} alt=""/>
+                            <img className='like-image' src={like} alt="heart for like button"/>
                             	{comment.likes}
                         </div>
+                        {/* div container with onClick attribute to call local delete handler 
+                        and pass it the comment id and props derived delete handler */}
                         <div className='delete' onClick={(e)=> handleCommentDelete(comment.id, onDelete)}>
-                            <img className='delete-image' src={pacman} alt=""/>
+                            <img className='delete-image' src={pacman} alt="pacman icon for delete button"/>
                                 DELETE
                         </div>
                     </div>

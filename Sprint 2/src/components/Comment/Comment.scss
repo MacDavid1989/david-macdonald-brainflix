@@ -1,12 +1,14 @@
 @use '../../partials/variables' as *;
 @use '../../partials/mixins' as *;
 
+// wrapper rule-set for individual comments
 .comment__card {
     @include flex-control(flex,initial,initial,initial,initial,initial);
     border-bottom: solid 0.1rem $color-divider;
     padding: 2.4rem 0;
     width: 100%;
 
+    // container for comment elements
     .card {
         
         &__image-main {
@@ -16,6 +18,7 @@
             height: 4.2rem;
         }
 
+        // wrapper for comment header
         &__info-main {
             margin: 0 0 0 1.2rem;
             width: calc(23.4rem + (390 / 448) * (100vw - 32rem));
@@ -41,6 +44,7 @@
             line-height: $line-height-fs14px;
         }
 
+        // comment buttons wrapper
         &__buttons {
             @include flex-control(flex, initial, initial, flex-start, initial, space-between);
             margin: 0.8rem 0 0;  
@@ -72,6 +76,7 @@
         }
     }
 
+    // tablet breakpoint
     @include breakpoint(768px){
         .card {
 
@@ -91,6 +96,7 @@
         }
     }
 
+    // breakpoint at which all content reaches maximum size for desktop view
     @include breakpoint(1128px) {
         padding: 1.95rem 0;   
     }
