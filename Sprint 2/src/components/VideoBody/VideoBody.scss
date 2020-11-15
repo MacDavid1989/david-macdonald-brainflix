@@ -1,10 +1,12 @@
 @use '../../partials/variables' as *;
 @use '../../partials/mixins' as *;
 
+// wrapper rules to keep all content below video player contained in controlled layout
 .video__body {
     @include flex-control(flex, column, initial, center, initial, initial);
     width: 100%;
 
+    // breakpoint at which all content reaches maximum size for desktop view
     @include breakpoint(1128px) {
         @include flex-control(flex, initial, initial, initial, initial, center);    
     }
