@@ -1,6 +1,7 @@
 @use '../../partials/variables' as *;
 @use '../../partials/mixins' as *;
 
+// wrapper rule-sets for each individual next video thumbnail
 .next-video__card {
     @include flex-control(flex, initial, initial, initial, flex-start, initial);
     margin: 2.4rem 0 0;
@@ -36,6 +37,7 @@
         }
     }
 
+    // tablet breakpoint
     @include breakpoint(768px) {
         width: 34.4rem;
     
