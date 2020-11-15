@@ -145,28 +145,6 @@ class Home extends Component {
 	// called when the like button is clicked
 	handleCommentLike = (id) => {
 		alert('Like Functionality Not Yet Available')
-	// 	// check if the current route is the home page 
-	// 	if(this.props.match.url === '/'){
-
-	// 		// similar to delete instead the comment matching the provided id will update the like value
-    //         axios.put(`https://project-2-api.herokuapp.com/videos/${defaultVideoId}/comments/${id + '/like' + API_KEY}`)
-    //         .then( () => {
-    //             axios.get(`https://project-2-api.herokuapp.com/videos/${defaultVideoId + API_KEY}`)
-	// 			.then(mainVideo => this.setState({mainVideo: mainVideo.data}))
-	// 			.catch(console.error)	
-    //         })
-    //         .catch(error => console.error(error));
-    //     } else {
-
-	// 		// similar to delete instead the comment matching the provided id will update the like value
-    //         axios.put(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id}/comments/${id + '/like' + API_KEY}`)
-    //         .then( () => {
-    //             axios.get(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id  + API_KEY}`)
-	// 			.then(mainVideo => this.setState({mainVideo: mainVideo.data}))
-	// 			.catch(console.error)
-    //         })
-    //         .catch(error => console.error(error));
-    //     }
 	}
 
 	render() {

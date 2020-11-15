@@ -9,7 +9,7 @@ function Upload(props) {
 	const handleUploadSubmit = (e, form) => {
         // prevents page refresh after submission
         e.preventDefault();
-        // resets form fiels
+        // resets form fields
         form.reset();
         // provides browser alert to inform user of successful submission
         alert('Video Upload Successful')
