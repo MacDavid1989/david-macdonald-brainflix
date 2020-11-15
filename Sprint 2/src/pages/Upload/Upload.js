@@ -26,7 +26,7 @@ function Upload(props) {
                 <div className="uploads__form">
                     {/* form thumbnail */}
                     <div className="thumbnail">
-                        <span className="thumbnail__label">VIDEO THUMBNAIL</span>
+                        <p className="thumbnail__label">VIDEO THUMBNAIL</p>
                         <img className="thumbnail__image" src={uploadImage} alt="cyclist pov of blue race bicycle"/>
                     </div>
                     {/* form input fields */}
