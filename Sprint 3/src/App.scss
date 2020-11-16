@@ -1,0 +1,8 @@
+@use './partials/variables' as *;
+@use './partials/mixins' as *;
+
+// App component as wrapper for all virtual DOM elements
+.app {
+    @include flex-control(flex, column, initial, center, initial, initial);
+    width: 100%;
+}

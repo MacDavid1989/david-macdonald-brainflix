@@ -1,0 +1,59 @@
+@use '../../partials/variables' as *;
+@use '../../partials/mixins' as *;
+
+// wrapper rule-sets for each individual next video thumbnail
+.next-video__card {
+    @include flex-control(flex, initial, initial, initial, flex-start, initial);
+    margin: 2.4rem 0 0;
+    width: 28.8rem;
+    text-decoration: none;
+
+    .card {
+
+        &__image-next {
+            margin: 0 1.6rem 0 0;
+            border-radius: 0.4rem;
+            width: 12rem;
+            height: 7rem;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        &__info-next {
+            @include flex-control(flex, column, initial, initial, initial, center);
+        }
+
+        &__title-next {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            margin: 0 0 1.6rem;
+            overflow: hidden;
+            font-size: $fs-card-aside-mbl;
+            font-weight: 600;
+        }
+
+        &__channel-next {
+            font-size: $fs-card-aside-mbl;
+        }
+    }
+
+    // tablet breakpoint
+    @include breakpoint(768px) {
+        width: 34.4rem;
+    
+        .card {
+    
+            &__info-next {
+                width: 20.2rem;
+            }
+    
+            &__title-next {
+                display: initial;
+                font-size: $fs-card-aside-tab;
+            }
+        }
+        
+    }
+}
+

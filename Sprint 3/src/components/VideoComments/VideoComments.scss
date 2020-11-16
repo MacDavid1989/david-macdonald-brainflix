@@ -1,0 +1,117 @@
+@use '../../partials/variables' as *;
+@use '../../partials/mixins' as *;
+
+// wrapper layout rule-sets for comment form and comments
+.comments {
+    @include flex-control(flex,column,initial,center,initial,initial);
+    padding: 0 1.6rem;
+    width: 100%;
+
+    &__title {
+        margin: 0 0 3.2rem;
+        width: 100%;
+        font-size: $fs-title-comments;
+        font-weight: 600;
+    }
+
+    // new comment form wrapper
+    &__new {
+        @include flex-control(flex,initial,initial,initial,initial,initial);
+        border-bottom: solid 0.1rem #E1E1E1;
+        padding: 0 0 2.4rem;
+        width: 100%;
+    }
+
+    &__image {
+        margin: 2rem 0 0;
+        @include image-user;
+    }
+
+    &__form {
+        @include flex-control(flex,column,initial,initial,initial,initial);
+        margin: 0 0 0 1.6rem;
+        width: calc(100% - 6.6rem);
+
+        .comment {
+            @include btn-styling;
+            margin: 0 0 0 auto;
+            width: calc(22.2rem - (62 / 448) * (100vw - 32rem));
+
+            &__text {
+                @include btn-font;
+            }
+
+            &:hover {
+                background-color: $color-btn-hover;
+            }
+        }
+    }
+
+    // individual comment wrapper
+    &__entry {
+        @include flex-control(flex,column,initial,initial,initial,initial);
+        width: 100%;
+    }
+
+    &__label {
+       @include input-label-style;
+    }
+
+    &__input {
+        @include input-style;  
+        margin: 0 0 1.6rem;
+        padding: calc(1.6rem - (2 / 448) * (100vw - 32rem)) 1.2rem;
+        width: 100%;
+        height: calc(9.6rem - (48 / 448) * (100vw - 32rem));
+        resize: none;
+        overflow: hidden;
+    }
+
+    // tablet breakpoint
+    @include breakpoint(768px){
+        padding: 0 2.4rem;
+
+        &__form {
+            @include flex-control(flex,initial,initial,flex-end,initial,initial);
+            width: calc(100% - 6.4rem);
+    
+            .comment {
+                margin: 0 4rem 0 1.6rem;
+                width: 16rem;
+            }
+        }
+    
+        &__entry {
+            width: calc(44rem + (384 / 360) * (100vw - 76.8rem));
+        }
+
+        &__input {
+            margin: 0;
+            padding: 1.4rem 1.2rem;
+            height: 4.8rem;
+        }
+    }
+
+    // breakpoint at which all content reaches maximum size for desktop view
+    @include breakpoint(1128px) {
+        margin: 0;
+        padding: 0 0 4rem;
+        width: 71.2rem;
+
+        &__title {
+            margin: 0 0 1.6rem;
+        }
+
+        &__form {
+            margin: 0 0 0 2rem;
+
+            .comment {
+                margin: 0 3.2rem 0 1.6rem;
+            }
+        }
+
+        &__entry {
+            width: 43.6rem;
+        }
+    }
+}

@@ -1,0 +1,103 @@
+@use '../../partials/variables' as *;
+@use '../../partials/mixins' as *;
+
+// wrapper rule-set for individual comments
+.comment__card {
+    @include flex-control(flex,initial,initial,initial,initial,initial);
+    border-bottom: solid 0.1rem $color-divider;
+    padding: 2.4rem 0;
+    width: 100%;
+
+    // container for comment elements
+    .card {
+        
+        &__image-main {
+            @include image-user;
+            background-color: $color-divider;
+            width: 4.2rem;
+            height: 4.2rem;
+        }
+
+        // wrapper for comment header
+        &__info-main {
+            margin: 0 0 0 1.2rem;
+            width: calc(23.4rem + (390 / 448) * (100vw - 32rem));
+        }
+
+        &__header-main {
+            @include flex-control(flex,initial,initial,initial,initial,space-between);
+            margin: 0 0 0.8rem;
+        }
+
+        &__name-main {
+            font-size: $fs-card-comment-mbl;
+            font-weight: 600;
+        }
+
+        &__timestamp-main {
+            font-size: $fs-card-comment-mbl;
+            color: $color-timestamp;
+        }
+
+        &__comment-main {
+            font-size: $fs-card-comment-mbl;
+            line-height: $line-height-fs14px;
+        }
+
+        // comment buttons wrapper
+        &__buttons {
+            @include flex-control(flex, initial, initial, flex-start, initial, space-between);
+            margin: 0.8rem 0 0;  
+
+            .like {
+                @include flex-control(flex, initial, initial, initial, initial, initial);
+                font-size: $fs-btn;
+                line-height: $line-height-fs14px;
+                cursor: pointer;
+
+                &-image {
+                    height: 2rem;
+                    width: 2rem;
+                    margin-right: 1rem;
+                }
+            }
+
+            .like:hover{
+                font-weight: bold;
+            }
+
+            .delete {
+                @extend .like;
+
+                &-image {
+                    @extend .like-image;
+                }
+            }
+        }
+    }
+
+    // tablet breakpoint
+    @include breakpoint(768px){
+        .card {
+
+            &__info-main {
+                margin: 0 0 0 2rem;
+                width: 62.4rem;
+            }
+
+            &__header-main {
+                @include flex-control(flex,initial,initial,initial,initial,initial);
+            }
+
+            &__name-main {
+                font-size: $fs-card-comment-tab;
+                margin: 0 1.2rem 0 0;
+            }
+        }
+    }
+
+    // breakpoint at which all content reaches maximum size for desktop view
+    @include breakpoint(1128px) {
+        padding: 1.95rem 0;   
+    }
+}

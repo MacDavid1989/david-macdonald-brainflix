@@ -1,0 +1,88 @@
+@use './variables' as *;
+
+// Global Boundary Reset
+@mixin boundary-reset {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+};
+
+// Global Font Base
+@mixin font-stack($weight) {
+    font-family: $font-family;
+    font-size: $font-size-html;
+    font-weight: $weight;
+    color: $color-font-global;
+};
+
+// Global Flexbox 
+@mixin flex-control($display, $direction, $wrap, $align, $self, $justify) {
+    display: $display;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+    align-items: $align;
+    align-self: $self;
+    justify-content: $justify;
+};
+
+// Global Media Query
+@mixin breakpoint ($width) {
+    @media (min-width: $width) {
+        @content;
+    }    
+}
+
+// Global Button Styling
+@mixin btn-styling {
+    @include flex-control(flex,initial,initial,center,initial,center);
+        margin: 0 1.6rem 0 0;
+        border-radius: 0.4rem;
+        border: none;
+        width: 22.4rem;
+        height: 4.8rem;
+        background-color: $color-btn;
+        outline-style: none;
+        cursor: pointer;
+}
+
+// Global Button Text Style
+@mixin btn-font {
+    font-size: $fs-btn;
+    font-weight: 600;
+    color: $color-font-white;
+}
+
+// Global User Image
+@mixin image-user {
+    border-radius: 100%;
+    width: 4.8rem;
+    height: 4.8rem;
+    object-fit: cover;
+    object-position: left;
+}
+
+// Global Input Stlye
+@mixin input-style {
+    outline-color: $color-input-outline;
+    border: solid $color-input-border 0.2rem;
+    border-radius: 0.4rem;
+    background-color: $color-input-background;
+    font-size: $fs-input;  
+}
+
+// Global Input Label Style
+@mixin input-label-style {
+    width: 100%;
+    font-size: $fs-input-label;
+    font-weight: 600;
+    line-height: $line-height-fs12px;
+    color: $color-input-label;
+}
+
+// Video Player Mixin
+@mixin player-control-style {
+    @include flex-control(flex,initial,initial,center,initial,center);
+    border-style: none;
+    background-color: $color-player-controls;
+    border-radius: 0.4rem;
+}

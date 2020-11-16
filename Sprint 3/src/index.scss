@@ -1,0 +1,8 @@
+@use './partials/mixins' as *;
+@use './partials/variables' as *;
+
+// Global rule-sets
+*, *::before, *::after {
+    @include boundary-reset;
+    @include font-stack(normal);
+}

@@ -1,0 +1,219 @@
+@use '../../partials/variables' as *;
+@use '../../partials/mixins' as *;
+
+// upload page wrapper 
+.uploads-page {
+    @include flex-control(flex, column, initial, center, initial, initial);
+    width: 100%;
+
+    // uploads page content wrapper
+    .uploads {
+        @include flex-control(flex, column, initial, initial, initial, initial);
+        padding: 2.4rem 1.6rem;
+        width: 100%;
+
+        // main heading
+        &__title {
+            font-size: $fs-title-upload-mbl;
+            font-weight: bold;
+        }
+
+        // form wrapper which includes all elements on the page
+        &__form {
+            @include flex-control(flex, column, initial, initial, initial, initial);
+            margin: 3.2rem 0;  
+            width: 100%;   
+
+            .thumbnail {
+                @include flex-control(flex, column, initial, initial, initial, initial);
+                margin: 0 0 3.2rem;
+
+                &__label {
+                    @include input-label-style;
+                }
+
+                &__image {
+                    border-radius: 0.4rem;
+                    width: calc(28.8rem + (56 / 448) * (100vw - 32rem));
+                    height: calc(15.3rem + (30 / 448) * (100vw - 32rem));
+                }
+            }
+        }
+
+        // input fields wrapper
+        &__info {
+            @include flex-control(flex, column, initial, initial, initial, initial);
+            width: 100%;
+
+            .title {
+                @include flex-control(flex, column, initial, initial, initial, initial);
+                width: 100%;
+
+                &__label {
+                    @include input-label-style;
+                }
+
+                &__input {
+                    @include input-style;
+                    margin: 0 0 2.4rem;
+                    padding: calc(1.6rem - (2 / 448) * (100vw - 32rem)) 1.2rem;
+                    width: 100%;
+                    height: 4.8rem;
+                }
+            }
+
+            .description {
+                @include flex-control(flex, column, initial, initial, initial, initial);
+                width: 100%;
+
+                &__label {
+                    @include input-label-style;
+                }
+
+                &__input {
+                    @include input-style;  
+                    padding: calc(1.6rem - (2 / 448) * (100vw - 32rem)) 1.2rem;
+                    width: 100%;
+                    height: 14.3rem;
+                    resize: none;
+                    overflow: hidden;
+                }
+            }
+        }
+
+        // form buttons wrapper
+        &__buttons {
+            @include flex-control(flex, column-reverse, initial, center, initial, initial);
+            width: 100%;
+
+            .button {
+                @include btn-styling;
+                margin: 0;
+                width: 28.8rem;
+            }
+
+            .publish {
+                @include btn-font;
+
+                &:hover {
+                    background-color: $color-btn-hover;
+                }
+            }
+
+            .cancel {
+                @include btn-font;
+                margin: 0;
+                width: 15.183rem;
+                height: 6.2rem;
+                background-color: $color-btn-white;
+                color: $color-btn;
+
+                &:hover {
+                    color: $color-btn-hover;
+                }
+            } 
+        }
+    }
+
+    // breakpoint to set button inline when page allows space
+    @include breakpoint(464px) {
+
+        .uploads {
+
+            &__buttons {
+                @include flex-control(flex, row, initial, center, flex-end, flex-end);
+
+                .button {
+                    width: 16rem;
+                }
+
+                .cancel {
+                    width: 15.183rem;
+                    height: 4.8rem;
+                }
+            }
+        }
+    }
+    
+    // tablet breakpoint
+    @include breakpoint(768px){
+
+        .uploads {
+            padding: 4.8rem 2.4rem 4rem;
+
+            &__title {
+                font-size: $fs-title-upload-tab;
+            }
+
+            &__form {
+                margin: 3.2rem 0 4rem;
+                border-top: solid 0.1rem $color-divider;
+                border-bottom: solid 0.1rem $color-divider;
+                padding: 4rem 0;
+
+                .thumbnail {
+                    margin: 0 0 4rem;
+
+                    &__image {
+                        width: 34.4rem;
+                        height: 18.3rem;
+                    }
+                }
+            }
+
+            &__info {
+                width: calc(72rem - (8 / 360) * (100vw - 76.8rem));
+
+                .title {
+
+                    &__input {
+                        padding: 1.4rem;
+                    }
+                }
+
+                .description {
+
+                    &__input {
+                        padding: 1.4rem;
+                        height: calc(14.3rem - (49 / 360) * (100vw - 76.8rem));
+                    }
+
+                }
+            }
+        }
+    }
+
+    // breakpoint at which all content reaches maximum size for desktop view
+    @include breakpoint(1128px){
+
+        .uploads {
+            padding: 4.8rem 0 4rem;
+            width: 108rem;
+
+            &__form {
+                @include flex-control(flex, row, initial, center, initial, initial);
+
+                .thumbnail {
+                    margin: 0 2.4rem 0 0;
+                }
+            }
+
+            &__info {
+
+                .title {
+
+                    &__input {
+                        height: 4.5rem;
+                    }
+                }
+
+                .description {
+
+                    &__input {
+                        height: 9.4rem;
+                    }
+                }
+            }
+        }
+    }
+}
