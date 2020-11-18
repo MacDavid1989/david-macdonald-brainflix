@@ -6,7 +6,7 @@ import Home from './pages/Home/Home';
 import Upload from './pages/Upload/Upload';
 
 // App component utilized as top router to mount all other components
-function App(props) {
+function App() {
 	return (
 		<div className="app">
 			<Router>

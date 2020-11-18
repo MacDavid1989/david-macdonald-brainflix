@@ -13,14 +13,10 @@ class Home extends Component {
 		videoList: []
 	};
 
-	// lifecycle method that is called after the component first renders
-	componentDidMount() {
-
-		// check in place to see if the current route is the home path 
-		if(this.props.match.url === '/'){
-
+	getVideos = (id) => {
+		
 			// get request for default video utilizing default video id
-			axios.get(`http://localhost:8080/videos/${defaultVideoId}`)
+			axios.get(`http://localhost:8080/videos/${id}`)
 			// after successful response, changes state to hold default video matching default id
 			.then(mainVideo => {
 				this.setState({mainVideo: mainVideo.data});
@@ -28,24 +24,21 @@ class Home extends Component {
 				// get request for video list
 				axios.get(`http://localhost:8080/videos`)
 				// after successful response, changes state to hold a video list with all videos that do not match the default video id
-				.then(videoList => this.setState({videoList: videoList.data.filter(video => video.id !== defaultVideoId)}))
+				.then(videoList => this.setState({videoList: videoList.data.filter(video => video.id !== id)}))
 				.catch(console.error)
 			})
 			.catch(console.error)
+
+	}
+
+	// lifecycle method that is called after the component first renders
+	componentDidMount() {
+
+		// check in place to see if the current route is the home path 
+		if(this.props.match.url === '/'){
+			this.getVideos(defaultVideoId)
 		} else {
-
-			// get request for video matching the video id contained within the match route prop params object id key
-			axios.get(`http://localhost:8080/videos/${this.props.match.params.id}`)
-			.then(mainVideo => {
-				this.setState({mainVideo: mainVideo.data});
-
-				// get request for video list
-				axios.get(`http://localhost:8080/videos`)
-				// after successful response, changes state to hold a video list with all videos that do not match the match route prop params object id key
-				.then(videoList => this.setState({videoList: videoList.data.filter(video => video.id !== this.props.match.params.id)}))
-				.catch(console.error)
-			})
-			.catch(console.error)	
+			this.getVideos(this.props.match.params.id)
 		}
 	}
 
@@ -73,7 +66,7 @@ class Home extends Component {
 		else if(this.props.match.params.id !== prevProps.match.params.id && this.props.match.params.id === undefined) {
 			
 			// similar get requests as found in the DidMount method to update state with the correct data
-			axios.get(`http://localhost:8080/videos/1af0jruup5gu`)
+			axios.get(`http://localhost:8080/videos/${defaultVideoId}`)
 			.then(mainVideo => {
 				this.setState({mainVideo: mainVideo.data});
 
