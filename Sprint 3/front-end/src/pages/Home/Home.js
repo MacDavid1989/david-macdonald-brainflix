@@ -47,34 +47,11 @@ class Home extends Component {
 
 		// check in place to see if there was a change in the url id and that the current id is not undefined
 		if(this.props.match.params.id !== prevProps.match.params.id && this.props.match.params.id !== undefined){
-			
-			// similar get requests as found in the DidMount method to update state with the correct data
-			axios.get(`http://localhost:8080/videos/${this.props.match.params.id}`)
-			.then(mainVideo => {
-				this.setState({mainVideo: mainVideo.data});
-
-				axios.get(`http://localhost:8080/videos`)
-				.then(videoList => this.setState({videoList: videoList.data.filter(video => video.id !== this.props.match.params.id)}))
-				.catch(console.error)	
-			})
-			.catch(console.error)	
-
-			
-
+			this.getVideos(this.props.match.params.id)
 		}
 		// alternate condition to check that the id key is undefined which is the case for the home page route
-		else if(this.props.match.params.id !== prevProps.match.params.id && this.props.match.params.id === undefined) {
-			
-			// similar get requests as found in the DidMount method to update state with the correct data
-			axios.get(`http://localhost:8080/videos/${defaultVideoId}`)
-			.then(mainVideo => {
-				this.setState({mainVideo: mainVideo.data});
-
-				axios.get(`http://localhost:8080/videos`)
-				.then(videoList => this.setState({videoList: videoList.data.filter(video => video.id !== defaultVideoId)}))
-				.catch(console.error)
-			})
-			.catch(console.error)	
+		else if(this.props.match.params.id !== prevProps.match.params.id && this.props.match.params.id === undefined){
+			this.getVideos(defaultVideoId)	
 		}
 	}
 
