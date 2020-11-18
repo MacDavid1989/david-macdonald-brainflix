@@ -32,12 +32,17 @@ router.post('/', (req, res) => {
         "channel": newVideo.channel,
         "image": newVideo.image
     }
+    const mainVideo = fs.readFileSync(mainVideosFile)
+    const parsedMainVideo = JSON.parse(mainVideo)
 
-    fs.writeFile('videoList.json', JSON.stringify([...videoList, newVideoThumb]), (err) => console.log(err))
+    const videoList = fs.readFileSync(videoListFile)
+    const parsedVideoList = JSON.parse(videoList)
+
+    fs.writeFile('videoList.json', JSON.stringify([...parsedVideoList, newVideoThumb]), (err) => console.log(err))
     
-    fs.writeFile('mainVideos.json', JSON.stringify([...mainVideos, newVideo]), (err) => console.log(err))
+    fs.writeFile('mainVideos.json', JSON.stringify([...parsedMainVideo, newVideo]), (err) => console.log(err))
     
-    res.send(JSON.stringify(newVideo));
+    res.json(newVideo);
 });
 
 router.get('/:videoId', (req, res) => {
