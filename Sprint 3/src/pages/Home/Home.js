@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {defaultVideoId} from '../../utils/defaultVideoId'
-import {API_KEY} from '../../utils/apiKey'
 import axios from 'axios';
 import VideoBody from '../../components/VideoBody/VideoBody';
 import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
@@ -21,13 +20,14 @@ class Home extends Component {
 		if(this.props.match.url === '/'){
 
 			// get request for default video utilizing default video id
-			axios.get(`https://project-2-api.herokuapp.com/videos/${defaultVideoId + API_KEY}`)
+			axios.get(`http://localhost:8080/videos/${defaultVideoId}`)
 			// after successful response, changes state to hold default video matching default id
 			.then(mainVideo => {
+				console.log(mainVideo)
 				this.setState({mainVideo: mainVideo.data});
 
 				// get request for video list
-				axios.get(`https://project-2-api.herokuapp.com/videos${API_KEY}`)
+				axios.get(`http://localhost:8080/videos`)
 				// after successful response, changes state to hold a video list with all videos that do not match the default video id
 				.then(videoList => this.setState({videoList: videoList.data.filter(video => video.id !== defaultVideoId)}))
 				.catch(console.error)
@@ -36,12 +36,12 @@ class Home extends Component {
 		} else {
 
 			// get request for video matching the video id contained within the match route prop params object id key
-			axios.get(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id  + API_KEY}`)
+			axios.get(`http://localhost:8080/videos/${this.props.match.params.id}`)
 			.then(mainVideo => {
 				this.setState({mainVideo: mainVideo.data});
 
 				// get request for video list
-				axios.get(`https://project-2-api.herokuapp.com/videos${API_KEY}`)
+				axios.get(`http://localhost:8080/videos`)
 				// after successful response, changes state to hold a video list with all videos that do not match the match route prop params object id key
 				.then(videoList => this.setState({videoList: videoList.data.filter(video => video.id !== this.props.match.params.id)}))
 				.catch(console.error)
@@ -57,11 +57,11 @@ class Home extends Component {
 		if(this.props.match.params.id !== prevProps.match.params.id && this.props.match.params.id !== undefined){
 			
 			// similar get requests as found in the DidMount method to update state with the correct data
-			axios.get(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id  + API_KEY}`)
+			axios.get(`http://localhost:8080/videos/${this.props.match.params.id}`)
 			.then(mainVideo => {
 				this.setState({mainVideo: mainVideo.data});
 
-				axios.get(`https://project-2-api.herokuapp.com/videos${API_KEY}`)
+				axios.get(`http://localhost:8080/videos`)
 				.then(videoList => this.setState({videoList: videoList.data.filter(video => video.id !== this.props.match.params.id)}))
 				.catch(console.error)	
 			})
@@ -74,11 +74,11 @@ class Home extends Component {
 		else if(this.props.match.params.id !== prevProps.match.params.id && this.props.match.params.id === undefined) {
 			
 			// similar get requests as found in the DidMount method to update state with the correct data
-			axios.get(`https://project-2-api.herokuapp.com/videos/1af0jruup5gu${API_KEY}`)
+			axios.get(`http://localhost:8080/videos/1af0jruup5gu`)
 			.then(mainVideo => {
 				this.setState({mainVideo: mainVideo.data});
 
-				axios.get(`https://project-2-api.herokuapp.com/videos${API_KEY}`)
+				axios.get(`http://localhost:8080/videos`)
 				.then(videoList => this.setState({videoList: videoList.data.filter(video => video.id !== defaultVideoId)}))
 				.catch(console.error)
 			})
@@ -93,10 +93,10 @@ class Home extends Component {
 		if(this.props.match.url === '/'){
 
 			// post request to add a newComment object to the default video comments array
-            axios.post(`https://project-2-api.herokuapp.com/videos/${defaultVideoId}/comments${API_KEY}`, newComment, header)
+            axios.post(`http://localhost:8080/videos/${defaultVideoId}/comments`, newComment, header)
             .then( () => {
 				// after a successful post a get request is made for the default video and state is changed  
-                axios.get(`https://project-2-api.herokuapp.com/videos/${defaultVideoId + API_KEY}`)
+                axios.get(`http://localhost:8080/videos/${defaultVideoId}`)
 				.then(mainVideo => this.setState({mainVideo: mainVideo.data}))
 				.catch(console.error)	
             })
@@ -104,10 +104,10 @@ class Home extends Component {
         } else {
 
 			// post request to add a newComment object to the comments array of the video with id matching the id key of the params object
-            axios.post(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id}/comments${API_KEY}`, newComment, header)
+            axios.post(`http://localhost:8080/videos/${this.props.match.params.id}/comments`, newComment, header)
             .then( () => {
 				// after a successful post a get request is made for the video with that same id and state is changed  
-                axios.get(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id  + API_KEY}`)
+                axios.get(`http://localhost:8080/videos/${this.props.match.params.id}`)
 				.then(mainVideo => this.setState({mainVideo: mainVideo.data}))
 				.catch(console.error)
             })
@@ -122,9 +122,9 @@ class Home extends Component {
 		if(this.props.match.url === '/'){
 
 			// similar to post instead the comment matching the provided id will be removed from the comment list
-            axios.delete(`https://project-2-api.herokuapp.com/videos/${defaultVideoId}/comments/${id + API_KEY}`)
+            axios.delete(`http://localhost:8080/videos/${defaultVideoId}/comments/${id}`)
             .then( () => {
-                axios.get(`https://project-2-api.herokuapp.com/videos/${defaultVideoId + API_KEY}`)
+                axios.get(`http://localhost:8080/videos/${defaultVideoId}`)
 				.then(mainVideo => this.setState({mainVideo: mainVideo.data}))
 				.catch(console.error)	
             })
@@ -132,9 +132,9 @@ class Home extends Component {
         } else {
 
 			// similar to post instead the comment matching the provided id will be removed from the comment list
-            axios.delete(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id}/comments/${id + API_KEY}`)
+            axios.delete(`http://localhost:8080/videos/${this.props.match.params.id}/comments/${id}`)
             .then( () => {
-                axios.get(`https://project-2-api.herokuapp.com/videos/${this.props.match.params.id  + API_KEY}`)
+                axios.get(`http://localhost:8080/videos/${this.props.match.params.id}`)
 				.then(mainVideo => this.setState({mainVideo: mainVideo.data}))
 				.catch(console.error)
             })
