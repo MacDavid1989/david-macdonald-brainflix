@@ -23,7 +23,6 @@ class Home extends Component {
 			axios.get(`http://localhost:8080/videos/${defaultVideoId}`)
 			// after successful response, changes state to hold default video matching default id
 			.then(mainVideo => {
-				console.log(mainVideo)
 				this.setState({mainVideo: mainVideo.data});
 
 				// get request for video list
