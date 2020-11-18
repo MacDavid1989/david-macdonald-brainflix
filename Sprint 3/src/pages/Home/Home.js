@@ -144,7 +144,29 @@ class Home extends Component {
 
 	// called when the like button is clicked
 	handleCommentLike = (id) => {
-		alert('Like Functionality Not Yet Available')
+		
+		// check if the current route is the home page 
+		if(this.props.match.url === '/'){
+
+			// similar to post instead the comment matching the provided id will be removed from the comment list
+            axios.put(`http://localhost:8080/videos/${defaultVideoId}/comments/${id}/likes`)
+            .then( () => {
+                axios.get(`http://localhost:8080/videos/${defaultVideoId}`)
+				.then(mainVideo => this.setState({mainVideo: mainVideo.data}))
+				.catch(console.error)	
+            })
+            .catch(error => console.error(error));
+        } else {
+
+			// similar to post instead the comment matching the provided id will be removed from the comment list
+            axios.put(`http://localhost:8080/videos/${this.props.match.params.id}/comments/${id}/likes`)
+            .then( () => {
+                axios.get(`http://localhost:8080/videos/${this.props.match.params.id}`)
+				.then(mainVideo => this.setState({mainVideo: mainVideo.data}))
+				.catch(console.error)
+            })
+            .catch(error => console.error(error));
+        }
 	}
 
 	render() {
