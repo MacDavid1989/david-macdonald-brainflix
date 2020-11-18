@@ -6,34 +6,30 @@ import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
 
 // Home class component which holds state for the project and utilizes lifecycle methods
 class Home extends Component {
-
 	// Default state which will be updated to hold the main video and an array of all remaining videos
 	state = {
 		mainVideo: null,
 		videoList: []
 	};
 
+	// function which when called makes a get request to the server for the video matching the id passed as an argument
 	getVideos = (id) => {
-		
-			// get request for default video utilizing default video id
-			axios.get(`http://localhost:8080/videos/${id}`)
-			// after successful response, changes state to hold default video matching default id
-			.then(mainVideo => {
-				this.setState({mainVideo: mainVideo.data});
-
-				// get request for video list
-				axios.get(`http://localhost:8080/videos`)
-				// after successful response, changes state to hold a video list with all videos that do not match the default video id
-				.then(videoList => this.setState({videoList: videoList.data.filter(video => video.id !== id)}))
-				.catch(console.error)
-			})
+		// get request for default video utilizing default video id
+		axios.get(`http://localhost:8080/videos/${id}`)
+		// after successful response, changes state to hold default video matching default id
+		.then(mainVideo => {
+			this.setState({mainVideo: mainVideo.data});
+			// get request for video list
+			axios.get(`http://localhost:8080/videos`)
+			// after successful response, changes state to hold a video list with all videos that do not match the default video id
+			.then(videoList => this.setState({videoList: videoList.data.filter(video => video.id !== id)}))
 			.catch(console.error)
-
+		})
+		.catch(console.error)
 	}
 
 	// lifecycle method that is called after the component first renders
 	componentDidMount() {
-
 		// check in place to see if the current route is the home path 
 		if(this.props.match.url === '/'){
 			this.getVideos(defaultVideoId)
@@ -44,7 +40,6 @@ class Home extends Component {
 
 	// lifecycle method that is called after the component is updated
 	componentDidUpdate(prevProps) {
-
 		// check in place to see if there was a change in the url id and that the current id is not undefined
 		if(this.props.match.params.id !== prevProps.match.params.id && this.props.match.params.id !== undefined){
 			this.getVideos(this.props.match.params.id)
@@ -55,30 +50,29 @@ class Home extends Component {
 		}
 	}
 
+	getMainVideo=(id)=>{
+		axios.get(`http://localhost:8080/videos/${id}`)
+		.then(mainVideo => this.setState({mainVideo: mainVideo.data}))
+		.catch(console.error)	
+	}
+
 	// called when the comment form is submitted 
 	handleCommentSubmit=(header, newComment)=>{
-
 		// check if the current route is the home page 
 		if(this.props.match.url === '/'){
-
 			// post request to add a newComment object to the default video comments array
             axios.post(`http://localhost:8080/videos/${defaultVideoId}/comments`, newComment, header)
             .then( () => {
 				// after a successful post a get request is made for the default video and state is changed  
-                axios.get(`http://localhost:8080/videos/${defaultVideoId}`)
-				.then(mainVideo => this.setState({mainVideo: mainVideo.data}))
-				.catch(console.error)	
+                this.getMainVideo(defaultVideoId)
             })
             .catch(error => console.error(error));
         } else {
-
 			// post request to add a newComment object to the comments array of the video with id matching the id key of the params object
             axios.post(`http://localhost:8080/videos/${this.props.match.params.id}/comments`, newComment, header)
             .then( () => {
 				// after a successful post a get request is made for the video with that same id and state is changed  
-                axios.get(`http://localhost:8080/videos/${this.props.match.params.id}`)
-				.then(mainVideo => this.setState({mainVideo: mainVideo.data}))
-				.catch(console.error)
+                this.getMainVideo(this.props.match.params.id)
             })
             .catch(error => console.error(error));
         }
@@ -93,9 +87,8 @@ class Home extends Component {
 			// similar to post instead the comment matching the provided id will be removed from the comment list
             axios.delete(`http://localhost:8080/videos/${defaultVideoId}/comments/${id}`)
             .then( () => {
-                axios.get(`http://localhost:8080/videos/${defaultVideoId}`)
-				.then(mainVideo => this.setState({mainVideo: mainVideo.data}))
-				.catch(console.error)	
+				this.getMainVideo(defaultVideoId)
+	
             })
             .catch(error => console.error(error));
         } else {
@@ -103,9 +96,8 @@ class Home extends Component {
 			// similar to post instead the comment matching the provided id will be removed from the comment list
             axios.delete(`http://localhost:8080/videos/${this.props.match.params.id}/comments/${id}`)
             .then( () => {
-                axios.get(`http://localhost:8080/videos/${this.props.match.params.id}`)
-				.then(mainVideo => this.setState({mainVideo: mainVideo.data}))
-				.catch(console.error)
+				this.getMainVideo(this.props.match.params.id)
+
             })
             .catch(error => console.error(error));
         }
@@ -120,9 +112,8 @@ class Home extends Component {
 			// similar to post instead the comment matching the provided id will be removed from the comment list
             axios.put(`http://localhost:8080/videos/${defaultVideoId}/comments/${id}/likes`)
             .then( () => {
-                axios.get(`http://localhost:8080/videos/${defaultVideoId}`)
-				.then(mainVideo => this.setState({mainVideo: mainVideo.data}))
-				.catch(console.error)	
+				this.getMainVideo(defaultVideoId)
+
             })
             .catch(error => console.error(error));
         } else {
@@ -131,8 +122,8 @@ class Home extends Component {
             axios.put(`http://localhost:8080/videos/${this.props.match.params.id}/comments/${id}/likes`)
             .then( () => {
                 axios.get(`http://localhost:8080/videos/${this.props.match.params.id}`)
-				.then(mainVideo => this.setState({mainVideo: mainVideo.data}))
-				.catch(console.error)
+                this.getMainVideo(this.props.match.params.id)
+				
             })
             .catch(error => console.error(error));
         }
