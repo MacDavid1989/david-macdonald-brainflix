@@ -4,7 +4,9 @@ const router = express.Router();
 const videoListFile = './videoList.json';
 const mainVideosFile = './mainVideos.json';
 const createId = require('uniqid');
+const commentIdRoute = require('./commentIdRoute')
 
+router.use('/:commentId', (req, res, next) => {req.comment = {videoId: req.videoInfo.videoId, commentId: req.params.commentId}; next()}, commentIdRoute)
 
 router.post('/', (req, res) => {
     const newComment = {
@@ -24,34 +26,6 @@ router.post('/', (req, res) => {
     fs.writeFile('mainVideos.json', JSON.stringify([...parsedData]), (err) => console.log(err))
 
     res.json(newComment);
-})
-
-router.delete('/:commentId', (req, res) => {
-    const data = fs.readFileSync(mainVideosFile)
-    const parsedData = JSON.parse(data)
-
-    const index = parsedData.find(video => video.id === req.videoInfo.videoId).comments.indexOf(
-        parsedData.find(video => video.id === req.videoInfo.videoId).comments
-        .find(comment => comment.id === req.params.commentId)
-    )
-
-    console.log(index)
-
-    const deletedComment = parsedData.find(video => video.id === req.videoInfo.videoId).comments.splice(index,1)
-
-    fs.writeFile('mainVideos.json', JSON.stringify([...parsedData]), (err) => console.log(err))
-
-    return res.json(deletedComment);
-})
-
-router.put('/:commentId/likes', (req, res) => {
-    mainVideos.find(video => video.id === req.params.videoId).comments
-    .find(comment => comment.id === req.params.commentId).likes++
-
-    // fs.writeFile('mainVideos.json', JSON.stringify([...mainVideos]), (err) => console.log(err))
-
-    res.send(JSON.stringify(mainVideos.find(video => video.id === req.params.videoId).comments
-    .find(comment => comment.id === req.params.commentId)));
 })
 
 module.exports = router
