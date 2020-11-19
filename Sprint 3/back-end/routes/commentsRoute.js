@@ -27,20 +27,21 @@ router.post('/', (req, res) => {
 })
 
 router.delete('/:commentId', (req, res) => {
-    const index = mainVideos.find(video => video.id === req.params.videoId).comments.indexOf(
-        mainVideos.find(video => video.id === req.params.videoId).comments
+    const data = fs.readFileSync(mainVideosFile)
+    const parsedData = JSON.parse(data)
+
+    const index = parsedData.find(video => video.id === req.videoInfo.videoId).comments.indexOf(
+        parsedData.find(video => video.id === req.videoInfo.videoId).comments
         .find(comment => comment.id === req.params.commentId)
     )
 
-    if(index >= 0){
-        const deletedComment = mainVideos.find(video => video.id === req.params.videoId).comments.splice(index,1)
+    console.log(index)
 
-        // fs.writeFile('mainVideos.json', JSON.stringify([...mainVideos]), (err) => console.log(err))
+    const deletedComment = parsedData.find(video => video.id === req.videoInfo.videoId).comments.splice(index,1)
 
-        return res.send(JSON.stringify(deletedComment));
-    } else {
-        return res.status(404).send(`Comment with an id of ${req.params.commentId} was not found`);
-    }
+    fs.writeFile('mainVideos.json', JSON.stringify([...parsedData]), (err) => console.log(err))
+
+    return res.json(deletedComment);
 })
 
 router.put('/:commentId/likes', (req, res) => {
