@@ -54,6 +54,7 @@
         .likes {
             @include flex-control(flex,initial,initial,center,initial,initial);
             margin: 0 0 0 2.4rem;
+            cursor: pointer;
 
             &__icon {
                 margin: 0 0 0.3rem;
