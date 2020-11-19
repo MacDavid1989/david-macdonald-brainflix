@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
         "id": createId(),
         "title": req.body.title,
         "channel": "This Guy",
-        "image": "http://localhost:8080/images/upload-video-preview.jpg",
+        "image": req.body.image,
         "description": req.body.description,
         "views": 0,
         "likes": 0,

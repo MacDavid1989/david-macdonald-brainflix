@@ -10,7 +10,7 @@ function Upload(props) {
         // prevents page refresh after submission
         e.preventDefault();
         const header = {'Content-Type': 'application/json'};
-        const newVideo = {title: form.titleInput.value, description: form.descriptionInput.value};
+        const newVideo = {title: form.titleInput.value, description: form.descriptionInput.value, image: "http://localhost:8080/images/upload-video-preview.jpg"};
         // post request to add a newComment object to the default video comments array
         axios.post(`http://localhost:8080/videos/`, newVideo, header)
         .then(() => {
