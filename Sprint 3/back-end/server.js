@@ -3,13 +3,13 @@ const app = express();
 const cors = require('cors');
 const videosRoute = require('./routes/videosRoute')
 
+require('dotenv').config();
+const port = process.env.PORT
+
 app.use(cors())
 app.use(express.json())
-require('dotenv').config();
-
+app.use(express.static('public'));
 app.use('/videos', videosRoute)
-
-const port = process.env.PORT
 
 app.listen(port, () => {
     console.log(`Server Started on http://localhost:${port}`);
