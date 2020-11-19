@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
         "views": 0,
         "likes": 0,
         "duration": "0:20",
-        "video": "https://project-2-api.herokuapp.com/stream?api_key=b7ee58b2-ad0f-4818-b9ff-f808ade2133d",
+        "video": "http://localhost:8080/video/brainstation-sample-video.mp4",
         "timestamp": Date.now(),
         "comments": []
     }

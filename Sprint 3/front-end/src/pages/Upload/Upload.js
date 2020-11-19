@@ -3,6 +3,8 @@ import axios from 'axios';
 import './Upload.scss';
 import uploadImage from '../../assets/images/upload-video-preview.jpg'
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 // Upload page component
 function Upload(props) {
     // upload handler function called when form is submitted
@@ -12,7 +14,7 @@ function Upload(props) {
         const header = {'Content-Type': 'application/json'};
         const newVideo = {title: form.titleInput.value, description: form.descriptionInput.value, image: "http://localhost:8080/images/upload-video-preview.jpg"};
         // post request to add a newComment object to the default video comments array
-        axios.post(`http://localhost:8080/videos/`, newVideo, header)
+        axios.post(`${API_URL}/videos/`, newVideo, header)
         .then(() => {
             // resets form fields
             form.reset();

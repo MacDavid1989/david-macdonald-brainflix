@@ -8,7 +8,6 @@ router.put('/', (req, res) => {
     const parsedData = JSON.parse(data)
 
     if(req.comment===undefined){
-        console.log()
         parsedData.find(video => video.id === req.videoInfo.videoId).likes++
 
         fs.writeFile('./data/mainVideos.json', JSON.stringify([...parsedData]), (err) => console.log('this is the error :', err))

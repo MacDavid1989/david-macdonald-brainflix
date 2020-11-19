@@ -4,8 +4,11 @@ import {defaultVideoId} from '../../utils/defaultVideoId'
 import VideoBody from '../../components/VideoBody/VideoBody';
 import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 // Home class component which holds state for the project and utilizes lifecycle methods
 class Home extends Component {
+	
 	// Default state which will be updated to hold the main video and an array of all remaining videos
 	state = {
 		mainVideo: null,
@@ -15,12 +18,12 @@ class Home extends Component {
 	// function which when called makes a get request to the server for the video matching the id passed as an argument
 	getVideos = (id) => {
 		// get request for default video utilizing default video id
-		axios.get(`http://localhost:8080/videos/${id}`)
+		axios.get(`${API_URL}/videos/${id}`)
 		// after successful response, changes state to hold default video matching default id
 		.then(mainVideo => {
 			this.setState({mainVideo: mainVideo.data});
 			// get request for video list
-			axios.get(`http://localhost:8080/videos`)
+			axios.get(`${API_URL}/videos`)
 			// after successful response, changes state to hold a video list with all videos that do not match the default video id
 			.then(videoList => this.setState({videoList: videoList.data.filter(video => video.id !== id)}))
 			.catch(console.error);
@@ -51,7 +54,7 @@ class Home extends Component {
 	};
 
 	getMainVideo = (id) => {
-		axios.get(`http://localhost:8080/videos/${id}`)
+		axios.get(`${API_URL}/videos/${id}`)
 		.then(mainVideo => this.setState({mainVideo: mainVideo.data}))
 		.catch(console.error);	
 	};
@@ -61,7 +64,7 @@ class Home extends Component {
 		// check if the current route is the home page 
 		if(this.props.match.url === '/'){
 			// post request to add a newComment object to the default video comments array
-            axios.post(`http://localhost:8080/videos/${defaultVideoId}/comments`, newComment, header)
+            axios.post(`${API_URL}/videos/${defaultVideoId}/comments`, newComment, header)
             .then( () => {
 				// after a successful post a get request is made for the default video and state is changed  
                 this.getMainVideo(defaultVideoId);
@@ -69,7 +72,7 @@ class Home extends Component {
             .catch(error => console.error(error));
         } else {
 			// post request to add a newComment object to the comments array of the video with id matching the id key of the params object
-            axios.post(`http://localhost:8080/videos/${this.props.match.params.id}/comments`, newComment, header)
+            axios.post(`${API_URL}/videos/${this.props.match.params.id}/comments`, newComment, header)
             .then( () => {
 				// after a successful post a get request is made for the video with that same id and state is changed  
                 this.getMainVideo(this.props.match.params.id);
@@ -83,14 +86,14 @@ class Home extends Component {
 		// check if the current route is the home page 
 		if(this.props.match.url === '/'){
 			// similar to post instead the comment matching the provided id will be removed from the comment list
-            axios.delete(`http://localhost:8080/videos/${defaultVideoId}/comments/${id}`)
+            axios.delete(`${API_URL}/videos/${defaultVideoId}/comments/${id}`)
             .then( () => {
 				this.getMainVideo(defaultVideoId);
             })
             .catch(error => console.error(error));
         } else {
 			// similar to post instead the comment matching the provided id will be removed from the comment list
-            axios.delete(`http://localhost:8080/videos/${this.props.match.params.id}/comments/${id}`)
+            axios.delete(`${API_URL}/videos/${this.props.match.params.id}/comments/${id}`)
             .then( () => {
 				this.getMainVideo(this.props.match.params.id);
             })
@@ -103,14 +106,14 @@ class Home extends Component {
 		// check if the current route is the home page 
 		if(this.props.match.url === '/'){
 			// similar to post instead the comment matching the provided id will be removed from the comment list
-            axios.put(`http://localhost:8080/videos/${defaultVideoId}/comments/${id}/likes`)
+            axios.put(`${API_URL}/videos/${defaultVideoId}/comments/${id}/likes`)
             .then( () => {
 				this.getMainVideo(defaultVideoId)
             })
             .catch(error => console.error(error));
         } else {
 			// similar to post instead the comment matching the provided id will be removed from the comment list
-            axios.put(`http://localhost:8080/videos/${this.props.match.params.id}/comments/${id}/likes`)
+            axios.put(`${API_URL}/videos/${this.props.match.params.id}/comments/${id}/likes`)
             .then( () => {
 				this.getMainVideo(this.props.match.params.id);	
             })
@@ -123,14 +126,14 @@ class Home extends Component {
 		// check if the current route is the home page 
 		if(this.props.match.url === '/'){
 			// similar to post instead the comment matching the provided id will be removed from the comment list
-            axios.put(`http://localhost:8080/videos/${defaultVideoId}/likes`)
+            axios.put(`${API_URL}/videos/${defaultVideoId}/likes`)
             .then( () => {
 				this.getMainVideo(defaultVideoId)
             })
             .catch(error => console.error(error));
         } else {
 			// similar to post instead the comment matching the provided id will be removed from the comment list
-            axios.put(`http://localhost:8080/videos/${this.props.match.params.id}/likes`)
+            axios.put(`${API_URL}/videos/${this.props.match.params.id}/likes`)
             .then( () => {
 				this.getMainVideo(this.props.match.params.id);	
             })

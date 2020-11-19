@@ -9,7 +9,7 @@ router.use('/:commentId', (req, res, next) => {req.comment = {videoId: req.video
 
 router.post('/', (req, res) => {
     const newComment = {
-        "name": "This guy",
+        "name": req.body.name,
         "comment": req.body.comment,
         "likes" : 0,
         "id": createId(),
