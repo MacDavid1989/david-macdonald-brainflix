@@ -6,7 +6,7 @@ const videoIdRoute = require('./videoIdRoute')
 const videoListFile = './data/videoList.json';
 const mainVideosFile = './data/mainVideos.json';
 
-// :videoId route with a new req property declared which allows route methods to access those values
+// :videoId route with a new req property declared which allows the specified route to access those values
 router.use('/:videoId', (req, res, next) => {req.videoInfo = {videoId: req.params.videoId}; next()}, videoIdRoute)
 // GET /videos/
 router.get('/', (req, res) => {
