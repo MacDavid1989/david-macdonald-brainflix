@@ -4,6 +4,9 @@ const router = express.Router();
 const videoListFile = './videoList.json';
 const mainVideosFile = './mainVideos.json';
 const createId = require('uniqid');
+const videoIdRoute = require('./videoIdRoute')
+
+router.use('/:videoId', (req, res, next) => {req.videoInfo = {videoId: req.params.videoId}; next()},videoIdRoute)
 
 router.get('/', (req, res) => {
     const data = fs.readFileSync(videoListFile)
@@ -38,27 +41,27 @@ router.post('/', (req, res) => {
     const videoList = fs.readFileSync(videoListFile)
     const parsedVideoList = JSON.parse(videoList)
 
-    fs.writeFile('videoList.json', JSON.stringify([...parsedVideoList, newVideoThumb]), (err) => console.log(err))
+    // fs.writeFile('videoList.json', JSON.stringify([...parsedVideoList, newVideoThumb]), (err) => console.log(err))
     
-    fs.writeFile('mainVideos.json', JSON.stringify([...parsedMainVideo, newVideo]), (err) => console.log(err))
+    // fs.writeFile('mainVideos.json', JSON.stringify([...parsedMainVideo, newVideo]), (err) => console.log(err))
     
     res.json(newVideo);
 });
 
-router.get('/:videoId', (req, res) => {
-    const data = fs.readFileSync(mainVideosFile)
-    const parsedData = JSON.parse(data)
-    const mainVideo = parsedData.find(video => video.id === req.params.videoId)
-    res.json(mainVideo);
-})
+// router.get('/:videoId', (req, res) => {
+//     const data = fs.readFileSync(mainVideosFile)
+//     const parsedData = JSON.parse(data)
+//     const mainVideo = parsedData.find(video => video.id === req.params.videoId)
+//     res.json(mainVideo);
+// })
 
-router.put('/:videoId/likes', (req, res) => {
-    mainVideos.find(video => video.id === req.params.videoId).likes++
+// router.put('/:videoId/likes', (req, res) => {
+//     mainVideos.find(video => video.id === req.params.videoId).likes++
 
-    fs.writeFile('mainVideos.json', JSON.stringify([...mainVideos]), (err) => console.log(err))
+//     // fs.writeFile('mainVideos.json', JSON.stringify([...mainVideos]), (err) => console.log(err))
 
-    res.send(JSON.stringify(mainVideos.find(video => video.id === req.params.videoId)));
-})
+//     res.send(JSON.stringify(mainVideos.find(video => video.id === req.params.videoId)));
+// })
 
 // router.post('/:videoId/comments', (req, res) => {
 //     console.log(req.body)

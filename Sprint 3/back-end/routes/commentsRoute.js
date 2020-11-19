@@ -6,7 +6,7 @@ const mainVideosFile = './mainVideos.json';
 const createId = require('uniqid');
 
 
-router.post('/:videoId/comments', (req, res) => {
+router.post('/', (req, res) => {
     const newComment = {
         "name": "This guy",
         "comment": req.body.comment,
@@ -15,14 +15,18 @@ router.post('/:videoId/comments', (req, res) => {
         "timestamp": Date.now()
     }
 
-    mainVideos.find(video => video.id === req.params.videoId).comments.unshift(newComment)
-    
-    fs.writeFile('mainVideos.json', JSON.stringify([...mainVideos]), (err) => console.log(err))
+    console.log(req.videoInfo, req.body)
 
-    res.send(JSON.stringify(newComment));
+    const data = fs.readFileSync(mainVideosFile)
+    const parsedData = JSON.parse(data)
+    parsedData.find(video => video.id === req.videoInfo.videoId).comments.unshift(newComment)
+    
+    fs.writeFile('mainVideos.json', JSON.stringify([...parsedData]), (err) => console.log(err))
+
+    res.json(newComment);
 })
 
-router.delete('/:videoId/comments/:commentId', (req, res) => {
+router.delete('/:commentId', (req, res) => {
     const index = mainVideos.find(video => video.id === req.params.videoId).comments.indexOf(
         mainVideos.find(video => video.id === req.params.videoId).comments
         .find(comment => comment.id === req.params.commentId)
@@ -31,7 +35,7 @@ router.delete('/:videoId/comments/:commentId', (req, res) => {
     if(index >= 0){
         const deletedComment = mainVideos.find(video => video.id === req.params.videoId).comments.splice(index,1)
 
-        fs.writeFile('mainVideos.json', JSON.stringify([...mainVideos]), (err) => console.log(err))
+        // fs.writeFile('mainVideos.json', JSON.stringify([...mainVideos]), (err) => console.log(err))
 
         return res.send(JSON.stringify(deletedComment));
     } else {
@@ -39,12 +43,14 @@ router.delete('/:videoId/comments/:commentId', (req, res) => {
     }
 })
 
-router.put('/:videoId/comments/:commentId/likes', (req, res) => {
+router.put('/:commentId/likes', (req, res) => {
     mainVideos.find(video => video.id === req.params.videoId).comments
     .find(comment => comment.id === req.params.commentId).likes++
 
-    fs.writeFile('mainVideos.json', JSON.stringify([...mainVideos]), (err) => console.log(err))
+    // fs.writeFile('mainVideos.json', JSON.stringify([...mainVideos]), (err) => console.log(err))
 
     res.send(JSON.stringify(mainVideos.find(video => video.id === req.params.videoId).comments
     .find(comment => comment.id === req.params.commentId)));
 })
+
+module.exports = router
