@@ -4,15 +4,15 @@ import mohan from '../../assets/images/mohan-muruge.jpg';
 import like from '../../assets/icons/svg/heart.svg';
 import pacman from '../../assets/icons/svg/pacman.svg'
 
-function Comment({comment, onDelete, onLike, convertTime}) {
+function Comment({comment, onDelete, onCommentLike, convertTime}) {
     // delete handler which calls the handler passed from Home component and passes it the comment id as an argument
     const handleCommentDelete = (id, onDelete) => {
         onDelete(id)
     };
     
     // like handler which calls the handler passed from Home component and passes it the comment id as an argument
-    const handleCommentLike = (id, onLike) => {
-        onLike(id)
+    const handleCommentLike = (id, onCommentLike) => {
+        onCommentLike(id)
     };
 
     return (
@@ -27,7 +27,7 @@ function Comment({comment, onDelete, onLike, convertTime}) {
                 </div>
                 <p className="card__comment-main">{comment.comment}</p>
                 <div className="card__buttons">
-                    <div className='like' onClick={(e)=> handleCommentLike(comment.id, onLike)}>
+                    <div className='like' onClick={(e)=> handleCommentLike(comment.id, onCommentLike)}>
                         <img className='like-image' src={like} alt="heart for like button"/>
                             {comment.likes}
                     </div>

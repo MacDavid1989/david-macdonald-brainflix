@@ -118,6 +118,26 @@ class Home extends Component {
         };
 	};
 
+	// called when the like button is clicked
+	handleVideoLike = () => {
+		// check if the current route is the home page 
+		if(this.props.match.url === '/'){
+			// similar to post instead the comment matching the provided id will be removed from the comment list
+            axios.put(`http://localhost:8080/videos/${defaultVideoId}/likes`)
+            .then( () => {
+				this.getMainVideo(defaultVideoId)
+            })
+            .catch(error => console.error(error));
+        } else {
+			// similar to post instead the comment matching the provided id will be removed from the comment list
+            axios.put(`http://localhost:8080/videos/${this.props.match.params.id}/likes`)
+            .then( () => {
+				this.getMainVideo(this.props.match.params.id);	
+            })
+            .catch(error => console.error(error));
+        };
+	};
+
 	render() {
 		return (
 			<>
@@ -131,7 +151,8 @@ class Home extends Component {
 					videoList={this.state.videoList} 
 					onComment={this.handleCommentSubmit} 
 					onDelete={this.handleCommentDelete}
-					onLike={this.handleCommentLike}
+					onCommentLike={this.handleCommentLike}
+					onVideoLike={this.handleVideoLike}
 				/>}
 			</>
 		);

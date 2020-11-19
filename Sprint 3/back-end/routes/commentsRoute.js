@@ -1,7 +1,6 @@
-const fs = require('fs')
 const express = require('express');
 const router = express.Router();
-const videoListFile = './videoList.json';
+const fs = require('fs')
 const mainVideosFile = './mainVideos.json';
 const createId = require('uniqid');
 const commentIdRoute = require('./commentIdRoute')
@@ -17,10 +16,9 @@ router.post('/', (req, res) => {
         "timestamp": Date.now()
     }
 
-    console.log(req.videoInfo, req.body)
-
     const data = fs.readFileSync(mainVideosFile)
     const parsedData = JSON.parse(data)
+
     parsedData.find(video => video.id === req.videoInfo.videoId).comments.unshift(newComment)
     
     fs.writeFile('mainVideos.json', JSON.stringify([...parsedData]), (err) => console.log(err))
