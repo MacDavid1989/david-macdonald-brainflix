@@ -1,3 +1,4 @@
+// default video data - full
 module.exports = [
     {
         "id": "1af0jruup5gu",
