@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs')
 const commentsRoute = require('./commentsRoute')
-const mainVideosFile = './mainVideos.json';
+const mainVideosFile = './data/mainVideos.json';
 const likesRoute = require('./likesRoute')
 
 router.use('/likes', likesRoute)

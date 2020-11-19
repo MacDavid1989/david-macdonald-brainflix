@@ -3,8 +3,8 @@ const router = express.Router();
 const fs = require('fs')
 const createId = require('uniqid');
 const videoIdRoute = require('./videoIdRoute')
-const videoListFile = './videoList.json';
-const mainVideosFile = './mainVideos.json';
+const videoListFile = './data/videoList.json';
+const mainVideosFile = './data/mainVideos.json';
 
 router.use('/:videoId', (req, res, next) => {req.videoInfo = {videoId: req.params.videoId}; next()},videoIdRoute)
 
@@ -39,12 +39,12 @@ router.post('/', (req, res) => {
     const mainVideo = fs.readFileSync(mainVideosFile)
     const parsedMainVideo = JSON.parse(mainVideo)
 
-    fs.writeFile('mainVideos.json', JSON.stringify([...parsedMainVideo, newVideo]), (err) => console.log(err))
+    fs.writeFile('./data/mainVideos.json', JSON.stringify([...parsedMainVideo, newVideo]), (err) => console.log(err))
 
     const videoList = fs.readFileSync(videoListFile)
     const parsedVideoList = JSON.parse(videoList)
 
-    fs.writeFile('videoList.json', JSON.stringify([...parsedVideoList, newVideoThumb]), (err) => console.log(err))
+    fs.writeFile('./data/videoList.json', JSON.stringify([...parsedVideoList, newVideoThumb]), (err) => console.log(err))
     
     res.json(newVideo);
 });

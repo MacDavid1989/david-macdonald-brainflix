@@ -1,9 +1,7 @@
 const fs = require('fs')
 const express = require('express');
 const router = express.Router();
-const videoListFile = './videoList.json';
-const mainVideosFile = './mainVideos.json';
-const createId = require('uniqid');
+const mainVideosFile = './data/mainVideos.json';
 const likesRoute = require('./likesRoute')
 
 router.use('/likes', likesRoute)
@@ -21,7 +19,7 @@ router.delete('/', (req, res) => {
 
     const deletedComment = parsedData.find(video => video.id === req.comment.videoId).comments.splice(index,1)
 
-    fs.writeFile('mainVideos.json', JSON.stringify([...parsedData]), (err) => console.log(err))
+    fs.writeFile('./data/mainVideos.json', JSON.stringify([...parsedData]), (err) => console.log(err))
 
     return res.json(deletedComment);
 })

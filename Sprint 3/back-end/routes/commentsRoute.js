@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs')
-const mainVideosFile = './mainVideos.json';
+const mainVideosFile = './data/mainVideos.json';
 const createId = require('uniqid');
 const commentIdRoute = require('./commentIdRoute')
 
@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
 
     parsedData.find(video => video.id === req.videoInfo.videoId).comments.unshift(newComment)
     
-    fs.writeFile('mainVideos.json', JSON.stringify([...parsedData]), (err) => console.log(err))
+    fs.writeFile('./data/mainVideos.json', JSON.stringify([...parsedData]), (err) => console.log(err))
 
     res.json(newComment);
 })
