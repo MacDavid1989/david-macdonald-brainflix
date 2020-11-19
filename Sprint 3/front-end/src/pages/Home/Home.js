@@ -35,9 +35,9 @@ class Home extends Component {
 	componentDidMount() {
 		// check in place to see if the current route is the home path 
 		if(this.props.match.url === '/'){
-			this.getVideos(defaultVideoId);
+			this.intervalId = setInterval(()=>this.getVideos(defaultVideoId), 1000);
 		} else {
-			this.getVideos(this.props.match.params.id);
+			this.intervalId = setInterval(()=>this.getVideos(this.props.match.params.id), 1000);
 		};
 	};
 
@@ -45,13 +45,20 @@ class Home extends Component {
 	componentDidUpdate(prevProps) {
 		// check in place to see if there was a change in the url id and that the current id is not undefined
 		if(this.props.match.params.id !== prevProps.match.params.id && this.props.match.params.id !== undefined){
-			this.getVideos(this.props.match.params.id);
+			clearInterval(this.intervalId)
+			this.intervalId = setInterval(()=>this.getVideos(this.props.match.params.id), 1000);
 		}
 		// alternate condition to check that the id key is undefined which is the case for the home page route
 		else if(this.props.match.params.id !== prevProps.match.params.id && this.props.match.params.id === undefined){
-			this.getVideos(defaultVideoId);	
+			clearInterval(this.intervalId)
+			this.intervalId = setInterval(()=>this.getVideos(defaultVideoId), 1000);
 		};
 	};
+
+	// lifecycle method called before un-mounting to clear the setInterval used to re-render data for updates (ie fresh uploads or comments times will be relayed in real time)
+	componentWillUnmount() {
+		clearInterval(this.intervalId)
+	}
 
 	getMainVideo = (id) => {
 		axios.get(`${API_URL}/videos/${id}`)
