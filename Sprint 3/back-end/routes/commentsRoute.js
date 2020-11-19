@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
     // overwrite mainVideos.json to update with the new comment
     fs.writeFile('./data/mainVideos.json', JSON.stringify([...parsedData]), (err) => console.log(err))
 
-    res.json(newComment);
+    res.status(201).json(newComment);
 })
 
 module.exports = router

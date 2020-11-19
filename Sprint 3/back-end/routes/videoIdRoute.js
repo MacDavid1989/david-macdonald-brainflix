@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
     // sets the variable to the video returned from the find method using the id passed in the newly created videoInfo property in the videos route
     const mainVideo = parsedData.find(video => video.id === req.videoInfo.videoId)
     
-    res.json(mainVideo);
+    res.status(200).json(mainVideo);
 })
 
 module.exports = router

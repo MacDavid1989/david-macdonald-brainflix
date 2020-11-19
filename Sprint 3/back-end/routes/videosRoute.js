@@ -12,7 +12,7 @@ router.use('/:videoId', (req, res, next) => {req.videoInfo = {videoId: req.param
 router.get('/', (req, res) => {
     const videoList = fs.readFileSync(videoListFile)
     const parsedVideoList = JSON.parse(videoList)
-    res.json(parsedVideoList);
+    res.status(200).json(parsedVideoList);
 })
 // POST /videos/
 router.post('/', (req, res) => {
@@ -48,7 +48,7 @@ router.post('/', (req, res) => {
     // overwrite videoList.json to update with newVideoThumb object
     fs.writeFile('./data/videoList.json', JSON.stringify([...parsedVideoList, newVideoThumb]), (err) => console.log(err))
     
-    res.json(newVideo);
+    res.status(201).json(newVideo);
 });
 
 module.exports = router

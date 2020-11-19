@@ -18,7 +18,7 @@ router.delete('/', (req, res) => {
     // overwrite mainVideos.json to update with the comment removed
     fs.writeFile('./data/mainVideos.json', JSON.stringify([...parsedData]), (err) => console.log(err))
 
-    return res.json(deletedComment);
+    return res.status(200).json(deletedComment);
 })
 
 

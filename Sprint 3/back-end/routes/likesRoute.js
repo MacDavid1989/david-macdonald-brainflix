@@ -13,7 +13,7 @@ router.put('/', (req, res) => {
         // overwrite mainVideos.json to update with the video like
         fs.writeFile('./data/mainVideos.json', JSON.stringify([...parsedData]), (err) => console.log('this is the error :', err))
 
-        return res.send('Video like updated')
+        return res.status(200).send('Video like updated')
     }
     else {
         // only one other condition exists in which case if the above is not met the following code will run
@@ -23,7 +23,7 @@ router.put('/', (req, res) => {
         // overwrite mainVideos.json to update with the comment like
         fs.writeFile('./data/mainVideos.json', JSON.stringify([...parsedData]), (err) => console.log('this is the error :', err))
 
-        return res.send('Comment like updated')
+        return res.status(200).send('Comment like updated')
     }
 })
 
