@@ -6,15 +6,17 @@ const videoIdRoute = require('./videoIdRoute')
 const videoListFile = './data/videoList.json';
 const mainVideosFile = './data/mainVideos.json';
 
-router.use('/:videoId', (req, res, next) => {req.videoInfo = {videoId: req.params.videoId}; next()},videoIdRoute)
-
+// :videoId route with a new req property declared which allows route methods to access those values
+router.use('/:videoId', (req, res, next) => {req.videoInfo = {videoId: req.params.videoId}; next()}, videoIdRoute)
+// GET /videos/
 router.get('/', (req, res) => {
     const videoList = fs.readFileSync(videoListFile)
     const parsedVideoList = JSON.parse(videoList)
     res.json(parsedVideoList);
 })
-
+// POST /videos/
 router.post('/', (req, res) => {
+    // create new video object with full details to add to main videos list
     const newVideo = {
         "id": createId(),
         "title": req.body.title,
@@ -28,7 +30,7 @@ router.post('/', (req, res) => {
         "timestamp": Date.now(),
         "comments": []
     }
-
+    // create new video thumb for video list
     const newVideoThumb = {
         "id": newVideo.id,
         "title": newVideo.title,
@@ -38,12 +40,12 @@ router.post('/', (req, res) => {
 
     const mainVideo = fs.readFileSync(mainVideosFile)
     const parsedMainVideo = JSON.parse(mainVideo)
-
+    // overwrite mainVideos.json to update with newVideo object
     fs.writeFile('./data/mainVideos.json', JSON.stringify([...parsedMainVideo, newVideo]), (err) => console.log(err))
 
     const videoList = fs.readFileSync(videoListFile)
     const parsedVideoList = JSON.parse(videoList)
-
+    // overwrite videoList.json to update with newVideoThumb object
     fs.writeFile('./data/videoList.json', JSON.stringify([...parsedVideoList, newVideoThumb]), (err) => console.log(err))
     
     res.json(newVideo);
