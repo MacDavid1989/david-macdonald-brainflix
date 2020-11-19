@@ -17,7 +17,9 @@ router.put('/', (req, res) => {
     }
     else {
         // only one other condition exists in which case if the above is not met the following code will run
-        parsedData.find(video => video.id === req.comment.videoId).comments.find(comment => comment.id === req.comment.commentId).likes++
+        const commentsArray = parsedData.find(video => video.id === req.comment.videoId).comments
+        // increments the likes of the comment matching the commentId
+        commentsArray.find(comment => comment.id === req.comment.commentId).likes++
         // overwrite mainVideos.json to update with the comment like
         fs.writeFile('./data/mainVideos.json', JSON.stringify([...parsedData]), (err) => console.log('this is the error :', err))
 
