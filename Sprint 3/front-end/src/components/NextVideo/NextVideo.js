@@ -5,8 +5,7 @@ import {Link} from 'react-router-dom'
 function NextVideo({video}) {
     return (
         <>
-            {/* creats a video thumbnail wrapped in a route link to direct 
-            the browser to the route with a path matching the video id */}
+            {/* creats a video thumbnail wrapped in a route link to direct the browser to the route with a path matching the video id */}
             <Link to={`/${video.id}`} className="next-video__card" id={video.id} key={video.id}>
                     <img className="card__image-next" src={video.image} alt="next video thumbnail"/>
                     <div className="card__info-next">
@@ -15,7 +14,7 @@ function NextVideo({video}) {
                     </div>
             </Link>
         </>
-    )
+    );
 };
 
 export default NextVideo;

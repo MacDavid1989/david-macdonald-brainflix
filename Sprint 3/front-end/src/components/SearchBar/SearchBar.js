@@ -5,7 +5,7 @@ import upload from '../../assets/icons/svg/icon-upload.svg';
 import mohan from '../../assets/images/mohan-muruge.jpg';
 
 // SearchBar component
-function SearchBar(props) {
+function SearchBar() {
     return (
         <section className="search-bar">
             {/* Router link to act as anchor tag and link logo to Home component via the specified path */}
@@ -28,7 +28,7 @@ function SearchBar(props) {
                 </div>
             </div>
         </section>
-    )
+    );
 };
 
 export default SearchBar;

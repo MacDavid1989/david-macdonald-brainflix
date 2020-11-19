@@ -4,18 +4,12 @@ import Comment from '../Comment/Comment';
 
 // component wrapper for new comment form and comments associated with current main video found in state
 function VideoComments({comments, onComment, onDelete, onLike, convertTime}) {
-
-    // form handler called when form new comment is submitted
+    // form handler which invokes the comment handler passed through props and passes the header and newComment objects as arguments
     const handleCommentSubmit = (e, form, onComment) => {
-        // prevents page refresh
         e.preventDefault()
-        // sets header object for axios request
         const header = {'Content-Type': 'application/json'};
-        // sets newComment object with user name and comment which will be passed in axios request
         const newComment = {name: 'This Guy', comment: form.commentsInput.value}
-        // calls function passed through props from Home and provides header and newComment objects as arguments
         onComment(header,newComment)
-        // reset form input field
         form.reset()
     };
 
@@ -40,19 +34,18 @@ function VideoComments({comments, onComment, onDelete, onLike, convertTime}) {
                         </button>
                 </form>
             </div>
-            {/* sorts comments array in reverse chronological order by comparing timestamps, 
-            then maps the array to render a comment component for each object in the array */}
-            {comments.sort((a, b) => (a.timestamp > b.timestamp) ? -1 : 1).map((comment) => 
-                <Comment
-                    key={comment.id} 
-                    comment={comment} 
-                    onDelete={onDelete}
-                    onLike={onLike}
-                    convertTime={convertTime}
-                />
-            )}
+        {/* sorts comments array in reverse chronological order by comparing timestamps, then maps the array to render a comment component for each object in the array */}
+        {comments.sort((a, b) => (a.timestamp > b.timestamp) ? -1 : 1).map((comment) => 
+            <Comment
+                key={comment.id} 
+                comment={comment} 
+                onDelete={onDelete}
+                onLike={onLike}
+                convertTime={convertTime}
+            />
+        )}
         </section>
-    )
+    );
 };
 
 export default VideoComments;

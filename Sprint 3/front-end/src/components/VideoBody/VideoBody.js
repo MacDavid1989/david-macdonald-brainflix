@@ -4,7 +4,6 @@ import Aside from '../Aside/Aside';
 
 // wrapper component for components mounted beneath video player
 function VideoBody({mainVideo, videoList, onComment, onDelete, onLike}) {
-    
     return (
         <div className="video__body">
             <Main
@@ -15,7 +14,7 @@ function VideoBody({mainVideo, videoList, onComment, onDelete, onLike}) {
             />
 			<Aside videoList={videoList}/>
         </div>
-    )
+    );
 };
 
 export default VideoBody;

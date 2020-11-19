@@ -43,7 +43,7 @@ function VideoPlayer({mainVideo}) {
                 </div>
             </section>
         </header>
-    )
+    );
 };
 
 export default VideoPlayer;

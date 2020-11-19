@@ -3,7 +3,6 @@ import likes from '../../assets/icons/svg/icon-likes.svg';
 import views from '../../assets/icons/svg/icon-views.svg';
 
 function Article({mainVideo, convertTime}) {
-
     return (
         // wrapper for all information associated with current main video stored in state
         <article className="video-article">
@@ -29,7 +28,7 @@ function Article({mainVideo, convertTime}) {
             </div>
             <p className="video-article__description">{mainVideo.description}</p>
         </article>
-    )
+    );
 };
 
 export default Article;

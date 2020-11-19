@@ -1,23 +1,19 @@
-import './Upload.scss';
 import React from 'react';
 import axios from 'axios';
+import './Upload.scss';
 import uploadImage from '../../assets/images/upload-video-preview.jpg'
 
 // Upload page component
 function Upload(props) {
-
     // upload handler function called when form is submitted
 	const handleUploadSubmit = (e, form) => {
         // prevents page refresh after submission
         e.preventDefault();
-
         const header = {'Content-Type': 'application/json'};
-
-        const newVideo = {title: form.titleInput.value, description: form.descriptionInput.value}
-        
+        const newVideo = {title: form.titleInput.value, description: form.descriptionInput.value};
         // post request to add a newComment object to the default video comments array
         axios.post(`http://localhost:8080/videos/`, newVideo, header)
-        .then(()=>{
+        .then(() => {
             // resets form fields
             form.reset();
             // provides browser alert to inform user of successful submission
@@ -25,7 +21,10 @@ function Upload(props) {
             // pushes a new entry onto the history stack causing the browser to direct to the route with the specified path
             props.history.push('/')
         })
-        .catch(error => console.error(error));
+        .catch(error => {
+            alert('Video Upload Unsuccessful')
+            console.error(error)
+        });
 	};
     
     return (
@@ -61,6 +60,6 @@ function Upload(props) {
             </form>
         </div>
     );
-}
+};
 
 export default Upload;
