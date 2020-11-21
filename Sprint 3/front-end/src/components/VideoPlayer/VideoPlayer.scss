@@ -43,6 +43,7 @@
             margin: 0 0 0 calc(0rem + (8 / 448) * (100vw - 32rem));
             width: 5rem;
             cursor: pointer;
+            outline: none;
 
             .hidden {
                 display: none;
@@ -89,6 +90,7 @@
                 background-color: $color-player-btn;
                 width: 50%;
                 cursor: pointer;
+                outline: none;
             }
 
             .volume {
@@ -96,6 +98,7 @@
                 background-color: $color-player-btn;
                 width: 50%;
                 cursor: pointer;
+                outline: none;
             }
         }
     }
