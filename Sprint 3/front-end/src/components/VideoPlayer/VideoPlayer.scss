@@ -15,6 +15,7 @@
     width: 100%;
     height: calc(18.3rem + (217 / 448) * (100vw - 32rem));
     background-color: $color-player-background;
+    z-index: 1;
 
     &_container {
         @include flex-control(flex,column,initial,center,initial,initial);
@@ -37,6 +38,7 @@
         width: 100%;
         height: 3.2rem;
         cursor: pointer;
+        z-index: 2;
 
         .play {
             @include player-control-style;
@@ -55,10 +57,10 @@
             position: relative;
             margin: 0 calc(0.8rem + (8 / 448) * (100vw - 32rem));
             width: calc(14rem + (380 / 448) * (100vw - 32rem));
+            
 
             &__bar {
                 position: relative;
-                pointer-events: none;
                 appearance: none;
                 padding: 0 1.6rem;
                 width: 100%;
@@ -78,12 +80,11 @@
             }
 
             .seek {
-                // position: absolute;
+                position: absolute;
                 appearance: none;
-                padding: 0 1.6rem;
                 width: calc(100% - 4.8rem - 5.5313rem);
                 height: 0.4rem;
-                // background-color: $color-progress-bar;
+                background-color: transparent;
                 border-radius: 0.4rem;
                 z-index: 1;
                 left: 1.6rem;
@@ -101,6 +102,7 @@
             margin: 0 calc(0rem + (8 / 448) * (100vw - 32rem)) 0 0;
             padding: 0 0.8rem;
             width: 8.2rem;
+            position: relative;
 
             .fullscreen {
                 @include player-control-style;
@@ -116,8 +118,28 @@
                 width: 50%;
                 cursor: pointer;
                 outline: none;
+
+                &__slide{
+                    position: absolute;
+                    appearance: none;
+                    transform: rotate(-90deg);
+                    background-color: $color-progress-bar;
+                    width: 10rem;
+                    height: 0.4rem;
+                    border-radius: 0.4rem;
+                    z-index: 2;
+                    bottom: 8rem;
+                    right: -2.4rem;
+                    outline: none;
+                }
             }
+
+            // .hidden {
+            //     display: none;
+            // }
         }
+
+        
     }
 
     // tablet breakpoint

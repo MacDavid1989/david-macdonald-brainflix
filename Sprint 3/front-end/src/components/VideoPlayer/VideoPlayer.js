@@ -21,6 +21,19 @@ class VideoPlayer extends Component {
         this.videoContainer = React.createRef();
         this.player = React.createRef();
         this.volume = React.createRef();
+        this.slide = React.createRef();
+    }
+
+    componentDidUpdate(prevProps) {
+        if(this.props.params.id !== prevProps.params.id){
+            this.video.current.load()
+            const playbackPlay = this.playbackPlay.current;
+            const playbackPause = this.playbackPause.current;
+            if(playbackPlay.classList.value === 'play__icon hidden'){
+            playbackPlay.classList.toggle('hidden')
+            playbackPause.classList.toggle('hidden')
+            }
+        }    
     }
 
     togglePlay = () => {
@@ -81,24 +94,25 @@ class VideoPlayer extends Component {
         }
     }
 
-    // updateVolume = () => {
-    //     const video = this.video.current
-    //     if (video.muted) {
-    //       video.muted = false;
-    //     }
-    //     video.muted = true;
-    // }
+    updateVolume = () => {
+        const video = this.video.current
+        if (video.muted) {
+          video.muted = false;
+        }
+        video.volume = this.slide.current.value;
+
+    }
 
     toggleMute = () => {
         const video = this.video.current
         video.muted = !video.muted;
       
-        // if (video.muted) {
-        //   volume.setAttribute('data-volume', volume.value);
-        //   volume.value = 0;
-        // } else {
-        //   volume.value = volume.dataset.volume;
-        // }
+        if (video.muted) {
+            this.slide.current.setAttribute('data-volume', volume.value);
+            this.slide.current.value = 0;
+        } else {
+            this.slide.current.value = this.slide.current.dataset.volume;
+        }
     }
 
     skipAhead = () => {
@@ -106,7 +120,12 @@ class VideoPlayer extends Component {
         this.video.current.currentTime = skipTo;
         this.progress.current.value = skipTo;
         this.seek.current.value = skipTo;
-      }
+    }
+
+    toggleSlide = () => {
+        console.log('hey')
+        this.slide.current.classList.toggle('hidden')
+    }
 
     render() {
         return (
@@ -116,7 +135,7 @@ class VideoPlayer extends Component {
                 <section  className="player">
                     <div  ref={this.videoContainer}  className="player_container">
                         {/* video source and text if unsupported */}
-                        <video onLoadedMetadata={this.initializedVideo} onTimeUpdate={()=>{this.updateTimeElapsed(); this.updateProgress()}} ref={this.video} className="video" id="video" preload="metadata" poster={this.props.mainVideo.image}>
+                        <video onEnded={()=>this.video.current.load()} onLoadedMetadata={this.initializedVideo} onTimeUpdate={()=>{this.updateTimeElapsed(); this.updateProgress()}} ref={this.video} className="video" id="video" preload="metadata" poster={this.props.mainVideo.image}>
                             <source src={this.props.mainVideo.video} type="video/mp4"></source>
                             <p className="video__text">Your browser doesn't support HTML5 video.</p>
                         </video>
@@ -129,21 +148,22 @@ class VideoPlayer extends Component {
                             {/* video progress bar and time */}
                             <div className="progress">
                                 <progress ref={this.progress} className="progress__bar" value="0" min="0"></progress>
-                                <input ref={this.seek} onChange={this.skipAhead} className="seek" id="seek" value="0" min="0" type="range" step="1"/>
+                                <input ref={this.seek} onChange={this.skipAhead} value="0" className="seek" id="seek" min="0" type="range" step="0.1"/>
                                 <div className="time">
-                                    <time ref={this.elapsed} className="time__elapsed">0:00</time>
+                                    <time ref={this.elapsed} className="time__elapsed">00:00</time>
                                     <span className="time__separation">/</span>
                                     <time ref={this.duration} className="time__total">{this.props.mainVideo.duration}</time>
                                 </div>
                             </div>
                             {/* right video controls */}
-                            <div className="controls__right">
+                            <div  className="controls__right">
                                 <button ref={this.fullscreen} onClick={this.toggleFullScreen} className="button fullscreen">
                                     <img className="fullscreen__icon" src={fullScreen} alt="fullscreen button"/>
                                 </button>
-                                <button ref={this.volume} onClick={this.toggleMute} className="button volume">
+                                <button ref={this.volume} onMouseEnter={this.toggleSlide} onClick={this.toggleMute} className="button volume">
                                     <img className="volume__icon" src={volume} alt="volume control"/>
                                 </button>
+                                <input ref={this.slide} onChange={this.updateVolume} className="volume__slide hidden" id="volumeSlide" type="range" max="1" min="0" step="0.01"/>
                             </div>
                         </div>
                     </div>

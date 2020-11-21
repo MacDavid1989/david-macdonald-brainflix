@@ -153,7 +153,10 @@ class Home extends Component {
 			<>
 				{/* check if mainVideo has been updated from base state before rendering the component */}
 				{this.state.mainVideo && 
-				<VideoPlayer mainVideo={this.state.mainVideo} />}
+				<VideoPlayer
+					params={this.props.match.params} 
+					mainVideo={this.state.mainVideo} 
+				/>}
 				{/* check if mainVideo has been updated from base state before rendering the component */}
 				{this.state.mainVideo && 
 				<VideoBody 
