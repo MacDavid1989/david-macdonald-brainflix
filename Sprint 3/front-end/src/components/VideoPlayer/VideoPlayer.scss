@@ -52,10 +52,13 @@
 
         .progress {
             @include player-control-style;
+            position: relative;
             margin: 0 calc(0.8rem + (8 / 448) * (100vw - 32rem));
             width: calc(14rem + (380 / 448) * (100vw - 32rem));
 
             &__bar {
+                position: relative;
+                pointer-events: none;
                 appearance: none;
                 padding: 0 1.6rem;
                 width: 100%;
@@ -72,6 +75,20 @@
                     background-color: $color-progress-value;
                     border-radius: 0.4rem;
                 }
+            }
+
+            .seek {
+                // position: absolute;
+                appearance: none;
+                padding: 0 1.6rem;
+                width: calc(100% - 4.8rem - 5.5313rem);
+                height: 0.4rem;
+                // background-color: $color-progress-bar;
+                border-radius: 0.4rem;
+                z-index: 1;
+                left: 1.6rem;
+                margin: 0 2.4rem 0 0;
+                outline: none;
             }
 
             .time {

@@ -16,6 +16,7 @@ class VideoPlayer extends Component {
         this.elapsed = React.createRef();
         this.duration = React.createRef();
         this.progress = React.createRef();
+        this.seek = React.createRef();
         this.fullscreen = React.createRef();
         this.videoContainer = React.createRef();
         this.player = React.createRef();
@@ -60,10 +61,12 @@ class VideoPlayer extends Component {
     initializedVideo = () => {
         const videoDuration = Math.round(this.video.current.duration);
         this.progress.current.setAttribute('max', videoDuration);
+        this.seek.current.setAttribute('max', videoDuration);
     }
 
     updateProgress =() => {
         this.progress.current.value = Math.floor(this.video.current.currentTime);
+        this.seek.current.value = Math.floor(this.video.current.currentTime);
     }
 
     toggleFullScreen =() => {
@@ -74,6 +77,7 @@ class VideoPlayer extends Component {
         } else {
             this.video.current.classList.toggle('video__alt')
             this.videoContainer.current.requestFullscreen();
+            this.video.current.pause()
         }
     }
 
@@ -97,6 +101,13 @@ class VideoPlayer extends Component {
         // }
     }
 
+    skipAhead = () => {
+        const skipTo = this.seek.current.dataset.seek ? this.seek.current.dataset.seek : this.seek.current.value;
+        this.video.current.currentTime = skipTo;
+        this.progress.current.value = skipTo;
+        this.seek.current.value = skipTo;
+      }
+
     render() {
         return (
             // wrapper for video player
@@ -105,7 +116,7 @@ class VideoPlayer extends Component {
                 <section  className="player">
                     <div  ref={this.videoContainer}  className="player_container">
                         {/* video source and text if unsupported */}
-                        <video onClick={this.togglePlay} onLoadedMetadata={this.initializedVideo} onTimeUpdate={()=>{this.updateTimeElapsed(); this.updateProgress()}} ref={this.video} className="video" id="video" preload="metadata" poster={this.props.mainVideo.image}>
+                        <video onLoadedMetadata={this.initializedVideo} onTimeUpdate={()=>{this.updateTimeElapsed(); this.updateProgress()}} ref={this.video} className="video" id="video" preload="metadata" poster={this.props.mainVideo.image}>
                             <source src={this.props.mainVideo.video} type="video/mp4"></source>
                             <p className="video__text">Your browser doesn't support HTML5 video.</p>
                         </video>
@@ -118,6 +129,7 @@ class VideoPlayer extends Component {
                             {/* video progress bar and time */}
                             <div className="progress">
                                 <progress ref={this.progress} className="progress__bar" value="0" min="0"></progress>
+                                <input ref={this.seek} onChange={this.skipAhead} className="seek" id="seek" value="0" min="0" type="range" step="1"/>
                                 <div className="time">
                                     <time ref={this.elapsed} className="time__elapsed">0:00</time>
                                     <span className="time__separation">/</span>
