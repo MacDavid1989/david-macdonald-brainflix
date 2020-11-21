@@ -16,6 +16,9 @@ class VideoPlayer extends Component {
         this.elapsed = React.createRef();
         this.duration = React.createRef();
         this.progress = React.createRef();
+        this.fullscreen = React.createRef();
+        this.videoContainer = React.createRef();
+        this.player = React.createRef();
     }
 
     togglePlay = () => {
@@ -62,40 +65,53 @@ class VideoPlayer extends Component {
         this.progress.current.value = Math.floor(this.video.current.currentTime);
     }
 
+    toggleFullScreen =() => {
+        if (document.fullscreenElement) {
+            this.video.current.classList.toggle('video__alt')
+            document.exitFullscreen();
+            this.video.current.pause()
+        } else {
+            this.video.current.classList.toggle('video__alt')
+            this.videoContainer.current.requestFullscreen();
+        }
+    }
+
     render() {
         return (
             // wrapper for video player
             <header className="header">
                 {/* video player */}
-                <section className="player">
-                    {/* video source and text if unsupported */}
-                    <video onClick={this.togglePlay} onLoadedMetadata={this.initializedVideo} onTimeUpdate={()=>{this.updateTimeElapsed(); this.updateProgress()}} ref={this.video} className="video" id="video" preload="metadata" poster={this.props.mainVideo.image}>
-                        <source src={this.props.mainVideo.video} type="video/mp4"></source>
-                        <p className="video__text">Your browser doesn't support HTML5 video.</p> 
-                    </video>
-                    {/* left video controls */}
-                    <div className="controls">
-                        <button className="button play" onClick={this.togglePlay}>
-                            <img ref={this.playbackPlay} className="play__icon" src={play} alt="play button"/>
-                            <img ref={this.playbackPause} className="pause__icon hidden" src={pause} alt="pause button"/>
-                        </button>
-                        {/* video progress bar and time */}
-                        <div className="progress">
-                            <progress ref={this.progress} className="progress__bar" value="0" min="0"></progress>
-                            <div className="time">
-                                <time ref={this.elapsed} className="time__elapsed">0:00</time>
-                                <span className="time__separation">/</span>
-                                <time ref={this.duration} className="time__total">{this.props.mainVideo.duration}</time>
+                <section  className="player">
+                    <div  ref={this.videoContainer}  className="player_container">
+                        {/* video source and text if unsupported */}
+                        <video onClick={this.togglePlay} onLoadedMetadata={this.initializedVideo} onTimeUpdate={()=>{this.updateTimeElapsed(); this.updateProgress()}} ref={this.video} className="video" id="video" preload="metadata" poster={this.props.mainVideo.image}>
+                            <source src={this.props.mainVideo.video} type="video/mp4"></source>
+                            <p className="video__text">Your browser doesn't support HTML5 video.</p>
+                        </video>
+                        {/* left video controls */}
+                        <div className="controls">
+                            <button className="button play" onClick={this.togglePlay}>
+                                <img ref={this.playbackPlay} className="play__icon" src={play} alt="play button"/>
+                                <img ref={this.playbackPause} className="pause__icon hidden" src={pause} alt="pause button"/>
+                            </button>
+                            {/* video progress bar and time */}
+                            <div className="progress">
+                                <progress ref={this.progress} className="progress__bar" value="0" min="0"></progress>
+                                <div className="time">
+                                    <time ref={this.elapsed} className="time__elapsed">0:00</time>
+                                    <span className="time__separation">/</span>
+                                    <time ref={this.duration} className="time__total">{this.props.mainVideo.duration}</time>
+                                </div>
                             </div>
-                        </div>
-                        {/* right video controls */}
-                        <div className="controls__right">
-                            <button className="button fullscreen">
-                                <img className="fullscreen__icon" src={fullScreen} alt="fullscreen button"/>
-                            </button>
-                            <button className="button volume">
-                                <img className="volume__icon" src={volume} alt="volume control"/>
-                            </button>
+                            {/* right video controls */}
+                            <div className="controls__right">
+                                <button ref={this.fullscreen} onClick={this.toggleFullScreen} className="button fullscreen">
+                                    <img className="fullscreen__icon" src={fullScreen} alt="fullscreen button"/>
+                                </button>
+                                <button className="button volume">
+                                    <img className="volume__icon" src={volume} alt="volume control"/>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </section>

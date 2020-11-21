@@ -16,6 +16,11 @@
     height: calc(18.3rem + (217 / 448) * (100vw - 32rem));
     background-color: $color-player-background;
 
+    &_container {
+        @include flex-control(flex,column,initial,center,initial,initial);
+        width: 100%;
+        height: 100%;
+    }
 
     .video {
         width: 100%;
@@ -146,6 +151,10 @@
 
         .video {
             width: 94.4rem;
+
+            &__alt {
+                width: 100%;
+            }
         }
 
         .controls {
