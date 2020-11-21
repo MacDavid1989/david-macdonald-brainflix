@@ -39,6 +39,10 @@
             margin: 0 0 0 calc(0rem + (8 / 448) * (100vw - 32rem));
             width: 5rem;
             cursor: pointer;
+
+            .hidden {
+                display: none;
+            }
         }
 
         .progress {
