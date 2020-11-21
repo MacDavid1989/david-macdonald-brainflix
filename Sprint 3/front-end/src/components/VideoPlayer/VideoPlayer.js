@@ -19,6 +19,7 @@ class VideoPlayer extends Component {
         this.fullscreen = React.createRef();
         this.videoContainer = React.createRef();
         this.player = React.createRef();
+        this.volume = React.createRef();
     }
 
     togglePlay = () => {
@@ -76,6 +77,26 @@ class VideoPlayer extends Component {
         }
     }
 
+    // updateVolume = () => {
+    //     const video = this.video.current
+    //     if (video.muted) {
+    //       video.muted = false;
+    //     }
+    //     video.muted = true;
+    // }
+
+    toggleMute = () => {
+        const video = this.video.current
+        video.muted = !video.muted;
+      
+        // if (video.muted) {
+        //   volume.setAttribute('data-volume', volume.value);
+        //   volume.value = 0;
+        // } else {
+        //   volume.value = volume.dataset.volume;
+        // }
+    }
+
     render() {
         return (
             // wrapper for video player
@@ -108,7 +129,7 @@ class VideoPlayer extends Component {
                                 <button ref={this.fullscreen} onClick={this.toggleFullScreen} className="button fullscreen">
                                     <img className="fullscreen__icon" src={fullScreen} alt="fullscreen button"/>
                                 </button>
-                                <button className="button volume">
+                                <button ref={this.volume} onClick={this.toggleMute} className="button volume">
                                     <img className="volume__icon" src={volume} alt="volume control"/>
                                 </button>
                             </div>
