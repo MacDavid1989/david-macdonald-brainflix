@@ -82,7 +82,8 @@
             .seek {
                 position: absolute;
                 -webkit-appearance: none;
-                width: calc(100% - 4.6rem - 5.5313rem);
+                width: calc(11rem + (380 / 448) * (100vw - 32rem));
+
                 height: 0.4rem;
                 background-color: transparent;
                 border-radius: 0.4rem;
@@ -94,8 +95,8 @@
 
                 &::-webkit-slider-thumb {
                     -webkit-appearance: none;
-                    height: 25px;
-                    width: 25px;
+                    height: 20px;
+                    width: 20px;
                     margin: 3.5px 0 0 0;
                     cursor: pointer;
                     background-image: url('../../assets/icons/svg/icon-scrubber-control.svg');
@@ -138,11 +139,11 @@
                     background-color: $color-progress-bar;
                     width: 10rem;
                     height: 0.4rem;
-                    border-radius: 0.4rem;
                     z-index: 2;
                     bottom: 8rem;
                     right: -2.4rem;
                     outline: none;
+                    border-radius: 0.4rem;
 
                     &::-webkit-slider-thumb {
                         -webkit-appearance: none;
@@ -154,7 +155,6 @@
                         background-position: center;
                         background-size: cover;
                     }
-
                 }
             }
 
@@ -183,6 +183,11 @@
             .progress {
                 margin: 0 1.6rem;
                 width: calc(51.9rem + (228 / 360) * (100vw - 76.8rem));
+
+                .seek {
+                width: calc(42rem + (228 / 360) * (100vw - 76.8rem));
+
+                }
 
                 .time {
                     @include flex-control(flex,initial,initial,center,initial,center);
@@ -234,6 +239,12 @@
 
             .progress {
                 width: 75.1rem;
+
+                .seek{
+                    width: 65rem;
+
+
+                }
             }
 
             &__right {

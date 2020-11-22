@@ -4,8 +4,12 @@ const fs = require('fs')
 const commentsRoute = require('./commentsRoute')
 const mainVideosFile = './data/mainVideos.json';
 const likesRoute = require('./likesRoute')
+const viewsRoute = require('./viewsRoute')
+
 // likes route
 router.use('/likes', likesRoute)
+// likes route
+router.use('/views', viewsRoute)
 // comments route
 router.use('/comments', commentsRoute)
 // GET /videos/:videoId

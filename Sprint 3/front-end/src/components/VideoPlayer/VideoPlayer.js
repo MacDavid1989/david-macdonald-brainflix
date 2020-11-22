@@ -1,9 +1,12 @@
 import './VideoPlayer.scss';
 import React, {Component} from 'react'
+import axios from 'axios';
+import {defaultVideoId} from '../../utils/defaultVideoId'
 import play from '../../assets/icons/svg/icon-play.svg';
 import pause from '../../assets/icons/svg/icon-pause.svg';
 import fullScreen from '../../assets/icons/svg/icon-fullscreen.svg';
 import volume from '../../assets/icons/svg/icon-volume.svg';
+const API_URL = process.env.REACT_APP_API_URL;
 
 // video player component
 class VideoPlayer extends Component {
@@ -32,6 +35,17 @@ class VideoPlayer extends Component {
             playbackPlay.classList.toggle('hidden')
             playbackPause.classList.toggle('hidden')
             }
+            if(prevProps.params.id === undefined){
+                // similar to post instead the comment matching the provided id will be removed from the comment list
+                axios.put(`${API_URL}/videos/${defaultVideoId}/views`)
+                .then(res=>console.log(res))
+                .catch(error => console.error(error));
+            } else {
+                // similar to post instead the comment matching the provided id will be removed from the comment list
+                axios.put(`${API_URL}/videos/${prevProps.params.id}/views`)
+                .then(res=>console.log(res))
+                .catch(error => console.error(error));
+            };
         }    
     }
 
