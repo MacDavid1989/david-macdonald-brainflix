@@ -41,6 +41,7 @@ class VideoPlayer extends Component {
     }
 
     componentDidUpdate(prevProps) {
+        
         if(this.props.params.id !== prevProps.params.id){
             // reloads the video source when changing pages
             this.video.current.load()

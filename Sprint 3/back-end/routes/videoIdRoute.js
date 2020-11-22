@@ -8,7 +8,7 @@ const viewsRoute = require('./viewsRoute')
 
 // likes route
 router.use('/likes', likesRoute)
-// likes route
+// views route
 router.use('/views', viewsRoute)
 // comments route
 router.use('/comments', commentsRoute)
