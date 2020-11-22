@@ -2,7 +2,6 @@ import './VideoPlayer.scss';
 import React, {Component} from 'react'
 import play from '../../assets/icons/svg/icon-play.svg';
 import pause from '../../assets/icons/svg/icon-pause.svg';
-// import scrubber from '../../assets/icons/svg/icon-scrubber-control.svg';
 import fullScreen from '../../assets/icons/svg/icon-fullscreen.svg';
 import volume from '../../assets/icons/svg/icon-volume.svg';
 
@@ -84,13 +83,14 @@ class VideoPlayer extends Component {
 
     toggleFullScreen =() => {
         if (document.fullscreenElement) {
-            this.video.current.classList.toggle('video__alt')
+            const video = this.video.current
+            video.classList.toggle('video__alt')
             document.exitFullscreen();
-            this.video.current.pause()
+           
         } else {
-            this.video.current.classList.toggle('video__alt')
+            const video = this.video.current
+            video.classList.toggle('video__alt')
             this.videoContainer.current.requestFullscreen();
-            this.video.current.pause()
         }
     }
 
@@ -98,6 +98,7 @@ class VideoPlayer extends Component {
         const video = this.video.current
         if (video.muted) {
           video.muted = false;
+
         }
         video.volume = this.slide.current.value;
 
@@ -123,8 +124,29 @@ class VideoPlayer extends Component {
     }
 
     toggleSlide = () => {
-        console.log('hey')
         this.slide.current.classList.toggle('hidden')
+    }
+
+    handleAutoPlay = () => {
+        const playbackPlay = this.playbackPlay.current;
+        const playbackPause = this.playbackPause.current;
+        console.log(playbackPause.classList.value)
+        if(playbackPause.classList.value === 'pause__icon hidden'){
+        console.log('ehy')
+            playbackPlay.classList.toggle('hidden')
+            playbackPause.classList.toggle('hidden')
+        }
+    }
+
+    handleEndPlay = () => {
+        this.video.current.load()
+        const playbackPlay = this.playbackPlay.current;
+        const playbackPause = this.playbackPause.current;
+        if(playbackPause.classList.value === 'pause__icon'){
+            console.log('ehy')
+                playbackPlay.classList.toggle('hidden')
+                playbackPause.classList.toggle('hidden')
+        }
     }
 
     render() {
@@ -135,7 +157,7 @@ class VideoPlayer extends Component {
                 <section  className="player">
                     <div  ref={this.videoContainer}  className="player_container">
                         {/* video source and text if unsupported */}
-                        <video onEnded={()=>this.video.current.load()} onLoadedMetadata={this.initializedVideo} onTimeUpdate={()=>{this.updateTimeElapsed(); this.updateProgress()}} ref={this.video} className="video" id="video" preload="metadata" poster={this.props.mainVideo.image}>
+                        <video onPlay={this.handleAutoPlay} onEnded={this.handleEndPlay} onClick={this.togglePlay} onLoadedMetadata={this.initializedVideo} onTimeUpdate={()=>{this.updateTimeElapsed(); this.updateProgress()}} ref={this.video} className="video" id="video" preload="metadata" poster={this.props.mainVideo.image}>
                             <source src={this.props.mainVideo.video} type="video/mp4"></source>
                             <p className="video__text">Your browser doesn't support HTML5 video.</p>
                         </video>
@@ -147,8 +169,8 @@ class VideoPlayer extends Component {
                             </button>
                             {/* video progress bar and time */}
                             <div className="progress">
-                                <progress ref={this.progress} className="progress__bar" value="0" min="0"></progress>
-                                <input ref={this.seek} onChange={this.skipAhead} value="0" className="seek" id="seek" min="0" type="range" step="0.1"/>
+                                <progress ref={this.progress} className="progress__bar" min="0"></progress>
+                                <input ref={this.seek} onChange={this.skipAhead} className="seek" id="seek" min="0" type="range" step="0.1"/>
                                 <div className="time">
                                     <time ref={this.elapsed} className="time__elapsed">00:00</time>
                                     <span className="time__separation">/</span>
@@ -160,7 +182,7 @@ class VideoPlayer extends Component {
                                 <button ref={this.fullscreen} onClick={this.toggleFullScreen} className="button fullscreen">
                                     <img className="fullscreen__icon" src={fullScreen} alt="fullscreen button"/>
                                 </button>
-                                <button ref={this.volume} onMouseEnter={this.toggleSlide} onClick={this.toggleMute} className="button volume">
+                                <button ref={this.volume} onClick={this.toggleSlide}  className="button volume">
                                     <img className="volume__icon" src={volume} alt="volume control"/>
                                 </button>
                                 <input ref={this.slide} onChange={this.updateVolume} className="volume__slide hidden" id="volumeSlide" type="range" max="1" min="0" step="0.01"/>
