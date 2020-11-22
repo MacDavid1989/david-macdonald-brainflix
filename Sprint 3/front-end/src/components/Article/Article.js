@@ -1,4 +1,5 @@
 import './Article.scss';
+import formatNumbers from '../../utils/formatNumbers';
 import likes from '../../assets/icons/svg/icon-likes.svg';
 import views from '../../assets/icons/svg/icon-views.svg';
 
@@ -7,18 +8,6 @@ function Article({mainVideo, onVideoLike, convertTime}) {
     const handleVideoLike = (onVideoLike) => {
         onVideoLike()
     };
-
-    const numFormat = (string) => {
-        string += '';
-        let x = string.split('.');
-        let x1 = x[0];
-        let x2 = x.length > 1 ? '.' + x[1] : '';
-        const rgx = /(\d+)(\d{3})/;
-        while (rgx.test(x1)) {
-            x1 = x1.replace(rgx, '$1' + ',' + '$2');
-        }
-        return x1 + x2;
-    }
 
     return (
         // wrapper for all information associated with current main video stored in state
@@ -35,11 +24,11 @@ function Article({mainVideo, onVideoLike, convertTime}) {
                 <div className="video-article__stats">
                     <div className="views">
                         <img className="views__icon" src={views} alt=""/>
-                        <span className="views__total">{numFormat(String(mainVideo.views))}</span>
+                        <span className="views__total">{formatNumbers(String(mainVideo.views))}</span>
                     </div>
                     <div onClick={(e)=> handleVideoLike(onVideoLike)} className="likes">
                         <img className="likes__icon" src={likes} alt=""/>
-                        <span className="likes__total">{numFormat(String(mainVideo.likes))}</span>
+                        <span className="likes__total">{formatNumbers(String(mainVideo.likes))}</span>
                     </div>
                 </div>
             </div>
