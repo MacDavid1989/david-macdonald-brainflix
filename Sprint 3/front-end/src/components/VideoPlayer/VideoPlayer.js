@@ -38,6 +38,8 @@ class VideoPlayer extends Component {
         this.slide = React.createRef();
         // video controls wrapper
         this.controls = React.createRef();
+        // volume progress bar
+        this.progressVolume = React.createRef();
     }
 
     componentDidUpdate(prevProps) {
@@ -122,9 +124,10 @@ class VideoPlayer extends Component {
         }
     }
 
-    // sets the video media volume to the value of the volume input slider
+    // sets the video media volume and progress volume bar value to the value of the volume input slider 
     updateVolume = () => {
         this.video.current.volume = this.slide.current.value;
+        this.progressVolume.current.value = this.slide.current.value;
     }
 
     // sets the video time and progress bar value to match the seek input value 
@@ -137,6 +140,7 @@ class VideoPlayer extends Component {
     // controls the visibility of the volume slider when clicking the volume control button
     toggleSlide = () => {
         this.slide.current.classList.toggle('hidden')
+        this.progressVolume.current.classList.toggle('hidden')
     }
 
     // checks is the pause icon is hidden when the video plays and toggles it if true
@@ -219,6 +223,7 @@ class VideoPlayer extends Component {
                                 <button ref={this.volume} onClick={this.toggleSlide}  className="button volume">
                                     <img className="volume__icon" src={volume} alt="volume control"/>
                                 </button>
+                                <progress ref={this.progressVolume} value="1" className="volume__bar hidden" min="0"></progress>
                                 <input ref={this.slide} onChange={this.updateVolume} className="volume__slide hidden" id="volumeSlide" type="range" max="1" min="0" step="0.01"/>
                             </div>
                         </div>
