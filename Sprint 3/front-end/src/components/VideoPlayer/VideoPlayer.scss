@@ -31,6 +31,11 @@
         object-position: center;
         object-fit: cover;
         cursor: pointer;
+
+        &__alt {
+            margin: auto;
+            height: 63.54vw;
+        }
     }
 
     // video custom controls
@@ -211,6 +216,13 @@
         padding: 0 calc(3.4rem + (58 / 360) * (100vw - 76.8rem));
         height: calc(40rem + (140 / 360) * (100vw - 76.8rem));
 
+        .video {
+            &__alt {
+                margin: auto 0;
+                height: 57.2vw;
+            }
+        }
+
         .controls {
             bottom: 1.6rem;
             padding: 0 calc(3.4rem + (58 / 360) * (100vw - 76.8rem));
@@ -264,6 +276,7 @@
             width: 94.4rem;
 
             &__alt {
+                margin: auto 0;
                 width: 100%;
             }
         }

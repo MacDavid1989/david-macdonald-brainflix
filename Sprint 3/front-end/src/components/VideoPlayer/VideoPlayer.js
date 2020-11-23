@@ -43,7 +43,7 @@ class VideoPlayer extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        
+
         if(this.props.params.id !== prevProps.params.id){
             // reloads the video source when changing pages
             this.video.current.load()
@@ -183,11 +183,11 @@ class VideoPlayer extends Component {
                     <div ref={this.videoContainer} className="player_container">
                         {/* video source and text if unsupported */}
                         <video 
-                            ref={this.video} 
+                            ref={this.video}
                             onMouseEnter={this.showControls} 
                             onMouseLeave={this.hideControls} 
                             onPlay={this.handleAutoPlay} 
-                            onEnded={this.handleEndPlay} 
+                            onEnded={() => {this.handleEndPlay();this.toggleFullScreen()}} 
                             onClick={this.togglePlay} 
                             onLoadedMetadata={this.initializedVideo} 
                             onTimeUpdate={()=>{this.updateTimeElapsed(); this.updateProgress()}} 
