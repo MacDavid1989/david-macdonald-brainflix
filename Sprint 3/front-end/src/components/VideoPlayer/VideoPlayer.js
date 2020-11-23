@@ -189,6 +189,7 @@ class VideoPlayer extends Component {
             <header className="header">
                 {/* video player */}
                 <section className="player">
+                    {/* Video and Controls container */}
                     <div ref={this.videoContainer} onMouseOver={this.showControls} onMouseLeave={this.hideControls} className="player_container">
                         {/* video source and text if unsupported */}
                         <video 
@@ -210,14 +211,19 @@ class VideoPlayer extends Component {
                         </video>
                         {/* left video controls */}
                         <div ref={this.controls} onMouseEnter={this.showControls} onMouseLeave={this.hideControls} className="controls">
+                            {/* playback button */}
                             <button className="button play" onClick={this.togglePlay}>
+                                {/* play icon */}
                                 <img ref={this.playbackPlay} className="play__icon" src={play} alt="play button"/>
+                                {/* pause icon */}
                                 <img ref={this.playbackPause} className="pause__icon hidden" src={pause} alt="pause button"/>
                             </button>
                             {/* video progress bar and time */}
                             <div className="progress">
                                 <progress ref={this.progress} className="progress__bar" min="0"></progress>
+                                {/* seek bar overlay on progress bar */}
                                 <input ref={this.seek} onChange={this.skipAhead} className="seek" id="seek" min="0" type="range" step="0.1"/>
+                                {/* time container */}
                                 <div className="time">
                                     <time ref={this.elapsed} className="time__elapsed">00:00</time>
                                     <span className="time__separation">/</span>
@@ -233,6 +239,7 @@ class VideoPlayer extends Component {
                                     <img className="volume__icon" src={volume} alt="volume control"/>
                                 </button>
                                 <progress ref={this.progressVolume} value="1" className="volume__bar hidden" min="0"></progress>
+                                {/* volume overlay */}
                                 <input ref={this.slide} onChange={this.updateVolume} className="volume__slide hidden" id="volumeSlide" type="range" max="1" min="0" step="0.01"/>
                             </div>
                         </div>

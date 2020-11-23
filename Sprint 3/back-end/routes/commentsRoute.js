@@ -4,8 +4,12 @@ const fs = require('fs')
 const mainVideosFile = './data/mainVideos.json';
 const createId = require('uniqid');
 const commentIdRoute = require('./commentIdRoute')
+
 // :commentId route with a new req property declared which allows the specified route to access those values
-router.use('/:commentId', (req, res, next) => {req.comment = {videoId: req.videoInfo.videoId, commentId: req.params.commentId}; next()}, commentIdRoute)
+router.use('/:commentId', (req, res, next) => {
+        req.comment = {videoId: req.videoInfo.videoId, commentId: req.params.commentId}; 
+        next();
+    }, commentIdRoute)
 // POST /videos/:videoId/comments
 router.post('/', (req, res) => {
     // create new comment object from request body data

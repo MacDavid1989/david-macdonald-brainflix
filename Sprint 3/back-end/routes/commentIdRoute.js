@@ -2,7 +2,8 @@ const fs = require('fs')
 const express = require('express');
 const router = express.Router();
 const mainVideosFile = './data/mainVideos.json';
-const likesRoute = require('./likesRoute')
+const likesRoute = require('./likesRoute');
+
 // likes route
 router.use('/likes', likesRoute)
 // DELETE /videos/:videoId/comments/:commentId

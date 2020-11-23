@@ -32,6 +32,7 @@
         object-fit: cover;
         cursor: pointer;
 
+        // toggled class which is set when in fullscreen
         &__alt {
             margin: auto;
             height: 63.54vw;
@@ -147,6 +148,7 @@
                 background-color: $color-player-btn;
                 cursor: pointer;
 
+                // volume progress bar
                 &__bar {
                     position: absolute;
                     z-index: 2;
