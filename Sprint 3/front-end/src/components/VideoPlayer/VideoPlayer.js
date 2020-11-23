@@ -135,9 +135,32 @@ class VideoPlayer extends Component {
 
     // sets the video media volume and progress volume bar value to the value of the volume input slider 
     updateVolume = () => {
+        if (this.video.current.muted) {
+            this.video.current.muted = false;
+        }
         this.video.current.volume = this.slide.current.value;
         this.progressVolume.current.value = this.slide.current.value;
     }
+
+    // sets the muted boolean to be the opposite value when called
+    toggleMute = () => {
+        this.video.current.muted = !this.video.current.muted;
+      
+        // checks if video volume is muted
+        if (this.video.current.muted) {
+            // sets the dataset volume value to the current position on the slider range input
+            this.slide.current.setAttribute('data-volume', this.slide.current.value);
+            // sets the value of the slide to 0 to match mute condition
+            this.slide.current.value = 0;
+            // sets progress bar value to match slider
+            this.progressVolume.current.value = this.slide.current.value;
+        } else {
+            // sets the slider value to the previously stored dataset volume value upon un-muting video
+            this.slide.current.value = this.slide.current.dataset.volume;
+            // sets progress bar value to match slider
+            this.progressVolume.current.value = this.slide.current.value;
+        }
+      }
 
     // sets the video time and progress bar value to match the seek input value 
     skipAhead = () => {
@@ -235,12 +258,12 @@ class VideoPlayer extends Component {
                                 <button ref={this.fullscreen} onClick={this.toggleFullScreen} className="button fullscreen">
                                     <img className="fullscreen__icon" src={fullScreen} alt="fullscreen button"/>
                                 </button>
-                                <button ref={this.volume} onClick={this.toggleSlide}  className="button volume">
+                                <button ref={this.volume} onClick={this.toggleMute} onMouseEnter={this.toggleSlide} className="button volume">
                                     <img className="volume__icon" src={volume} alt="volume control"/>
                                 </button>
                                 <progress ref={this.progressVolume} value="1" className="volume__bar hidden" min="0"></progress>
                                 {/* volume overlay */}
-                                <input ref={this.slide} onChange={this.updateVolume} className="volume__slide hidden" id="volumeSlide" type="range" max="1" min="0" step="0.01"/>
+                                <input ref={this.slide} onMouseLeave={this.toggleSlide} onChange={this.updateVolume} className="volume__slide hidden" id="volumeSlide" type="range" max="1" min="0" step="0.01"/>
                             </div>
                         </div>
                     </div>
