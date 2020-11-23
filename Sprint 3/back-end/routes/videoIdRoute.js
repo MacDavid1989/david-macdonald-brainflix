@@ -8,10 +8,13 @@ const viewsRoute = require('./viewsRoute')
 
 // likes route
 router.use('/likes', likesRoute)
+
 // views route
 router.use('/views', viewsRoute)
+
 // comments route
 router.use('/comments', commentsRoute)
+
 // GET /videos/:videoId
 router.get('/', (req, res) => {
     const data = fs.readFileSync(mainVideosFile)

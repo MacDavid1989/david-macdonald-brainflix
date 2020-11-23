@@ -6,6 +6,7 @@ const likesRoute = require('./likesRoute');
 
 // likes route
 router.use('/likes', likesRoute)
+
 // DELETE /videos/:videoId/comments/:commentId
 router.delete('/', (req, res) => {
     const data = fs.readFileSync(mainVideosFile)
@@ -21,6 +22,5 @@ router.delete('/', (req, res) => {
 
     return res.status(200).json(deletedComment);
 })
-
 
 module.exports = router

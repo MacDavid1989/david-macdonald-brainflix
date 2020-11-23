@@ -10,6 +10,7 @@ router.use('/:commentId', (req, res, next) => {
         req.comment = {videoId: req.videoInfo.videoId, commentId: req.params.commentId}; 
         next();
     }, commentIdRoute)
+    
 // POST /videos/:videoId/comments
 router.post('/', (req, res) => {
     // create new comment object from request body data

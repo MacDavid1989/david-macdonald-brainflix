@@ -23,11 +23,11 @@ function Article({mainVideo, onVideoLike, convertTime}) {
                 {/* video like and views wrapper */}
                 <div className="video-article__stats">
                     <div className="views">
-                        <img className="views__icon" src={views} alt=""/>
+                        <img className="views__icon" src={views} alt="iris for views"/>
                         <span className="views__total">{formatNumbers(String(mainVideo.views))}</span>
                     </div>
                     <div onClick={(e)=> handleVideoLike(onVideoLike)} className="likes">
-                        <img className="likes__icon" src={likes} alt=""/>
+                        <img className="likes__icon" src={likes} alt="filled heart for likes"/>
                         <span className="likes__total">{formatNumbers(String(mainVideo.likes))}</span>
                     </div>
                 </div>

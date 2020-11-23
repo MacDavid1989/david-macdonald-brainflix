@@ -8,12 +8,14 @@ const mainVideosFile = './data/mainVideos.json';
 
 // :videoId route with a new req property declared which allows the specified route to access those values
 router.use('/:videoId', (req, res, next) => {req.videoInfo = {videoId: req.params.videoId}; next()}, videoIdRoute)
+
 // GET /videos/
 router.get('/', (req, res) => {
     const videoList = fs.readFileSync(videoListFile)
     const parsedVideoList = JSON.parse(videoList)
     res.status(200).json(parsedVideoList);
 })
+
 // POST /videos/
 router.post('/', (req, res) => {
     // create new video object with full details to add to main videos list
