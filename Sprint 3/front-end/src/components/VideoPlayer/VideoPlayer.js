@@ -40,6 +40,8 @@ class VideoPlayer extends Component {
         this.controls = React.createRef();
         // volume progress bar
         this.progressVolume = React.createRef();
+
+        document.addEventListener('fullscreenchange', e=>{console.log(e)})
     }
 
     componentDidUpdate(prevProps) {
@@ -180,17 +182,17 @@ class VideoPlayer extends Component {
             <header className="header">
                 {/* video player */}
                 <section className="player">
-                    <div ref={this.videoContainer} className="player_container">
+                    <div ref={this.videoContainer} onMouseOver={this.showControls} onMouseLeave={this.hideControls} className="player_container">
                         {/* video source and text if unsupported */}
                         <video 
                             ref={this.video}
                             onMouseEnter={this.showControls} 
                             onMouseLeave={this.hideControls} 
                             onPlay={this.handleAutoPlay} 
-                            onEnded={() => {this.handleEndPlay();this.toggleFullScreen()}} 
+                            onEnded={() => {this.handleEndPlay();if(document.fullscreenElement){this.toggleFullScreen()}}} 
                             onClick={this.togglePlay} 
                             onLoadedMetadata={this.initializedVideo} 
-                            onTimeUpdate={()=>{this.updateTimeElapsed(); this.updateProgress()}} 
+                            onTimeUpdate={()=>{this.updateTimeElapsed(); this.updateProgress()}}
                             className="video" 
                             id="video" 
                             preload="metadata" 
