@@ -41,7 +41,14 @@ class VideoPlayer extends Component {
         // volume progress bar
         this.progressVolume = React.createRef();
 
-        document.addEventListener('fullscreenchange', e=>{console.log(e)})
+        // event which fires when document enters or exits full screen
+        document.addEventListener('fullscreenchange', e=>{
+            // checks to see if document is out of fullscreen and if the video element className is 'video video__alt'
+            if(!document.webkitIsFullScreen && e.srcElement.firstChild.className === 'video video__alt'){
+                // sets the video element class to 'video' if the above is true
+                e.srcElement.firstChild.className = 'video'
+            }
+        })
     }
 
     componentDidUpdate(prevProps) {
